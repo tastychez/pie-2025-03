@@ -30,15 +30,15 @@ function createOceanParticles() {
 }
 
 // Research Tabs Functionality - Fixed
-const researchTabs = document.querySelectorAll(".research-tab");
-const researchContents = document.querySelectorAll(".research-content");
+const phaseTabs = document.querySelectorAll(".phase-tab");
+const phaseContents = document.querySelectorAll(".phase-content");
 
-if (researchTabs.length > 0 && researchContents.length > 0) {
-    researchTabs.forEach((tab) => {
+if (phaseTabs.length > 0 && phaseContents.length > 0) {
+    phaseTabs.forEach((tab) => {
         tab.addEventListener("click", () => {
             // Remove active class from all tabs and contents
-            researchTabs.forEach((t) => t.classList.remove("active"));
-            researchContents.forEach((c) => c.classList.remove("active"));
+            phaseTabs.forEach((t) => t.classList.remove("active"));
+            phaseContents.forEach((c) => c.classList.remove("active"));
 
             // Add active class to clicked tab
             tab.classList.add("active");
