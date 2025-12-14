@@ -105,7 +105,7 @@ background-color: #f7f5f2;
   }
   
   .image-container img {
-    max-width: 300px; /* Set a smaller max width */
+    max-width: 900px; /* Set a smaller max width */
     height: auto;
     margin: 10px;
     border: 2px solid #ddd;
