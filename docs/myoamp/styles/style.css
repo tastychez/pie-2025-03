@@ -190,6 +190,9 @@ p {
   transition: 0.3s;
   position: absolute;
   top: 35px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .dropdown:hover .dropdown-menu {
@@ -200,11 +203,12 @@ p {
   border-radius: 10px;
   cursor: pointer;
   width: 79px;
-  margin-top: -5px;
+  margin-top: 0px;
 }
 
 .dropdown-menu li a {
   display: block;
+  background: #fed3c0;
   padding: 10px 20px;
   text-decoration: none;
   color: black;
@@ -212,6 +216,6 @@ p {
 }
 
 .dropdown-menu li a:hover {
-  background-color: #fed3c0;  /* change color on hover */
+  background-color: #f4c1ab;  /* change color on hover */
   cursor: pointer;
 }
