@@ -11,7 +11,7 @@ body {
     color: white; 
     overflow-x: hidden; 
     
-    /* 💡 Parallax Background Setup: Fixed background on the body */
+    /* Parallax Background Setup: Fixed background on the body */
     background-image: url('image_of_fitbot_machine.jpg'); /* **CHANGE THIS PATH** */
     background-size: cover;
     background-position: center;
@@ -172,7 +172,7 @@ a:hover {
 }
 
 
-/* 💡 MAIN CONTENT WRAPPER (The central white column that scrolls) */
+/* MAIN CONTENT WRAPPER (The central white column that scrolls) */
 
 .main-content-wrapper {
     /* Starts after the hero section (or immediately on subpages) */
