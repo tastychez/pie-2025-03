@@ -14,7 +14,7 @@ Click on a link below to visit the website for that team's project.
 
 [Fishbot Frenzy](https://olincollege.github.io/pie-2025-03/fishbot-frenzy)
 
-[Fox-Bot](https://olincollege.github.io/pie-2025-03/fox-bot)
+[Fox-Bot](https://jake30123.github.io/pie-2025-03/fox-bot)
 
 [Ground Station](https://olincollege.github.io/pie-2025-03/ground-station)
 
