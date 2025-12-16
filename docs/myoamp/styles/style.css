@@ -467,6 +467,15 @@ video {
   margin: 0 auto;
 }
 
+.geardrawing{
+  position: absolute;
+  width: 250px;
+  height: auto;
+  top: 600px; 
+  right: 100px;
+  z-index: -1;  
+}
+
 .wifi{
   position: absolute;
   width: 240px;
@@ -489,7 +498,7 @@ video {
   position: absolute;
   width: 250px;
   height: 100px;
-  top: 1150px; 
+  top: 1175px; 
   left: 100px;
   z-index: -1;   
 }
@@ -498,9 +507,19 @@ video {
   position: absolute;
   width: 250px;
   height: 100px;
-  top: 1950px; 
+  top: 2050px; 
   left: 100px;
   z-index: -1;   
+}
+
+.tada{
+  position: absolute;
+  width: 400px;
+  height: auto;
+  top: 2500px; 
+  right: 10px;
+  z-index: -1;  
+  transform: rotate(-35deg);
 }
 
 .anna {
@@ -517,15 +536,6 @@ video {
 
 .page{
   position: relative;
-}
-
-.geardrawing{
-  position: absolute;
-  width: 250px;
-  height: auto;
-  top: 600px; 
-  right: 100px;
-  z-index: -1;  
 }
 
 .brandon {
