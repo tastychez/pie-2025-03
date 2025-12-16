@@ -423,3 +423,8 @@ tr:last-child td {
   cursor: pointer;
   transition: 0.3s;
 }
+
+video {
+  display: block;
+  margin: 0 0 150px 50px;
+}
