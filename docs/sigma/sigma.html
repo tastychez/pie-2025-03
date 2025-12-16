@@ -14,7 +14,6 @@
   --text-muted: #6e6e73;
 }
 
-/* RESET */
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 
@@ -26,17 +25,13 @@ body {
   color: var(--text-main);
 }
 
-/* ───────── TOP NAV ───────── */
+/* ───────── NAV ───────── */
 
 .navbar {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: linear-gradient(
-    180deg,
-    var(--gold-strong),
-    #caa85d
-  );
+  background: linear-gradient(180deg, var(--gold-strong), #caa85d);
   padding: 18px 40px;
 }
 
@@ -53,14 +48,13 @@ body {
   text-decoration: none;
   font-weight: 500;
   position: relative;
-  padding-bottom: 4px;
 }
 
 .navbar a::after {
   content: "";
   position: absolute;
   left: 0;
-  bottom: 0;
+  bottom: -4px;
   width: 0%;
   height: 2px;
   background: white;
@@ -75,19 +69,22 @@ body {
 
 section {
   padding: 140px 6vw;
+}
+
+.fade {
   opacity: 0;
   transform: translateY(40px);
   transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
-section.visible {
+.fade.visible {
   opacity: 1;
   transform: translateY(0);
 }
 
 .card {
   background: var(--white);
-  padding: 80px 80px;
+  padding: 80px;
   border-radius: 20px;
   box-shadow: 0 20px 40px rgba(0,0,0,0.06);
 }
@@ -111,25 +108,10 @@ section.visible {
 
 /* ───────── TYPE ───────── */
 
-h2 {
-  font-size: 2.6rem;
-  margin-bottom: 24px;
-}
-
-h3 {
-  font-size: 1.7rem;
-  margin-top: 60px;
-}
-
-h4 {
-  color: var(--text-muted);
-  margin-top: 40px;
-}
-
-p {
-  font-size: 1.05rem;
-  line-height: 1.8;
-}
+h2 { font-size: 2.6rem; margin-bottom: 24px; }
+h3 { font-size: 1.7rem; margin-top: 60px; }
+h4 { color: var(--text-muted); margin-top: 40px; }
+p { font-size: 1.05rem; line-height: 1.8; }
 
 /* ───────── MEDIA ───────── */
 
@@ -160,8 +142,6 @@ p {
   object-fit: contain;
 }
 
-/* ───────── FOOTER ───────── */
-
 footer {
   text-align: center;
   padding: 100px 0 60px;
@@ -172,7 +152,6 @@ footer {
 
 <body>
 
-<!-- NAV -->
 <nav class="navbar">
   <ul>
     <li><a href="#hero">Overview</a></li>
@@ -185,23 +164,22 @@ footer {
   </ul>
 </nav>
 
-<!-- HERO -->
 <section id="hero">
-  <div class="card hero">
+  <div class="card hero fade">
     <h1>SIGMA</h1>
     <p>A modernized take on the Enigma Machine used in WWII to encrypt messages.</p>
   </div>
 </section>
 
 <section id="process">
-  <div class="card">
+  <div class="card fade">
     <h2>------- We will insert video and photo of how the system works here ------</h2>
     <div class="placeholder">Insert video / demo / image here</div>
   </div>
 </section>
 
-<section>
-  <div class="card">
+<section id="design">
+  <div class="card fade">
     <h2>The Process</h2>
     <p>First, here's a system diagram of how the parts of the machine works and how they interact with one another.</p>
 
@@ -213,7 +191,53 @@ footer {
   </div>
 </section>
 
-<section id="design">
-  <div class="card">
-    <h2>Design Ideation</h2>
-    <!-- TEXT UNCHANGED BELOW -->
+<section id="data">
+  <div class="card fade">
+    <h2>Data and Energy Flow</h2>
+    <div class="placeholder">Insert flow diagram</div>
+  </div>
+</section>
+
+<section id="cad">
+  <div class="card fade">
+    <h2>Mechanical Design (CAD Parts)</h2>
+    <div class="placeholder">Insert CAD images</div>
+  </div>
+</section>
+
+<section id="code">
+  <div class="card fade">
+    <h2>SOURCE CODE --------- LOOK AT RUBRIC. WHAT THE HELLY IS A SWITHLINK ------------</h2>
+  </div>
+</section>
+
+<section id="bom">
+  <div class="card fade">
+    <h2>Bill Of Materials.</h2>
+  </div>
+</section>
+
+<footer>
+  SIGMA Project • Olin College • 2025
+</footer>
+
+<!-- ✅ JS IS HERE -->
+<script>
+const fades = document.querySelectorAll(".fade");
+
+const observer = new IntersectionObserver(
+  entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+      }
+    });
+  },
+  { threshold: 0.15 }
+);
+
+fades.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
