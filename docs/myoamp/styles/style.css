@@ -379,3 +379,47 @@ tr:last-child td {
   font-size: 15px;
   margin: -85px 0 100px 50px;
 }
+
+.sprint-title{
+  margin: -50px -900px 0 0;
+}
+
+.initial-drawing{
+  margin: -50px 0px 0px 150px;
+  border-radius: 10px;
+}
+
+.summary p{
+  margin-left: 800px;
+  margin-top: -200px;
+  text-align: right;
+}
+
+.breakdown{
+  position: relative;
+  display: flex;             /* arrange boxes horizontally */
+  justify-content: center;   /* center all boxes in the section */
+  gap: 20px;                 /* space between boxes */
+  margin: 200px 0 100px 0;         /* center section and give vertical spacing */
+  text-align: center;
+}
+.breakdown h2{
+  font-size: 40px;
+  padding: 15px;
+}
+.link {
+  display: block;
+  width: 300px;
+  margin: auto auto;
+  text-align: center;
+  border: 2px solid black;
+  border-radius: 15px;
+  font-size: 24px;
+  text-decoration: none;
+  color: black;
+}
+.link:hover {
+  background-color: #ffe4d8;
+  cursor: pointer;
+  transition: 0.3s;
+}
