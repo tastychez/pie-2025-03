@@ -3217,8 +3217,8 @@ input, select, textarea {
 		background-color: #ffffff;
 		color: #636363;
 		position: absolute;
-		width: 64em;
-		max-width: calc(100% - 4em);
+		width: 90%;
+		max-width: calc(100% - 2em);
 		padding: 1em;
 		background-color: #f7f7f7;
 		border-top-left-radius: 0.25em;
@@ -3272,7 +3272,7 @@ input, select, textarea {
 				-ms-transition: margin 0.2s ease;
 				transition: margin 0.2s ease;
 				display: inline-block;
-				margin: 0 0.3em;
+				margin: 0 0.35em;
 				padding: 0;
 				vertical-align: middle;
 			}
@@ -3782,6 +3782,7 @@ input, select, textarea {
 			}
 
 		}
+
 
 
 
