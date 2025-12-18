@@ -99,16 +99,6 @@ input, select, textarea {
 		box-sizing: inherit;
 	}
 
-	/*
-	body {
-		background-color: #935d8c;
-		background-image: url("images/overlay.png"), -moz-linear-gradient(45deg, #e37682 15%, #5f4d93 85%);
-		background-image: url("images/overlay.png"), -webkit-linear-gradient(45deg, #e37682 15%, #5f4d93 85%);
-		background-image: url("images/overlay.png"), -ms-linear-gradient(45deg, #e37682 15%, #5f4d93 85%);
-		background-image: url("images/overlay.png"), linear-gradient(45deg, #e37682 15%, #5f4d93 85%);
-	}
-	*/
-
 	body {
     background-color: #000000;
 	}
@@ -126,14 +116,11 @@ input, select, textarea {
 
 /* Type */
 
-	/*
+	/* Type */
+
 	body {
-		background-color: #935d8c;
-		color: rgba(255, 255, 255, 0.65);
-	}
-	*/
-	body {
-    background-color: #000000;
+	    background-color: #000000;
+	    color: rgba(255, 255, 255, 0.65);
 	}
 
 	body, input, select, textarea {
@@ -3795,6 +3782,7 @@ input, select, textarea {
 			}
 
 		}
+
 
 
 
