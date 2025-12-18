@@ -3581,9 +3581,11 @@ input, select, textarea {
 		}
 
 		#main > .main {
-			padding: 5em 5em 3em 5em ;
-			border-top: solid 1px #dddddd;
+		    padding: 5em 5em 3em 5em ;
+		    border-top: solid 3px transparent;
+		    border-image: linear-gradient(90deg, #000000, #FFD700) 1;
 		}
+
 
 			#main > .main:first-child {
 				border-top: 0;
@@ -3800,6 +3802,7 @@ input, select, textarea {
 	    -ms-flex: 1;
 	    flex: 1;
 	}
+
 
 
 
