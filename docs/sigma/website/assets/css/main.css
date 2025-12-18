@@ -3217,8 +3217,8 @@ input, select, textarea {
 		background-color: #ffffff;
 		color: #636363;
 		position: absolute;
-		width: 90%;
-		max-width: calc(100% - 2em);
+		width: 70em;
+		max-width: calc(100% - 4em);
 		padding: 1em;
 		background-color: #f7f7f7;
 		border-top-left-radius: 0.25em;
@@ -3782,6 +3782,7 @@ input, select, textarea {
 			}
 
 		}
+
 
 
 
