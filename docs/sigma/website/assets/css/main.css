@@ -110,12 +110,7 @@ input, select, textarea {
 	*/
 
 	body {
-    background-color: #935d8c;
-    background-image: url("images/bg.JPG");
-    background-size: cover; 
-    background-position: center; 
-    background-repeat: no-repeat; 
-    background-attachment: fixed; 
+    background-color: #000000;
 	}
 
 		body.is-preload *, body.is-preload *:before, body.is-preload *:after {
@@ -138,12 +133,7 @@ input, select, textarea {
 	}
 	*/
 	body {
-    background-color: #935d8c;
-    background-image: url("images/bg.JPG");
-    background-size: cover; 
-    background-position: center; 
-    background-repeat: no-repeat; 
-    background-attachment: fixed; 
+    background-color: #000000;
 	}
 
 	body, input, select, textarea {
@@ -3805,6 +3795,7 @@ input, select, textarea {
 			}
 
 		}
+
 
 
 
