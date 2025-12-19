@@ -1,0 +1,217 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Mechanical Design - The Resistance</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="stylesheet" href="assets/css/main.css" />
+        
+        <style>
+            .modal { display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.9); }
+            .modal-content { margin: auto; display: block; width: 80%; max-width: 1000px; max-height: 90vh; object-fit: contain; position: relative; top: 50%; transform: translateY(-50%); }
+            .close { position: absolute; top: 20px; right: 35px; color: #f1f1f1; font-size: 40px; font-weight: bold; cursor: pointer; z-index: 10001; }
+            .close:hover { color: #bbb; }
+            .image.fit img, .image.main img { cursor: pointer; transition: opacity 0.2s; }
+            .image.fit img:hover, .image.main img:hover { opacity: 0.8; }
+        </style>
+    </head>
+    <body class="is-preload">
+
+        <div id="wrapper">
+            <div id="main">
+                <div class="inner">
+
+                    <header id="header">
+                        <a href="index.html" class="logo"><strong>The Resistance</strong> ~ PIE 2025FA</a>
+                        <ul class="icons">
+                            <li><a href="https://github.com/jalikins/The-Resistors" class="icon brands fa-github"><span class="label">Github</span></a></li>
+                        </ul>
+                    </header>
+
+                    <section>
+                        <header class="main">
+                            <h1>Mechanical Design</h1>
+                        </header>
+
+                        <div class="sticky-nav">
+                            <ul>
+                                <li><a href="#system">System Design</a></li>
+                                <li><a href="#considerations">Design Considerations</a></li>
+                            </ul>
+                        </div>
+
+                        <h2 id="system">System Design</h2>
+                        <p>The mechanical team needed to design a system that interfaced seamlessly with the electrical subsystems, moved efficiently, and dropped resistors with price, reliability, and user-experience in mind.</p>
+
+                        <div class="scroll-reveal">
+                            <h3>Conveyor Belt System</h3>
+                            <p>The conveyor belt system fulfills several design requirements: Securely mount resistors so they can be held upside down and easily removed. Provide two conductive contacts for the resistor terminals to contact. Maintain a reliable vertical position (minimal/zero sag). Minimize friction. Be easy to manufacture and assemble.</p>
+                            <p>To achieve these goals, we designed a 3D-printed modular conveyor belt system. Each module has an indented surface for the resistor to sit in and an embedded magnet underneath to hold the resistor in place. Each side of the module is wrapped in copper foil tape, which provides a clean and reliable electrical connection to the resistor and the measuring prongs. To connect between modules, there are holes for 1/3" roller ball bearings, which allow for a near-frictionless snap-fit connection between modules. Finally, to ensure a consistent vertical position, the middle section of the conveyor belt sits on acrylic rails, which keep the belt from sagging without adding much friction. The system also includes a trigger switch, which activates when a gap between modules passes. This helps sync the software system with the belt movement.</p>
+                            
+                            <div class="box alt">
+                                <div class="row gtr-50 gtr-uniform">
+                                    <div class="col-6"><span class="image fit"><img src="images/conveyorbelts.png" alt="Conveyor Belt 1" /></span></div>
+                                    <div class="col-6"><span class="image fit"><img src="images/conveyormodule.png" alt="Conveyor Detail 1" /></span></div>
+                                    <div class="col-6"><span class="image fit"><img src="images/gear.png" alt="Conveyor Detail 2" /></span></div>
+                                    <div class="col-6"><span class="image fit"><img src="images/fullmodule.png" alt="Conveyor Detail 3" /></span></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr class="major" />
+
+                        <div class="scroll-reveal">
+                            <h3>Drivetrain System</h3>
+                            <p>To drive the conveyor belt, we use a DC motor with a 4:1 gear reduction connected to the belt. Since we wanted precise motor control, we initially chose a stepper motor, which provides more reliable position control and simpler position tracking than a DC motor. However, we found the stepper motor was unreliable in practice and could not provide sufficient torque of the system. Thus, we used a DC motor without an encoder in our final design, and tracked belt position using a trigger switch that activates at the boundaries between modules. This configuration was much smoother, because the DC motor provided ample torque to drive the relatively low-friction conveyor belt.</p>
+                            
+                            <span class="image fit"><img src="images/drivetrain.png" alt="Drivetrain Mechanism" /></span>
+                        </div>
+
+                        <hr class="major" />
+
+                        <div class="scroll-reveal">
+                            <h3>Measuring Station Design</h3>
+                            <p>The measuring station, where resistors values are measured, posed a small mechanical design challenge. To allow the measuring station to make electrical contact with the copper contacts on each module while still permitting the modules to slide, we implemented a prong design using curved sheet metal contacts.. These contacts spring onto the modules, thus pressing into the copper foil while still allowing the belt to move in the clockwise direction. Extensive testing showed that this approach is a very reliable solution.</p>
+                            
+                            <span class="image fit"><img src="images/Prongs.jpg" alt="Measuring Station Prongs" /></span>
+                        </div>
+
+                        <hr class="major" />
+
+                        <div class="scroll-reveal">
+                            <h3>Dropoff System</h3>
+                            <p>The Dropoff system, which knocks the resistors off of the conveyor belt modules, uses 14 acrylic paddles mounted on a ¼’’ aluminum rod and constrained horizontally with shaft collars. Linear actuators drive these paddles which knock the resistors off of the modules, and into their corresponding bins.</p>
+                            
+                            <div class="box alt">
+                                <div class="row gtr-50 gtr-uniform">
+                                    <div class="col-6"><span class="image fit"><img src="images/paddleset.png" alt="Paddle Mechanism Render" /></span></div>
+                                    <div class="col-6"><span class="image fit"><img src="images/paddlesingle.png" alt="Individual Paddle" /></span></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr class="major" />
+
+                        <div class="scroll-reveal">
+                            <h3>Structure/Housing</h3>
+                            <p>The machine housing, with overall dimensions 20x14x7”, is constructed from laser-cut ¼’’ plywood and assembled with dado joints and wood glue to secure the walls, shelves, and mounting panels. The overall structure is divided into three compartments: one for the conveyor belt, one for the gears and linear actuator mounts, and one for the electrical components and wiring. The frontmost panel is made from transparent acrylic, providing a clear view of the conveyor belt.</p>
+                            
+                            <span class="image fit"><img src="images/structureassembly.JPG" alt="Structure Assembly" /></span>
+                        </div>
+
+                        <hr class="major" />
+
+                        <div class="scroll-reveal">
+                            <h3>Aesthetics</h3>
+                            <p>The aesthetic design inspiration was inspired by a beehive, echoing the way bees sort and organize within their hive. All of the plywood surfaces are rastered with a hexagonal pattern, and the front acrylic panel is topped with resin-printed honey drips.</p>
+                            
+                            <span class="image fit"><img src="images/honeydrip.png" alt="Resin Honey Drips" /></span>
+                        </div>
+
+                        <hr class="major" />
+
+                        <h2 id="considerations">Design Considerations</h2>
+                        <p>Discussion of your design process including trade-offs made along the way and rationale for the final design you chose (explaining why your choices were superior to other options for reasons such as budget considerations, existing familiarity with a system. availability of parts etc).</p>
+
+                        <div class="row">
+                            <div class="col-6 col-12-small">
+                                <div class="box">
+                                    <h4>Modular System Rationale</h4>
+                                    <p>To achieve this, we planned a modular conveyor belt system, which was attractive because the resistor could be transported without being picked up. The idea was to make each conveyor belt module able to mount, conduct, and drop resistors easily.</p>
+                                </div>
+                            </div>
+                            <div class="col-6 col-12-small">
+                                <div class="box">
+                                    <h4>Mounting: Magnets</h4>
+                                    <p>To mount the resistors to the conveyor belt we utilized embedded magnets. Initially we had the magnets attached to the top of the conveyor belt modules, but in later iterations we chose to embed the magnet underneath the modules both for ease of manufacturing and to prevent the metal from becoming energized by the conductive copper contacts.</p>
+                                </div>
+                            </div>
+                            <div class="col-6 col-12-small">
+                                <div class="box">
+                                    <h4>Conduction: Copper vs Aluminum</h4>
+                                    <p>For conduction, we initially tried to use aluminum foil as it was readily available, but this provided a very weak and unreliable electrical connection to the resistor. We then purchased copper foil tape, which has higher electrical conductivity, and this change resulted in a consistently strong and reliable connection.</p>
+                                </div>
+                            </div>
+                            <div class="col-6 col-12-small">
+                                <div class="box">
+                                    <h4>Actuation: Servos vs Linear Actuators</h4>
+                                    <p>To drop the resistors, we planned a paddle system to block the resistors, thus pushing them off their magnets and dropping them straight down into the bins. We initially planned to use the provided servos, but because we were going to have so many independently-controlled paddles, we pivoted to buying linear actuators, which draw less electrical current.</p>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="box">
+                                    <h4>Motor Selection: Stepper vs DC</h4>
+                                    <p>The biggest design challenge was selecting a motor for the conveyor belt system. The core question was whether to use a stepper motor or a DC motor. We knew we needed to precisely track the position of the belt, so we liked the idea of using a stepper motor and were advised that DC motor encoders are tricky to work with. Encoders are prone to losing track of their position, which was crucial for our conveyor belt system. For the Phase 3 prototype, we initially tested the system using a stepper motor in a direct-drive configuration. Without any mechanical step-down, the motor struggled to provide sufficient torque, resulting in minimal rotation and significant stuttering during operation. For our final design, we tried to reuse the same stepper motor, assuming that adding a 4:1 gear reduction would provide enough torque margin to resolve the stalling and make the motor operate smoothly under load. Unfortunately, on the night before Demo Day, the stepper motor caused several issues, including stalling, reversing, creating tons of noise, and causing our microcontroller unit on our PCB to brownout. Fortunately, the design already incorporated a trigger switch in the design that activated between each module, and we had our position encoder solved. Thus, we made a last-minute pivot to a DC motor, which delivered smooth, reliable motion without the stalling or instability observed with the stepper. It became clear in hindsight that, because of the non-negligible torque of the conveyor belt, a DC motor was inherently better suited to the system’s mechanical demands.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </section>
+
+                </div>
+            </div>
+            
+            <div id="sidebar">
+                <div class="inner">
+                    <section id="search" class="alt"><form method="post" action="#"><input type="text" name="query" id="query" placeholder="Search" /></form></section>
+                    <nav id="menu">
+                        <header class="major"><h2>Menu</h2></header>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="mission.html">Mission</a></li>
+                            <li><a href="software.html">Software</a></li>
+                            <li><a href="electrical.html">Electrical</a></li>
+                            <li><a href="mechanical.html">Mechanical</a></li>
+                            <li><a href="sprints.html">Sprints</a></li>
+                            <li><a href="gallery.html">Gallery</a></li>
+                            <li><a href="budget.html">Budget</a></li>
+                            <li><a href="aboutus.html">About Us</a></li>
+                        </ul>
+                    </nav>
+
+                    <section>
+                        <header class="major">
+                            <h2>Get in touch</h2>
+                        </header>
+                        <p></p>
+                        <ul class="contact">
+                            <li class="icon solid fa-home">1000 Olin Way<br />
+                            Needham, MA 02492</li>
+                        </ul>
+                    </section>
+                    <footer id="footer"><p class="copyright">&copy; Untitled. All rights reserved.</p></footer>
+                </div>
+            </div>
+        </div>
+
+        <div id="imageModal" class="modal">
+            <span class="close">&times;</span>
+            <img class="modal-content" id="img01">
+        </div>
+
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/browser.min.js"></script>
+        <script src="assets/js/breakpoints.min.js"></script>
+        <script src="assets/js/util.js"></script>
+        <script src="assets/js/main.js"></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                var observer = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) entry.target.classList.add("visible");
+                    });
+                }, { threshold: 0.1 });
+                document.querySelectorAll(".scroll-reveal").forEach(el => observer.observe(el));
+            });
+
+            var modal = document.getElementById("imageModal");
+            var modalImg = document.getElementById("img01");
+            var span = document.getElementsByClassName("close")[0];
+            document.querySelectorAll('.image.fit img, .image.main img').forEach(img => {
+                img.onclick = function(){ modal.style.display = "block"; modalImg.src = this.src; }
+            });
+            span.onclick = function() { modal.style.display = "none"; }
+            window.onclick = function(event) { if (event.target == modal) modal.style.display = "none"; }
+        </script>
+    </body>
+</html>

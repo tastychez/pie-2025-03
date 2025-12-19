@@ -1,0 +1,149 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Mission - The Resistance</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="stylesheet" href="assets/css/main.css" />
+        
+        <style>
+            .modal { display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.9); }
+            .modal-content { margin: auto; display: block; width: 80%; max-width: 1000px; max-height: 90vh; object-fit: contain; position: relative; top: 50%; transform: translateY(-50%); }
+            .close { position: absolute; top: 20px; right: 35px; color: #f1f1f1; font-size: 40px; font-weight: bold; cursor: pointer; z-index: 10001; }
+            .close:hover { color: #bbb; }
+            .image.fit img, .image.main img { cursor: pointer; transition: opacity 0.2s; }
+            .image.fit img:hover, .image.main img:hover { opacity: 0.8; }
+        </style>
+    </head>
+    <body class="is-preload">
+
+        <div id="wrapper">
+            <div id="main">
+                <div class="inner">
+
+                    <header id="header">
+                        <a href="index.html" class="logo"><strong>The Resistance</strong> ~ PIE 2025FA</a>
+                        <ul class="icons">
+                            <li><a href="https://github.com/jalikins/The-Resistors" class="icon brands fa-github"><span class="label">Github</span></a></li>
+                        </ul>
+                    </header>
+
+                    <section>
+                        <header class="main">
+                            <h1>Project Mission</h1>
+                        </header>
+
+                        <div class="sticky-nav">
+                            <ul>
+                                <li><a href="#overview">Overview</a></li>
+                                <li><a href="#diagram">System Diagram</a></li>
+                                <li><a href="#aesthetics">Aesthetics</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="scroll-reveal">
+                            <span class="image main"><img src="images/mission.png" alt="The Resistance Sorter" /></span>
+                        </div>
+
+                        <h2 id="overview">Overview</h2>
+                        <div class="scroll-reveal">
+                            <p>We present an automated resistor sorter with beehive-inspired aesthetics. The active components of the resistor sorter consist of a modular conveyor belt, a two-pronged resistor probe, linearly-actuated “paddles”, and an array of bins. The resistors are first placed on the conveyor belt for sorting. Each conveyor belt module has an embedded magnet to hold the resistor and conductive copper tape at both ends, which serve as conductive contacts with the resistors. As the conveyor belt moves, each module passes under the two-pronged resistor probe, which comes into contact with the copper tape and enables an electrical measurement across the resistor. Using a set of known voltage dividers, we can determine the resistance based on the voltage across the resistor. The resistor then passes to the underside of the conveyor belt, where the paddles are actuated to knock the resistors of the magnets into their respective bins.</p>
+                        </div>
+
+                        <hr class="major" />
+
+                        <h2 id="diagram">System Diagram</h2>
+                        <div class="scroll-reveal">
+                            <p>The diagram below depicts the relationships between all of the different subsystems comprising our final system.</p>
+                            <span class="image fit"><img src="images/systemdiagram.png" alt="System Relationship Diagram" /></span>
+                        </div>
+
+                        <hr class="major" />
+
+                        <h2 id="aesthetics">Aesthetics</h2>
+                        <div class="scroll-reveal">
+                            <p>To stylize our resistor sorter like a beehive, we rastered hexagonal patterns to the structure of the machine, added numbered bee stickers to the front of each bin, and added “dripping honey” resin-printed accents. We also added warm LED light strips and made the front panels out of acrylic to show the working systems.</p>
+                        </div>
+
+                    </section>
+
+                </div>
+            </div>
+
+            <div id="sidebar">
+                <div class="inner">
+                   
+                     <nav id="menu">
+                        <header class="major">
+                            <h2>Menu</h2>
+                        </header>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="mission.html">Mission</a></li>
+                            <li><a href="software.html">Software</a></li>
+                            <li><a href="electrical.html">Electrical</a></li>
+                            <li><a href="mechanical.html">Mechanical</a></li>
+                            <li><a href="sprints.html">Sprints</a></li> 
+                            <li><a href="gallery.html">Gallery</a></li>
+                            <li><a href="budget.html">Budget</a></li>
+                            <li><a href="aboutus.html">About Us</a></li>
+                        </ul>
+                    </nav>
+
+                    <section>
+                        <header class="major">
+                            <h2>Get in touch</h2>
+                        </header>
+                        <p></p>
+                        <ul class="contact">
+                            <li class="icon solid fa-home">1000 Olin Way<br />
+                            Needham, MA 02492</li>
+                        </ul>
+                    </section>
+                    <footer id="footer"><p class="copyright">&copy; Untitled. All rights reserved.</p></footer>
+                </div>
+            </div>
+        </div>
+
+        <div id="imageModal" class="modal">
+            <span class="close">&times;</span>
+            <img class="modal-content" id="img01">
+        </div>
+
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/browser.min.js"></script>
+        <script src="assets/js/breakpoints.min.js"></script>
+        <script src="assets/js/util.js"></script>
+        <script src="assets/js/main.js"></script>
+        
+        <script>
+            
+            document.addEventListener("DOMContentLoaded", function() {
+                var observer = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("visible");
+                        }
+                    });
+                }, { threshold: 0.1 });
+                document.querySelectorAll(".scroll-reveal").forEach(el => observer.observe(el));
+            });
+
+           
+            var modal = document.getElementById("imageModal");
+            var modalImg = document.getElementById("img01");
+            var span = document.getElementsByClassName("close")[0];
+            
+          
+            document.querySelectorAll('.image.fit img, .image.main img').forEach(img => {
+                img.onclick = function(){
+                    modal.style.display = "block";
+                    modalImg.src = this.src;
+                }
+            });
+
+            span.onclick = function() { modal.style.display = "none"; }
+            window.onclick = function(event) { if (event.target == modal) modal.style.display = "none"; }
+        </script>
+    </body>
+</html>

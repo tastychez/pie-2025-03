@@ -1,0 +1,329 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Gallery & Downloads - The Resistance</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="stylesheet" href="assets/css/main.css" />
+        
+        <style>
+            /* carousel sliders */
+            .slideshow-container {
+                max-width: 100%;
+                position: relative;
+                margin: auto;
+                border: solid 1px rgba(210, 215, 217, 0.75);
+                border-radius: 0.375em;
+                overflow: hidden;
+                background: #f7f7f7;
+            }
+
+            .mySlides {
+                display: none;
+                text-align: center;
+            }
+
+            .prev, .next {
+                cursor: pointer;
+                position: absolute;
+                top: 50%;
+                width: auto;
+                margin-top: -22px;
+                padding: 16px;
+                color: white;
+                font-weight: bold;
+                font-size: 18px;
+                transition: 0.6s ease;
+                border-radius: 0 3px 3px 0;
+                user-select: none;
+                background-color: rgba(0,0,0,0.3);
+            }
+
+            
+            .next {
+                right: 0;
+                border-radius: 3px 0 0 3px;
+            }
+
+            
+            .prev:hover, .next:hover {
+                background-color: rgba(244, 180, 26, 0.8); 
+            }
+
+          
+            .text {
+                color: #3d4449;
+                font-size: 15px;
+                padding: 8px 12px;
+                position: absolute;
+                bottom: 8px;
+                width: 100%;
+                text-align: center;
+                background: rgba(255, 255, 255, 0.7);
+                font-weight: bold;
+            }
+
+            
+            .fade {
+                animation-name: fade;
+                animation-duration: 1.5s;
+            }
+
+            @keyframes fade {
+                from {opacity: .4}
+                to {opacity: 1}
+            }
+
+            
+            .mySlides img {
+                width: 100%;
+                height: 800px; 
+                object-fit: cover;
+                vertical-align: middle;
+            }
+            
+
+            .mySlides video, .mySlides iframe {
+                width: 100%;
+                height: 800px;
+                border: none;
+            }
+        </style>
+    </head>
+    <body class="is-preload">
+
+        <div id="wrapper">
+            <div id="main">
+                <div class="inner">
+
+                    <header id="header">
+                        <a href="index.html" class="logo"><strong>The Resistance</strong> ~ PIE 2025FA</a>
+                        <ul class="icons">
+                            <li><a href="https://github.com/jalikins/The-Resistors" class="icon brands fa-github"><span class="label">Github</span></a></li>
+                        </ul>
+                    </header>
+
+                    <section>
+                        <header class="main">
+                            <h1>Project Gallery</h1>
+                        </header>
+
+                        <p>Explore the development of "The Resistance" through our subsystem galleries below. Use the arrows to navigate through the build photos.</p>
+
+                        <h2>Mechanical & Build</h2>
+                        <div class="slideshow-container" id="mech-slider">
+                            <div class="mySlides fade">
+                                <img src="images/proposalsketch.jpg" alt="Full System View">
+                                <div class="text">Sketch of Our Initial Idea</div>
+                            </div>
+                            <div class="mySlides fade">
+                                <img src="images/conveyorproto.jpg" alt="Conveyor Belt">
+                                <div class="text">Prototype of Conveyor Belt</div>
+                            </div>
+                            <div class="mySlides fade">
+                                <img src="images/Prongs.jpg" alt="Paddle Mechanism">
+                                <div class="text">Resistor Measuring Module</div>
+                            </div>
+                            <div class="mySlides fade">
+                                <img src="images/sprint2.jpg" alt="Sprint 2 Resistor Sorter Iteration">
+                                <div class="text">Sprint 2 Iteration of Resistor Sorter</div>
+                            </div>
+                            <div class="mySlides fade">
+                                <img src="images/lasercutting.jpg" alt="Side Profile">
+                                <div class="text">Laser Cutting!</div>
+                            </div>
+                            <div class="mySlides fade">
+                                <img src="images/3D Printing.jpg" alt="Side Profile">
+                                <div class="text">3D Printing Conveyor Belt</div>
+                            </div>
+                            <div class="mySlides fade">
+                                <img src="images/assembly.png" alt="Side Profile">
+                                <div class="text">CAD Assembly</div>
+                            </div>
+                            <div class="mySlides fade">
+                                <img src="images/assemblyback.png" alt="Side Profile">
+                                <div class="text">CAD Assembly (Back)</div>
+                            </div>
+
+                            <a class="prev" onclick="plusSlides(-1, 'mech-slider')">&#10094;</a>
+                            <a class="next" onclick="plusSlides(1, 'mech-slider')">&#10095;</a>
+                        </div>
+
+                        <hr class="major" />
+
+                        <h2>Electrical Systems</h2>
+                        <div class="slideshow-container" id="elec-slider">
+                            <div class="mySlides fade">
+                                <img src="images/schematic.png" alt="Schematic">
+                                <div class="text">Schematic</div>
+                            </div>
+                            <div class="mySlides fade">
+                                <img src="images/linearactuators.png" alt="Testing Linear Actuators">
+                                <div class="text">Testing Linear Actuators</div>
+                            </div>
+                            <div class="mySlides fade">
+                                <img src="images/mylarstencil.png" alt="Mylar Stencil">
+                                <div class="text">Laser Cut Mylar Stencil</div>
+                            </div>
+                            <div class="mySlides fade">
+                                <img src="images/backsprint2.jpg" alt="Side Profile">
+                                <div class="text">Prototype Electrical Subsystem</div>
+                            </div>
+                            <div class="mySlides fade">
+                                <img src="images/barepcb.png" alt="Bare PCB">
+                                <div class="text">Bare PCB</div>
+                            </div>
+                            <div class="mySlides fade">
+                                <img src="images/sprint3.jpg" alt="Assembled PCB">
+                                <div class="text">PCB Assembly in Progress</div>
+                            </div>
+
+                            <a class="prev" onclick="plusSlides(-1, 'elec-slider')">&#10094;</a>
+                            <a class="next" onclick="plusSlides(1, 'elec-slider')">&#10095;</a>
+                        </div>
+
+                        <hr class="major" />
+
+                        <h2>Software & UI</h2>
+                        <div class="slideshow-container" id="soft-slider">
+                            <div class="mySlides fade">
+                                <img src="images/ui.png" alt="UI Dashboard" style="object-fit: contain; background: #333;">
+                                <div class="text">Main Dashboard</div>
+                            </div>
+                            <div class="mySlides fade">
+                                <img src="images/numpad.png" alt="Numpad" style="object-fit: contain; background: #333;">
+                                <div class="text">Input Keypad</div>
+                            </div>
+                            <div class="mySlides fade">
+                                <img src="images/full_sorter.png" alt="Full Interface" style="object-fit: contain; background: #333;">
+                                <div class="text">Full Interface View</div>
+                            </div>
+
+                            <a class="prev" onclick="plusSlides(-1, 'soft-slider')">&#10094;</a>
+                            <a class="next" onclick="plusSlides(1, 'soft-slider')">&#10095;</a>
+                        </div>
+
+                        <hr class="major" />
+
+                        <h2>Video Demos</h2>
+                        <div class="slideshow-container" id="vid-slider">
+                            <div class="mySlides fade">
+                                <video controls>
+                                    <source src="videos/demosort.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                                <div class="text">Real-time Sorting Demo</div>
+                            </div>
+                            <div class="mySlides fade">
+                                <video controls>
+                                    <source src="videos/videowithui.mov" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                                <div class="text">Sorting Demo with UI</div>
+                            </div>
+    
+
+                            <a class="prev" onclick="plusSlides(-1, 'vid-slider')">&#10094;</a>
+                            <a class="next" onclick="plusSlides(1, 'vid-slider')">&#10095;</a>
+                        </div>
+
+                        <hr class="major" />
+
+                        <h2>Downloads & Resources</h2>
+                        <div class="row">
+                            <div class="col-6 col-12-medium">
+                                <h3>Mechanical Resources</h3>
+                                <ul class="actions stacked">
+                                    <li><a href="files/Final Design.zip.download/Final Design.zip" class="button primary icon solid fa-download" download>Download Final CAD Files</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-6 col-12-medium">
+                                <h3>Electrical </h3>
+                                <ul class="actions stacked">
+                                    <li><a href="files/Processing_and_measuring.zip" class="button secondary icon solid fa-download" download>Download KiCAD Files</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </section>
+
+                </div>
+            </div>
+
+            <div id="sidebar">
+                <div class="inner">
+                    
+                    <nav id="menu">
+                        <header class="major"><h2>Menu</h2></header>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="mission.html">Mission</a></li>
+                            <li><a href="software.html">Software</a></li>
+                            <li><a href="electrical.html">Electrical</a></li>
+                            <li><a href="mechanical.html">Mechanical</a></li>
+                            <li><a href="sprints.html">Sprints</a></li>
+                            <li><a href="gallery.html">Gallery</a></li>
+                            <li><a href="budget.html">Budget</a></li>
+                            <li><a href="aboutus.html">About Us</a></li>
+                        </ul>
+                    </nav>
+
+                    <section>
+                                    <header class="major">
+                                        <h2>Get in touch</h2>
+                                    </header>
+                                    <p></p>
+                                    <ul class="contact">
+                                        <li class="icon solid fa-home">1000 Olin Way<br />
+                                        Needham, MA 02492</li>
+                                    </ul>
+                             	</section>
+                    <footer id="footer"><p class="copyright">&copy; Untitled. All rights reserved.</p></footer>
+                </div>
+            </div>
+        </div>
+
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/browser.min.js"></script>
+        <script src="assets/js/breakpoints.min.js"></script>
+        <script src="assets/js/util.js"></script>
+        <script src="assets/js/main.js"></script>
+        
+        <script>
+
+            var sliderIndices = {
+                'mech-slider': 1,
+                'elec-slider': 1,
+                'soft-slider': 1,
+                'vid-slider': 1
+            };
+
+
+            for (var key in sliderIndices) {
+                showSlides(1, key);
+            }
+
+        
+            function plusSlides(n, sliderId) {
+                showSlides(sliderIndices[sliderId] += n, sliderId);
+            }
+
+     
+            function showSlides(n, sliderId) {
+                var i;
+                var container = document.getElementById(sliderId);
+                var slides = container.getElementsByClassName("mySlides");
+                
+                if (n > slides.length) {sliderIndices[sliderId] = 1}    
+                if (n < 1) {sliderIndices[sliderId] = slides.length}
+                
+                for (i = 0; i < slides.length; i++) {
+                    slides[i].style.display = "none";  
+                }
+                
+                slides[sliderIndices[sliderId] - 1].style.display = "block";  
+            }
+        </script>
+
+    </body>
+</html>

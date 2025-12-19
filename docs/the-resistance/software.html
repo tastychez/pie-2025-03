@@ -1,0 +1,180 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Software - The Resistance</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="stylesheet" href="assets/css/main.css" />
+        
+        <style>
+            .modal { display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.9); }
+            .modal-content { margin: auto; display: block; width: 80%; max-width: 1000px; max-height: 90vh; object-fit: contain; position: relative; top: 50%; transform: translateY(-50%); }
+            .close { position: absolute; top: 20px; right: 35px; color: #f1f1f1; font-size: 40px; font-weight: bold; cursor: pointer; z-index: 10001; }
+            .close:hover { color: #bbb; }
+            .image.fit img { cursor: pointer; transition: opacity 0.2s; }
+            .image.fit img:hover { opacity: 0.8; }
+            
+
+            .equation {
+                font-family: 'Courier New', Courier, monospace;
+                background: #f4f4f4;
+                padding: 15px;
+                border-left: 5px solid #f4b41a; 
+                margin: 1.5em 0;
+                text-align: center;
+                font-weight: bold;
+                font-size: 1.1em;
+                color: #3d4449;
+            }
+        </style>
+    </head>
+    <body class="is-preload">
+
+        <div id="wrapper">
+            <div id="main">
+                <div class="inner">
+
+                    <header id="header">
+                        <a href="index.html" class="logo"><strong>The Resistance</strong> ~ PIE 2025FA</a>
+                        <ul class="icons">
+                            <li><a href="https://github.com/jalikins/The-Resistors" class="icon brands fa-github"><span class="label">Github</span></a></li>
+                        </ul>
+                    </header>
+
+                    <section>
+                        <header class="main">
+                            <h1>Software Design</h1>
+                        </header>
+
+                        <div class="sticky-nav">
+                            <ul>
+                                <li><a href="#logic">Logic</a></li>
+                                <li><a href="#ui">User Interface</a></li>
+                                <li><a href="#bridge">Hardware Bridge</a></li>
+                            </ul>
+                        </div>
+
+                        <h2 id="logic">Logic & Control</h2>
+
+                        <div class="scroll-reveal">
+                            <h3>Motor Control and Timing</h3>
+                            <p>All resistor measurement and dropping is coordinated based on the belt position, a variable that increments each time the belt advances by one module as detected by the limit switch). The bin width of exactly one module means that with each increment in belt position, one resistor can be measured and assigned to a bin, and up to fourteen resistors can be dropped via individual actuators triggering. The seamless integration of these actions is achieved using a three dimensional array. This array encodes the assigned bin for each measured resistor, the belt position at which it will be dropped, and the index for each bin dimension to accommodate additional resistors of the same category. When a given resistor is measured, all of these dimensions are computed so that, when it reaches the correct bin, a separate function can detect that the current the belt position matches its designated drop location and trigger the appropriate actuator. Notably, the array only needs to be large enough to accommodate all 14 bins and the number of belt increments between the measurement point and the farthest bin. Once the array is full, it can safely overwrite entries at lower indices because the resistors associated with those entries are guaranteed to have already reached and been dropped into their target bin.</p>
+                        </div>
+
+                        <div class="scroll-reveal">
+                            <h3>Measuring Logic</h3>
+                            <p>The code for the measuring station is relatively straightforward. To calculate resistance, we use the equation:</p>
+                            
+                            <div class="equation">
+                                R = V<sub>net</sub> &times; R<sub>ref</sub> / (V<sub>net</sub> - V<sub>R</sub>)
+                            </div>
+                            
+                            <p>Where <strong>V<sub>net</sub></strong> is the supply voltage from logic power (approximately 5V), <strong>R<sub>ref</sub></strong> is the known reference resistor selected by the multiplexer, and <strong>V<sub>R</sub></strong> is the voltage across the unknown resistor R.</p> 
+                            
+                            <p>To derive the voltage across the unknown resistor, we use the conversion factor:</p>
+                            
+                            <div class="equation">
+                                V<sub>R</sub> = A &times; (V<sub>net</sub> / 1024)
+                            </div>
+                            
+                            <p>This is for our 10-bit AVR device (the same resolution as on Arduino Uno), where <strong>A</strong> is the raw analog-to-digital conversion value.</p>
+                        </div>
+
+                        <hr class="major" />
+
+                        <h2 id="ui">User Interface (UI)</h2>
+                        <div class="scroll-reveal">
+                            <p>To allow the user to control which resistors are routed to each of the 13 bins, we use a touchscreen interface driven by a Raspberry Pi. The UI shows 13 boxes, each representing one bin, and uses a beehive-inspired color scheme that aligns with our overall design aesthetic. When the user taps a box, a numeric keypad appears, allowing them to input a new resistance value (in ohms) to assign to that bin Once the value is confirmed, the Raspberry Pi updates a JSON file that stores all bin states for future use, and a signal via an Arduino Nano to inform the PCB of the updated bin state. We use a JSON file to store the bin states so that user preferences persist across multiple runs, retaining the resistance values assigned to each bin from the previous session. We used Kivy, an open-source, cross-platform GUI framework, for UI development . We chose it because it enabled a relatively simple interactive GUI without requiring a full-stack web app to run on the Raspberry Pi OS.</p>
+                            
+                            <div class="box alt">
+                                <div class="row gtr-50 gtr-uniform">
+                                    <div class="col-4 col-12-medium"><span class="image fit"><img src="images/ui.png" alt="UI Dashboard" /></span></div>
+                                    <div class="col-4 col-12-medium"><span class="image fit"><img src="images/numpad.png" alt="Numpad" /></span></div>
+                                    <div class="col-4 col-12-medium"><span class="image fit"><img src="images/full_sorter.png" alt="Full System" /></span></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr class="major" />
+
+                        <h2 id="bridge">Hardware-Software Bridge</h2>
+                        <div class="scroll-reveal">
+                            <p>We chose an Arduino Nano to bridge between the Raspberry Pi and the PCB because the Raspberry Pi operates at 3.3V logic, while the PCB requires 5V. Connecting these two directly over a communication interface like UART could exceed the Raspberry Pi’s 3.3V GPIO limits and risk permanently damaging its pins. Instead, the Arduino Nano connects to the Raspberry Pi via USB, and then interfaces with the PCB over its hardware Serial pins. This approach protects the Raspberry Pi’s GPIO pins from overvoltage damage and eliminates the need for an external logic level converter or similar voltage buffer, which could otherwise degrade signal integrity.</p>
+                        </div>
+
+                        <h2 id="bridge">Design Considerations</h2>
+                        <div class="scroll-reveal">
+                            <p>Please see our "Electrical" page for the design considerations we made. Our software design decisions directly correlate to those made in the electrical subsystem.</p>
+                        </div>
+
+                    </section>
+
+                </div>
+            </div>
+
+            <div id="sidebar">
+                <div class="inner">
+                    <nav id="menu">
+                        <header class="major"><h2>Menu</h2></header>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="mission.html">Mission</a></li>
+                            <li><a href="software.html">Software</a></li>
+                            <li><a href="electrical.html">Electrical</a></li>
+                            <li><a href="mechanical.html">Mechanical</a></li>
+                            <li><a href="sprints.html">Sprints</a></li>
+                            <li><a href="gallery.html">Gallery</a></li>
+                            <li><a href="budget.html">Budget</a></li>
+                            <li><a href="aboutus.html">About Us</a></li>
+                        </ul>
+                    </nav>
+
+                    <section>
+                                    <header class="major">
+                                        <h2>Get in touch</h2>
+                                    </header>
+                                    <p></p>
+                                    <ul class="contact">
+                                        <li class="icon solid fa-home">1000 Olin Way<br />
+                                        Needham, MA 02492</li>
+                                    </ul>
+                             	</section>
+                    <footer id="footer"><p class="copyright">&copy; Untitled. All rights reserved.</p></footer>
+                </div>
+            </div>
+        </div>
+        
+        <div id="imageModal" class="modal">
+            <span class="close">&times;</span>
+            <img class="modal-content" id="img01">
+        </div>
+
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/browser.min.js"></script>
+        <script src="assets/js/breakpoints.min.js"></script>
+        <script src="assets/js/util.js"></script>
+        <script src="assets/js/main.js"></script>
+        
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                var observer = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("visible");
+                        }
+                    });
+                }, { threshold: 0.1 });
+                document.querySelectorAll(".scroll-reveal").forEach(el => observer.observe(el));
+            });
+
+            var modal = document.getElementById("imageModal");
+            var modalImg = document.getElementById("img01");
+            var span = document.getElementsByClassName("close")[0];
+            document.querySelectorAll('.image.fit img').forEach(img => {
+                img.onclick = function(){ modal.style.display = "block"; modalImg.src = this.src; }
+            });
+            span.onclick = function() { modal.style.display = "none"; }
+            window.onclick = function(event) { if (event.target == modal) modal.style.display = "none"; }
+        </script>
+    </body>
+</html>

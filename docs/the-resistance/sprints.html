@@ -1,0 +1,167 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Sprints - The Resistance</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="stylesheet" href="assets/css/main.css" />
+        
+        <style>
+            .modal { display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.9); }
+            .modal-content { margin: auto; display: block; width: 80%; max-width: 1000px; max-height: 90vh; object-fit: contain; position: relative; top: 50%; transform: translateY(-50%); }
+            .close { position: absolute; top: 20px; right: 35px; color: #f1f1f1; font-size: 40px; font-weight: bold; cursor: pointer; z-index: 10001; }
+            .close:hover { color: #bbb; }
+            .image.fit img { cursor: pointer; transition: opacity 0.2s; }
+            .image.fit img:hover { opacity: 0.8; }
+            
+      
+            .sprint-outcome { font-weight: bold; color: #f4b41a; border-left: 3px solid #f4b41a; padding-left: 10px; margin-bottom: 1em; }
+            .sprint-goal { font-weight: bold; color: #7f888f; border-left: 3px solid #7f888f; padding-left: 10px; margin-top: 1em; }
+        </style>
+    </head>
+    <body class="is-preload">
+
+        <div id="wrapper">
+            <div id="main">
+                <div class="inner">
+
+                    <header id="header">
+                        <a href="index.html" class="logo"><strong>The Resistance</strong> ~ PIE 2025FA</a>
+                        <ul class="icons">
+                            <li><a href="https://github.com/jalikins/The-Resistors" class="icon brands fa-github"><span class="label">Github</span></a></li>
+                        </ul>
+                    </header>
+
+                    <section>
+                        <header class="main">
+                            <h1>Design Process and Sprints</h1>
+                        </header>
+
+                        <div class="sticky-nav">
+                            <ul>
+                                <li><a href="#sprint1">Sprint 1</a></li>
+                                <li><a href="#sprint2">Sprint 2</a></li>
+                                <li><a href="#sprint3">Sprint 3</a></li>
+                                <li><a href="#sprint4">Sprint 4</a></li>
+                            </ul>
+                        </div>
+
+                        <div id="sprint1" class="row scroll-reveal" style="align-items: center;">
+                            <div class="col-6 col-12-small">
+                                <h2>Sprint 1: Resistance Module & Architecture</h2>
+                                <p class="sprint-goal">Goal: Solidify the overall system architecture and build a proof-of-concept resistance measuring station that fails for no more than 1 out of 100 resistors</p>
+                                <p class="sprint-outcome">Outcome: We successfully created the resistance measuring module using conductive copper foil and two metal prongs connected to a multimeter, and finalized concept CAD designs to begin development of the first mechanical subsystem iterations of our mechanical subsystems in Sprint 2.</p>
+                            </div>
+                            <div class="col-6 col-12-small">
+                                <span class="image fit"><img src="images/Prongs.jpg" alt="Sprint 1 Resistor Measurement Station" /></span>
+                            </div>
+                        </div>
+
+                        <hr class="major" />
+
+                        <div id="sprint2" class="row scroll-reveal" style="align-items: center;">
+                            <div class="col-6 col-12-small">
+                                <span class="image fit"><img src="images/sprint2.jpg" alt="Sprint 2 Scaled Prototype" /></span>
+                            </div>
+                            <div class="col-6 col-12-small">
+                                <h2>Sprint 2: Scaled MVP Prototype</h2>
+                                <p class="sprint-goal">Goal: Create a fully functional, scaled-down version of our MVP.</p>
+                                <p>For Sprint 2 we focused on creating a scaled down version of our final product. This included creating the tensioned conveyor belt, servo-actuated paddles, resistor bins, and resistance measuring station. In testing, we found that the intended stepper motor could not drive the conveyor directly and that servo-actuated paddles were ineffective for reliably sorting resistors into bins. We also began configuring the Raspberry Pi for the user interface.</p>
+                                <p class="sprint-outcome">Outcome: We were able to create a minimum viable product (MVP) of our resistor sorter with all the main mechanical and electrical components, albeit with a few flaws. This MVP gave us insight into improvements for themechanical system, and key design considerations for the electrical system.</p>
+                            </div>
+                        </div>
+
+                        <hr class="major" />
+
+                        <div id="sprint3" class="row scroll-reveal" style="align-items: center;">
+                            <div class="col-6 col-12-small">
+                                <h2>Sprint 3: Subsystem Development</h2>
+                                <p class="sprint-goal">Goal: Fully develop each of the subsystems required for our resistor sorter.</p>
+                                <p>Mechanical: In this sprint, we focused on developing the final version of the mechanical and electrical subsystems. For the mechanical subsystems, we created a full CAD assembly of our final resistor sorter with a modular conveyor belt, linear-actuator actuated paddles, resistance measuring module, and custom housing. We also began to hone in on our design theme, adding numbered bee stickers to each of the resistor bins and adding a hexagonal raster to the housing panels.</p>
+                                <p>Electrical: For the electrical systems, we mainly focused on PCB assembly and electrical harnessing. During this sprint we mounted most of the devices to the PCB and managed wire routings to each of the devices, such as the stepper motor and linear actuators, ensuring they get the proper voltages they require. One setbacks we encountered here was that we received the wrong-sized mux, which prevented us from doing a full system test. Progress was also hampered by the fact that we had to create our stencil for the PCB out of mylar, which is a very difficult material to laser cut with.</p>
+                                <p>Software: For the software systems, we created a fully functional version of the user interface. This included selectable bins that, when clicked, display a popup number pad where the user can input the desired resistance value.</p>
+                                <p class="sprint-outcome">Outcome: Most subsystemswere functioning but remained separate; the next steps were integration and establishing reliable communication between the Raspberry Pi, Arduino, and custom PCB.</p>
+                            </div>
+                            <div class="col-6 col-12-small">
+                                <span class="image fit" style="margin-bottom: 1.5em;"><img src="images/sprint3.jpg" alt="Sprint 3 PCB" /></span>
+                                <span class="image fit"><img src="images/sprint3cad.JPG" alt="Sprint 3 CAD Assembly" /></span>
+                            </div>
+                        </div>
+
+                        <hr class="major" />
+
+                        <div id="sprint4" class="row scroll-reveal" style="align-items: center;">
+                            <div class="col-6 col-12-small">
+                                <span class="image fit"><img src="images/sprint4.png" alt="Sprint 4 Final Product" /></span>
+                            </div>
+                            <div class="col-6 col-12-small">
+                                <h2>Sprint 4: Integration & Final System</h2>
+                                <p class="sprint-goal">Goal: Finish building the final version of our resistor sorter, and complete integration of each subsystem.</p>
+                                <p>Our goal for this sprint was to complete integration of the electrical, mechanical, and software subsystems together.</p>
+                                <p>Mechanical: For the mechanical subsystem we focused on fabricating and assembling the final parts to construct the housing, conveyor belt, paddles, and resistor bins. We built on previously-designed parts by adding hexagonal textures and bee-shaped stickers to achieve our design goal. After the final assembly had been executed we mounted all the electrical components, including the stepper motor (and eventually DC motor), linear actuators, custom PCB, LCD screen, and on/off button.</p>
+                                <p>Electrical and Software: For the electrical subsystem we focused on integrating the electrical and software subsystems together through a reliable communication system. To enable communication between the Raspberry Pi and the PCB, we used an Arduino as a bridge that would listen for commands sent by the Raspberry Pi (e.g. bin value changes, start/stop commands) and forward them to the PCB over serial.</p>
+                                <p class="sprint-outcome">Outcomes: We attempted to create a fully working final version of our resistor sorter, but we encountered some problems with our electrical subsystem such as brownouts and stepper motor failure. We discuss this in detail in the “Electrical” and “Mechanical” pages.</p>
+                            </div>
+                        </div>
+
+                    </section>
+
+                </div>
+            </div>
+
+            <div id="sidebar">
+                <div class="inner">
+                    
+                    <nav id="menu">
+                        <header class="major"><h2>Menu</h2></header>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="mission.html">Mission</a></li>
+                            <li><a href="software.html">Software</a></li>
+                            <li><a href="electrical.html">Electrical</a></li>
+                            <li><a href="mechanical.html">Mechanical</a></li>
+                            <li><a href="sprints.html">Sprints</a></li>
+                            <li><a href="gallery.html">Gallery</a></li>
+                            <li><a href="budget.html">Budget</a></li>
+                            <li><a href="aboutus.html">About Us</a></li>
+                        </ul>
+                    </nav>
+
+                    <footer id="footer"><p class="copyright">&copy; Untitled. All rights reserved.</p></footer>
+                </div>
+            </div>
+        </div>
+
+        <div id="imageModal" class="modal">
+            <span class="close">&times;</span>
+            <img class="modal-content" id="img01">
+        </div>
+
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/browser.min.js"></script>
+        <script src="assets/js/breakpoints.min.js"></script>
+        <script src="assets/js/util.js"></script>
+        <script src="assets/js/main.js"></script>
+        <script>
+            // Scroll Reveal
+            document.addEventListener("DOMContentLoaded", function() {
+                var observer = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) entry.target.classList.add("visible");
+                    });
+                }, { threshold: 0.1 });
+                document.querySelectorAll(".scroll-reveal").forEach(el => observer.observe(el));
+            });
+
+            // Modal Logic
+            var modal = document.getElementById("imageModal");
+            var modalImg = document.getElementById("img01");
+            var span = document.getElementsByClassName("close")[0];
+            document.querySelectorAll('.image.fit img').forEach(img => {
+                img.onclick = function(){ modal.style.display = "block"; modalImg.src = this.src; }
+            });
+            span.onclick = function() { modal.style.display = "none"; }
+            window.onclick = function(event) { if (event.target == modal) modal.style.display = "none"; }
+        </script>
+    </body>
+</html>

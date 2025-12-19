@@ -1,0 +1,183 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Electrical Design - The Resistance</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="stylesheet" href="assets/css/main.css" />
+        <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.1.1/model-viewer.min.js"></script>
+        
+        <style>
+            .modal { display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.9); }
+            .modal-content { margin: auto; display: block; width: 80%; max-width: 1000px; max-height: 90vh; object-fit: contain; position: relative; top: 50%; transform: translateY(-50%); }
+            .close { position: absolute; top: 20px; right: 35px; color: #f1f1f1; font-size: 40px; font-weight: bold; cursor: pointer; z-index: 10001; }
+            .close:hover { color: #bbb; }
+            .image.fit img { cursor: pointer; transition: opacity 0.2s; }
+            .image.fit img:hover { opacity: 0.8; }
+        </style>
+    </head>
+    <body class="is-preload">
+
+        <div id="wrapper">
+            <div id="main">
+                <div class="inner">
+
+                    <header id="header">
+                        <a href="index.html" class="logo"><strong>The Resistance</strong> ~ PIE 2025FA</a>
+                        <ul class="icons">
+                            <li><a href="https://github.com/jalikins/The-Resistors" class="icon brands fa-github"><span class="label">Github</span></a></li>
+                        </ul>
+                    </header>
+
+                    <section>
+                        <header class="main">
+                            <h1>Electrical Design</h1>
+                        </header>
+
+                        <div class="sticky-nav">
+                            <ul>
+                                <li><a href="#system">System Design</a></li>
+                                <li><a href="#diagram">Diagrams</a></li>
+                                <li><a href="#considerations">Design Considerations</a></li>
+                            </ul>
+                        </div>
+
+                        <h2 id="system">System Design</h2>
+                        <p>The goal of the electrical team was to create a seamless interface that allowed users to sort resistor values into specific bins. The implementation combined an intuitive user interface with precise control systems to accurately route each resistor to its designated bin.</p>
+
+                        <div class="scroll-reveal">
+                            <h3>System Overview</h3>
+                            <p>Our electrical system consists of two tightly coupled elements. The first is the user interface, which requires an intuitive layout suitable for layman’s use. The second is the core functionality: the hardware responsible for actuation, sensing, and control. The user interface runs on a touchscreen controlled by a Raspberry Pi. When a user changes the system state, for example by updating a bin’s resistance value or pressing the start/stop button, the Raspberry Pi sends the updated state over a serial connection to our custom PCB via an Arduino Nano.</p>
+                        </div>
+
+                        <div class="scroll-reveal">
+                            <span class="image fit"><img src="images/sprint3.jpg" alt="Printed Circuit Board" /></span>
+                        </div>
+
+                        <div class="scroll-reveal">
+                            <h3>Custom Printed Circuit Board (PCB)</h3>
+                            <p>The custom PCB controls all the actuation in the system, including the 12 linear actuators for the sorting paddles, the stepper motor that drives the conveyor belt, and the resistance measurement module. The microcontroller unit (MCU) on our PCB is an AVR128DA48, which uses the same 8-bit AVR architecture as the microcontrollers commonly found on Arduino boards. Our linear actuators require 12V supply, so we use a low side driver to control which actuators receive this voltage. To control the stepper motor we use an A4988 stepper driver which energizes the motor coils to produce precise stepped motion. To measure resistors values, we use a 16:1 multiplexer to switch between different reference resistors. We do this so that each resistor under test is paired with an appropriate reference value, which improves the accuracy of our measurements.</p>
+                            
+                            <p>On the PCB the microcontroller acts as the central unit that coordinates all sensors and actions. It remains idle and does not execute any control routines until it receives the appropriate serial commands from the Raspberry pi. The first action is to receive the mapping of resistor values to their corresponding bucket. Once this configuration is received, the motor is activated to drive the conveyor belt. The motor will keep spinning, and once the limit switch is triggered, the code begins cycling through the multiplexer inputs from the lowest to the highest voltage reference to determine an accurate voltage reference value.. Once the voltage reaches the correct threshold, the system applies the voltage divider equation to compute the unknown resistance and determine the resistor’s exact value. The measured resistance is then compared against each bin’s target value to check whether it falls within the allowed percent error range for that bucket. If the resistor falls within that bucket it is recorded in a two-dimensional array that tracks how many subsequent limit-switch triggers are needed before the actuator for that bucket must fire to divert it. The PCB uses an AVR128DA48 microcontroller, which provides multiple ADC channels and GPIO pins. The resistor-sensing circuit is connected to one of the ADC inputs, allowing the MCU to measure the analog voltage and infer the resistor value through the voltage divider calculation.</p>
+                            
+                            <div class="box alt">
+                                <model-viewer 
+                                    src="images/Processing_and_measuring.glb" 
+                                    alt="A 3D model of our custom PCB" 
+                                    auto-rotate 
+                                    camera-controls 
+                                    ar 
+                                    shadow-intensity="1"
+                                    style="width: 100%; height: 500px; background-color: #f0f0f0;">
+                                    <div class="progress-bar hide" slot="progress-bar">
+                                        <div class="update-bar"></div>
+                                    </div>
+                                </model-viewer>
+                                <p style="text-align: center; font-size: 0.8em;"><em>Click and drag to rotate the PCB. Scroll to zoom.</em></p>
+                            </div>
+                        </div>
+
+                        <h2 id="diagram">Diagrams</h2>
+                        <div class="scroll-reveal">
+                            <p>The following is a diagram depicting the flow of energy and data throughout our electrical subsystem.</p>
+                            <span class="image fit"><img src="images/energydataflow.png" alt="Data and Energy Flow Diagram" /></span>
+                        </div>
+
+                        <div class="scroll-reveal">
+                            <p>The following is our electrical schematic of our printed circuit board.</p>
+                            <span class="image fit"><img src="images/schematic.png" alt="Data and Energy Flow Diagram" /></span>
+                        </div>
+
+
+                        <hr class="major" />
+
+                        <h2 id="considerations">Design Considerations</h2>
+                        
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="box">
+                                    <h4>Arduino vs Custom PCB</h4>
+                                    <p>To control the electronics in our system we evaluated two approaches: using an off-the-shelf Arduino or designing a custom PCB to control all subsystems. We decided to go with a PCB because we could customize it to our systems specific needs without the constraints the Arduino’s existing architecture presents. By designing a custom PCB, we ensured sufficient I/O pins for all subsystems, avoiding the pin-count limitations typically encountered with standard Arduino boards. Using a custom PCB also aligned with our learning goals. It allowed us to deepen our understanding of integrated systems and circuit design, making the project both a functional solution and a valuable educational experience. The PCB also significantly improved wire management by routing all connections through the board and dedicated terminals, ensuring organized, reliable, and failsafe wiring throughout the system.</p>
+                                </div>
+                            </div>
+                            <div class="col-6 col-12-small">
+                                <div class="box">
+                                    <h4>Actuation: Servos vs Linear Actuators</h4>
+                                    <p>To actuate the mechanism that knocks resistors off the belt we evaluated two approaches: using standard servos or linear actuators. We initially chose servos and tried to integrate them into the system, but their more complex circuitry and higher computational power made them an inefficient choice for our application. We then identified miniature solenoid-based actuators. This allows us to easily control them from being on to off. Their simple mounting and integration also made it much easier for the mechanical team to integrate them into the system because of their easy mounting and integration process. The main drawback of the solenoids was their 12V requirement, which forced us to include a higher-capacity power supply unit to reliably drive the system.</p>
+                                </div>
+                            </div>
+                            <div class="col-6 col-12-small">
+                                <div class="box">
+                                    <h4>Belt Drive: Stepper vs DC Motor</h4>
+                                    <p>For the belt drive, another key design decision was stepper vs DC motor for controlling the conveyor. Our initial intuition was to use the steppermotor because its precise step counting would let us track the belts position accurately and ensure resistors were dropped into the correct bins. The way stepper motors work is that they contain two internal coils that are energized in sequence, using magnetic fields and coil inductance to produce controlled, discrete rotational steps.The issue with this was that we started seeing brownouts on our MCU, caused by the intense electrical noise generated by the stepper motor when it attempted to pulse a large amount of current necessary to drive its precise rotation. We initially used a low-cost stepper motor driver that did not adequately isolate electrical noise, so we ultimately switched to a DC motor. Although the DC motor still generated some electrical noise, it was driven by an off board controller which simplified control and reduced the impact on our main electronics.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </section>
+
+                </div>
+            </div>
+            
+            <div id="sidebar">
+                <div class="inner">
+                    <nav id="menu">
+                        <header class="major"><h2>Menu</h2></header>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="mission.html">Mission</a></li>
+                            <li><a href="software.html">Software</a></li>
+                            <li><a href="electrical.html">Electrical</a></li>
+                            <li><a href="mechanical.html">Mechanical</a></li>
+                            <li><a href="sprints.html">Sprints</a></li>
+                            <li><a href="gallery.html">Gallery</a></li>
+                            <li><a href="budget.html">Budget</a></li>
+                            <li><a href="aboutus.html">About Us</a></li>
+                        </ul>
+                    </nav>
+                    <section>
+                                    <header class="major">
+                                        <h2>Get in touch</h2>
+                                    </header>
+                                    <p></p>
+                                    <ul class="contact">
+                                        <li class="icon solid fa-home">1000 Olin Way<br />
+                                        Needham, MA 02492</li>
+                                    </ul>
+                             	</section>
+                    <footer id="footer"><p class="copyright">&copy; Untitled. All rights reserved.</p></footer>
+                </div>
+            </div>
+        </div>
+
+        <div id="imageModal" class="modal">
+            <span class="close">&times;</span>
+            <img class="modal-content" id="img01">
+        </div>
+
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/browser.min.js"></script>
+        <script src="assets/js/breakpoints.min.js"></script>
+        <script src="assets/js/util.js"></script>
+        <script src="assets/js/main.js"></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                var observer = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) entry.target.classList.add("visible");
+                    });
+                }, { threshold: 0.1 });
+                document.querySelectorAll(".scroll-reveal").forEach(el => observer.observe(el));
+            });
+
+            var modal = document.getElementById("imageModal");
+            var modalImg = document.getElementById("img01");
+            var span = document.getElementsByClassName("close")[0];
+            document.querySelectorAll('.image.fit img, .image.main img').forEach(img => {
+                img.onclick = function(){ modal.style.display = "block"; modalImg.src = this.src; }
+            });
+            span.onclick = function() { modal.style.display = "none"; }
+            window.onclick = function(event) { if (event.target == modal) modal.style.display = "none"; }
+        </script>
+    </body>
+</html>
