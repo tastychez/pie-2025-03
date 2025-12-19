@@ -541,10 +541,10 @@ video {
 }
 
 .brandon {
-  transform: translateX(400px) translateY(-700px);
+  transform: translateX(400px) translateY(-600px);
 }
 .masha {
-  transform: translateX(-350px) translateY(-800px);
+  transform: translateX(-350px) translateY(-700px);
   margin-bottom: -500px;
 }
 
@@ -566,6 +566,7 @@ video {
   animation: spin 6s linear infinite;
   transform-origin: center;
   animation-direction: normal;
+  z-index: -1;
 }
 .gear2{
   position: absolute;
@@ -574,6 +575,7 @@ video {
   animation: spin 6s linear infinite;
   transform-origin: center;
   animation-direction: reverse;
+  z-index: -1;
 }
 .gear3{
   position: absolute;
@@ -582,6 +584,7 @@ video {
   animation: spin 6s linear infinite;
   transform-origin: center;
   animation-direction: normal;
+  z-index: -1;
 }
 .gear4{
   position: absolute;
@@ -590,6 +593,7 @@ video {
   animation: spin 6s linear infinite;
   transform-origin: center;
   animation-direction: reverse;
+  z-index: -1;
 }
 .gear5{
   position: absolute;
@@ -598,6 +602,7 @@ video {
   animation: spin 6s linear infinite;
   transform-origin: center;
   animation-direction: normal;
+  z-index: -1;
 }
 .gear6{
   position: absolute;
@@ -606,6 +611,7 @@ video {
   animation: spin 6s linear infinite;
   transform-origin: center;
   animation-direction: reverse;
+  z-index: -1;
 }
 .gear7{
   position: absolute;
@@ -614,6 +620,7 @@ video {
   animation: spin 6s linear infinite;
   transform-origin: center;
   animation-direction: normal;
+  z-index: -1;
 }
 .gear9{
   position: absolute;
@@ -622,6 +629,7 @@ video {
   animation: spin 6s linear infinite;
   transform-origin: center;
   animation-direction: reverse;
+  z-index: -1;
 }
 .gear10{
   position: absolute;
@@ -630,6 +638,7 @@ video {
   animation: spin 6s linear infinite;
   transform-origin: center;
   animation-direction: normal;
+  z-index: -1;
 }
 .geartop{
   position: absolute;
@@ -638,6 +647,7 @@ video {
   animation: spin 6s linear infinite;
   transform-origin: center;
   animation-direction: normal;
+  z-index: -1;
 }
 .geardown{
   position: absolute;
@@ -646,6 +656,7 @@ video {
   animation: spin 6s linear infinite;
   transform-origin: center;
   animation-direction: normal;
+  z-index: -1;
 }
 
 .circuitboard{

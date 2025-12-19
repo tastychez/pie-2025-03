@@ -1,23 +1,25 @@
-<!doctype html> <!--helps prevent any issues - runs error checks and stuff -->
-<html lang="en-US"> <!--sets the language as HTML-->
-  <head> <!--this is hidden - keywords-->
+<!doctype html>
+<html lang="en-US">
+  <head>
     <link href="styles/style.css" rel="stylesheet" />
-    <meta charset="utf-8" /> <!--allows for most characters and languages-->
-    <meta name="viewport" content="width=device-width" /> <!--sets the size of the page to the device screen/browser window-->
-    <title>My test page</title> <!-- name/word associated with page (ex. what it will be named if favorited)-->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>MyoAmp | Mechanical System</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Karla:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
-    <script async src="scripts/main.js"></script>
   </head>
+
   <body>
-    <section class = "nav-bar">
+    <!-- ================= NAV BAR ================= -->
+    <section class="nav-bar">
       <nav>
-        <ul class = "nav">
+        <ul class="nav">
           <a href="index.html">Home</a>
           <li class="dropdown">
-            <a href = "#"> Systems </a>
-            <ul class = "dropdown-menu">
+            <a href="#"> Systems </a>
+            <ul class="dropdown-menu">
               <li><a href = "mechanical_systems.html" class = "components" > Mechanical </a></li>
               <li><a href = "electrical.html" class = "components" > Electrical </a></li>
               <li><a href = "firmware.html" class = "components" > Firmware </a></li>
@@ -25,11 +27,11 @@
             </ul>
           </li>
           <li class="dropdown">
-            <a href = "#"> Sprints </a>
-            <ul class = "dropdown-menu">
-              <li><a href="sprint1.html" class="components">Sprint 1</a></li>
-              <li><a href="sprint2.html" class="components">Sprint 2</a></li>
-              <li><a href="sprint3.html" class="components">Sprint 3</a></li>
+            <a href="#"> Sprints </a>
+            <ul class="dropdown-menu">
+              <li><a href="sprints.html#sprint1" class="components"> Sprint 1 </a></li>
+              <li><a href="sprints.html#sprint2" class="components"> Sprint 2 </a></li>
+              <li><a href="sprints.html#sprint3" class="components"> Sprint 3 </a></li>
             </ul>
           </li>
           <a href="billofmaterials.html">Bill of Materials</a>
@@ -37,4 +39,155 @@
         </ul>
       </nav>
     </section>
+     
+    <!-- ================= INTRO ================= -->
+    <section class="firm-intro">
+      <h1>Firmware Design</h1>
+      <p>
+        Firmware is where everything comes together
+      </p>
+    </section>
+
+    <!-- ================= OVERVIEW ================= -->
+    <section class="mech-overview" id="mechanical">
+      <h3>Microcontroller</h3>
+      <p>
+        The Raspberry Pi Pico is the heart of our system. This very small 21x51mm form factor RP2040 had barely enough power to handle our 
+        entire system. The RP2040 has a dual-core design, which we take advantage of to *read sensor data*(link to firmware-electrical) and 
+        *drive linear actuators*(link to firmware-mechanical) at the same time. This dual-core design is also taken advantage of to run 
+        *TensorFlow Lite for Microcontrollers on the Pico, so it just barely has enough computational power to also run our TCN*(link to 
+        firmware-software).
+      </p>
+      <div class = "member pointfive">
+        <img class = "pointfive" src="Images/pointfive.png" alt="pointfive" />
+        <p>Preparing for demo</p>
+      </div>
+    </section>
+
+    <!-- ================= SUBSYSTEMS ================= -->
+    
+    <div class = "research1">
+    <section class="system-diagrams">
+      <h3>Research</h3>
+      <p> We began the mechanical process by researching what current technologies exist to do what we are trying to do. 
+        After speaking to some companies working in this sector, we came to a few conclusions about what would make a good product:</p>
+    </section>
+    </div>
+
+    <div class="research-list">
+    <section class="system-diagrams">
+      <ul>
+        <li> Users prefer lightweight and easy to operate over almost every other quality, making something extremely technically advanced suboptimal. </li>
+        <li> Since this is meant to be a transitional system to be used while people are recovering, long term reliability is only important if 
+        multiple users plan to use it.</li>
+        <li>Instead of trying to cover every grip, it is much more effective to have a few key grips that are able to perform a majority of daily tasks. </li>
+      </ul>
+    </section>
+    </div>
+
+    <div class = "research2">
+    <section class="system-diagrams">
+    <p>With this in mind, we started designing our first design, using 3 linear actuators, some string, and some rubber bands. Since then we have 
+        continued doing research to develop a final product.</p>
+    </section>
+    </div>
+    
+    
+    <section class="key">
+      <h3>Key Mechanical Components</h3>
+      
+    </section>
+    
+      <div class="msystems">
+    <section class="timeline">
+      <div class="info-box">
+        <h3 class="title">Actuation System</h3>
+        <p class="more">
+          The most critical part of the design was the actuation system.I used linear actuators going to a cable drive system on the 
+          face of the hand. We chose to use linear actuators because it was the easiest motion to use to curl the fingers.
+        </p>
+      </div>
+
+      <div class="info-box">
+        <h3 class="title">Flexion System</h3>
+        <p class="more">
+          Flexion System: To complement the actuation system, I also created a flexion system. Its purpose was to counteract 
+          the linear actuator, bringing the hand back to rest after the actuator returns itself to neutral.
+
+        </p>
+      </div>
+
+      <div class="info-box">
+        <h3 class="title">Mounting System</h3>
+        <p class="more">
+          Along with the main system, I also developed mounting systems to attach needed hardware to the fingers, wrist, forearm, bicep, and wrist.
+        </p>
+      </div>
+    </section>
+    </div>
+
+
+      <div class="grips">
+    <section class="timeline">
+      <div class="info-box">
+        <h3 class="title">Resting</h3>
+        <p class="more">
+          This is the default zero-grip, all fingers are at rest (not straight, due to that causing discomfort). Whenever it is not actively 
+          gripping, this is the orientation the hand should be in.
+        </p>
+      </div>
+
+      <div class="info-box">
+        <h3 class="title">Pinch Grip</h3>
+        <p class="more">
+          A grip that uses thumb, forefinger, and middle finger to pinch, best for  gripping small objects.
+
+        </p>
+      </div>
+
+      <div class="info-box">
+        <h3 class="title">Fist Grip (No Thumb)</h3>
+        <p class="more">
+          A full first grip, with the exception of the thumb. It is used to grip longer objects that are harder to grip with a full fist.
+        </p>
+      </div>
+
+      <div class="info-box">
+        <h3 class="title">Fist Grip (Thumb)</h3>
+        <p class="more">
+           A full fist, used when gripping things for strength or for a full grip.
+        </p>
+      </div>
+
+    </section>
+    </div>
+
+
+
+    <section class="next">
+      <h3>Next Steps</h3>
+      <p> If this project is continued beyond this class, there are a few large mechanical changes that could vastly improve results. 
+        The first would be purchasing a slightly longer linear actuator with an encoder. The issue that we ran into was that our linear actuator 
+        was slightly too short, but the next step up was too long (since they didn’t have encoders, we couldn’t stop it part way). Having encoders
+         would allow us to stop it at variable distances and get how much torque the motor was using, allowing us to do more impressive things like
+        having more gentle grips for certain delicate objects. </p>
+        <p>
+        Another change that would be implemented is changing the elastic material used, as well as the driving material. I chose to use rubber 
+        bands as my elastic material to counteract cable drive, which posed problems with tensioning and wear over time. It would have been a 
+        better choice to use a more reliable material that would be able to sustain continuous use. Along with this, I would buy more expensive 
+        materials to create a more compliant product by making more pleasant surfaces, making it more convenient to wear.
+        </p>
+    </section>
+
+    <!-- ================= NAVIGATION ================= 
+    <section class="overview">
+      <h3>Explore Other Systems</h3>
+      <a href="systems.html#electrical" class="components">Electrical</a>
+      <a href="systems.html#firmware" class="components">Firmware</a>
+      <a href="systems.html#software" class="components">Software</a>
+    </section>
+      -->
+
+    <script src="scripts/main.js"></script>
   </body>
+</html>
