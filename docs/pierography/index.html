@@ -44,13 +44,11 @@
     <img src="media/full_assembly_clamps.png" alt="Final CAD Image">
   </div>
 
-  <!-- FIX: put Final Product Image back -->
   <h3>Final Product Image</h3>
   <div class="image-container">
     <img src="media/real_final.png" alt="Final Product Image">
   </div>
 
-  <!-- Video stays directly under final product image -->
   <h3>Machine in Action</h3>
   <div class="mech-video video-with-label">
 
@@ -128,11 +126,39 @@
   <h2>Data and Energy Flow</h2>
 
   <h3>Data and Energy Flow Diagram</h3>
-  <img src="media/power_flow.jpg" alt="Data and Energy Flow Diagram">
+  <img src="media/power_flow.png" alt="Data and Energy Flow Diagram">
+  <h3>Power Distribution</h3>
+    <p>
+    Most of the power in the system is distributed through the proto board. The power supply provides
+    <strong>24 V</strong>, and the <strong>3 motor drivers</strong> connect to it via the proto board. During use, we usually
+    saw around <strong>0.54 A</strong> being drawn, giving us around <strong>13 W</strong> total supplied from the power source to
+    the stepper motor drivers.
+  </p>
 
-  <h3>Explanation</h3>
   <p>
-    The Blue Ghost scared away your energy flow diagram. You will have to put one in if you use this template.
+    The drivers then regulate up to around <strong>2 A per motor phase</strong> with that higher supply, resulting in a
+    lower effective coil voltage (around <strong>3 to 5 V</strong>) and an average power draw of around
+    <strong>4–10 W per motor</strong>, depending on load and motion. <strong>10 W</strong> is more of an upper limit; during typical
+    use, it is closer to <strong>4–5 W each</strong>.
+  </p>
+
+  <p>
+    The computer powers the Arduino separately via USB connection, sending roughly <strong>1–2 W</strong>
+    (<strong>5 V</strong> × <strong>0.1–0.25 A</strong>). The wood-burning tool also has its own supply, providing
+    <strong>27 W</strong> of power.
+  </p>
+
+  <h3>Control and Data Flow</h3>
+  <p>
+    The computer also sends and receives commands and data to/from the Arduino through the same USB cable.
+    The Arduino then connects to most other components, since it is the controller of the system. It sends
+    commands to all <strong>3 stepper motor drivers</strong>, telling them which direction to move, how quickly, and how
+    far. The drivers convert those commands into regulated coil currents and send them to the stepper motors.
+  </p>
+
+  <p>
+    The <strong>3 limit switches</strong> send data back to the Arduino; when a switch is triggered, it trips an alarm in
+    the code.
   </p>
 </section>
 
@@ -172,13 +198,40 @@
 </section>
 
 <section id="electrical">
-  <h3>Circuit Design</h3>
-  <p>The circuit has been eated by a ghost.</p>
+  <h2>Circuit Design</h2>
+  <p>
+    The power supply’s positive and negative terminals connect to the proto board in order to power the
+    TB6600 stepper motor drivers. Wires run from the <strong>GND</strong> terminal of each driver to the power supply
+    negative, and the driver <strong>VCC</strong> terminals connect to the power supply positive.
+  </p>
 
-  <h3>System Diagrams</h3>
-  <h4>Circuit Design</h4>
-  <p><strong>Description:</strong> The circuit tried to fry the ghost.</p>
-  <p><strong>Diagram:</strong></p>
+  <p>
+    Each stepper motor connects to its respective driver using the <strong>A+</strong>, <strong>A−</strong>, <strong>B+</strong>, and <strong>B−</strong>
+    terminals. The driver supplies the motors with regulated coil currents to execute motion commands.
+  </p>
+
+  <p>
+    The driver <strong>Signal</strong> terminals are used for connections to the Arduino. Each driver has
+    <strong>PUL+</strong> and <strong>PUL−</strong>: <strong>PUL+</strong> connects to the Arduino <strong>step pulse</strong> pins
+    (<strong>D2–D4</strong> in GRBL) and <strong>PUL−</strong> connects to Arduino ground. Each driver also has <strong>DIR+</strong> and
+    <strong>DIR−</strong>: <strong>DIR+</strong> connects to the Arduino <strong>direction</strong> pins (<strong>D5–D7</strong> in GRBL) and
+    <strong>DIR−</strong> connects to Arduino ground.
+  </p>
+
+  <p>
+    Because all components that interface with the Arduino also need a shared ground reference, the Arduino
+    <strong>GND</strong> is routed to a dedicated row on the proto board. This provides a common ground node for all
+    driver signal returns and switch connections. Together, these connections allow motion control through
+    the computer software (UGS) using GRBL G-code.
+  </p>
+
+  <p>
+    The micro limit switches connect to both Arduino pins and ground. They are wired as
+    <strong>normally closed (NC)</strong> for safety and improved robustness against electrical noise. The
+    <strong>COM</strong> terminals connect to the Arduino ground row, and the <strong>NC</strong> terminals connect to the Arduino
+    <strong>limit switch</strong> pins (<strong>D9</strong>, <strong>D10</strong>, and <strong>D12</strong> in GRBL).
+  </p>
+
   <img src="media/circuit_image.png" alt="Circuit Diagram">
 </section>
 
