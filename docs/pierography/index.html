@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Principles of Integrated Engineering (PIE) Example Project Page</title>
   <link rel="stylesheet" href="styles.css">
+  <style>
+    .subsection { break-inside: avoid; page-break-inside: avoid; break-inside: avoid-column; }
+    h4 { break-after: avoid; page-break-after: avoid; }
+  </style>
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
@@ -165,36 +169,106 @@
 <hr>
 
 <section id="software">
-  <h2>Evolution of the Code</h2>
+   <h2>Software</h2>
 
-  <ol>
-    <li>
-      <strong>Initial Logic:</strong>
-      <ul>
-        <li>Ghost moves toward player.</li>
-        <li>Ghost runs from player powered up by a power pellet.</li>
-      </ul>
-    </li>
-    <li>
-      <strong>Second Iteration:</strong>
-      <ul>
-        <li>Ghost hides when it is not "it".</li>
-        <li>Ghost seeks when it is "it".</li>
-      </ul>
-    </li>
-    <li>
-      <strong>Final Iteration:</strong>
-      <ul>
-        <li>Ghost opens arms and waits.</li>
-        <li>When player approaches ghost, they hug and become friends.</li>
-      </ul>
-    </li>
-  </ol>
+  <h3>GRBL and UGS Control</h3>
+  <p>
+    Our system runs on GRBL, controlled by UGS. The first thing we had to do was download
+    GRBL’s open-source git repository, and flash it onto an Arduino Uno. We learned that it
+    was designed for more basic models, like the Uno, after originally trying to use an R4
+    and proving unsuccessful.
+  </p>
+
+  <p>
+    For our interface, we used Universal G-code Sender, another free open-source software.
+    UGS allowed us to send commands to the Arduino to do a few different things. We could
+    write G-code to control the motor movements, or send commands to check and edit certain
+    settings.
+  </p>
+
+  <p>
+    UGS also has some other quality-of-life features, such as a simple ‘jogging’ control
+    that allows for easy, controlled movements in one direction at a time, which was great
+    for testing, debugging, and calibration.
+  </p>
+
+  <h3>Motor Calibration and Tuning</h3>
+  <p>
+    To calibrate our motors to our program, we moved the motors a certain distance, then
+    measured the physical distance travelled. We compared how far it had actually moved
+    to how far it believed it had moved (the number shown on-screen).
+  </p>
+
+  <p>
+    We then divided that actual by the expected and multiplied it by the previous setting
+    for ‘steps per mm’. We sent a command reassigning that value, and tested again to make
+    sure it was calibrated well.
+  </p>
+
+  <p>
+    We also tried setting various speeds and accelerations, to see what would be efficient
+    without compromising functionality and accuracy. These were all set through UGS’s
+    command terminal, with fairly simple commands like
+    <code>$100=79.8</code> (setting the steps per mm of the x-axis motor to 79.8).
+  </p>
+
+  <h3>Generating G-code from Images</h3>
+  <p>
+    There are a few different ways to generate g-code from images. The way we first tried
+    wasn’t very efficient and a bit difficult to use. First, we’d vectorize an image in a
+    program like Adobe Illustrator, tweaking settings to try and get the cleanest, most
+    accurate lineart we could.
+  </p>
+
+  <p>
+    Then, we’d save that .svg file and open it in another program that could convert vectors
+    to g-code, such as Inkscape (I do not recommend using Inkscape, it was difficult and
+    frustrating). We’d change some settings, such as “tool shape” and “penetration depth”,
+    as if it were a mill.
+  </p>
+
+  <p>
+    Then, we could create our g-code, save it, and open it in UGS.
+  </p>
+
+  <p>
+    We then pivoted to using Fusion. In Fusion, the image can be imported directly and used
+    to generate an engraver toolpath within the manufacturing workspace, eliminating the
+    need for an external vector to g-code software.
+  </p>
+
+  <p>
+    By selecting an engraving operation and defining parameters such as tool geometry,
+    cutting depth, and feed rate, Fusion automatically generates a clean, efficient
+    toolpath. The resulting g-code can then be exported and opened directly in UGS.
+  </p>
+
+  <h3>Software Tests</h3>
+  <ul>
+    <li><strong>Connection &amp; streaming:</strong> Verified reliable USB connection and stable G-code streaming in UGS without dropped commands.</li>
+    <li><strong>Jog consistency:</strong> Repeated jog moves to confirm direction correctness and repeatability on each axis.</li>
+    <li><strong>Axis scaling:</strong> Commanded known moves and measured travel; tuned <code>$100</code>, <code>$101</code>, and <code>$102</code> until scaling was accurate.</li>
+    <li><strong>Speed/acceleration sweep:</strong> Increased feed and acceleration settings until missed steps or quality loss occurred, then backed off to a stable operating point.</li>
+    <li><strong>End-to-end test burn:</strong> Generated an engraving toolpath in Fusion, exported G-code, and executed in UGS to confirm the full pipeline.</li>
+  </ul>
 
   <h3>Final Code Design Elements</h3>
   <br />
-  <p><strong>Code Repository:</strong> <a href="https://github.com/">GitHub Link</a></p>
-  <br />
+  <p><strong>Project Repository:</strong> <a href= "https://github.com/zafools/cnc-woodburner" >GitHub Link</a></p>
+  <br /> 
+  
+<div class="software-gallery">
+  <figure>
+    <img src="media/Fusion.png" alt="Fusion 360 engraving toolpath used to generate G-code">
+    <figcaption>Fusion 360 engraving toolpath used to generate G-code</figcaption>
+  </figure>
+
+  <figure>
+    <img src="media/USG.png" alt="Universal G-code Sender visualization and command terminal">
+    <figcaption>Universal G-code Sender visualization and command terminal</figcaption>
+  </figure>
+</div>
+
 </section>
 
 <section id="electrical">
@@ -249,7 +323,6 @@
     cut using band saws and horizontal band saws to achieve accurate lengths and clean edges.
   </p>
 
-  <!-- FRAME -->
   <div class="mech-block" id="mech-frame">
     <h3>Frame</h3>
 
@@ -280,7 +353,6 @@
     </div>
   </div>
 
-  <!-- BASE BOARD & CLAMP -->
   <div class="mech-block" id="mech-board">
     <h3>Base Board</h3>
 
@@ -311,7 +383,6 @@
     </div>
   </div>
 
-  <!-- X AXIS -->
   <div class="mech-block" id="mech-x">
     <h3>X-Axis</h3>
 
@@ -388,7 +459,6 @@
     </div>
   </div>
 
-  <!-- Y AXIS -->
   <div class="mech-block" id="mech-y">
     <h3>Y-Axis</h3>
 
@@ -426,7 +496,6 @@
     </div>
   </div>
 
-  <!-- Z AXIS -->
   <div class="mech-block" id="mech-z">
     <h3>Z-Axis</h3>
 
@@ -434,35 +503,112 @@
       <div class="mech-text">
         <p><strong>Design Concepts:</strong></p>
 
-        <p>The Z-axis assembly moves the wood burner up and down and is connected to the X-axis.</p>
+         <p>
+        The Z-axis assembly moves the wood burner up and down and is the part that is connected to and moves on the X-axis.
+      </p>
 
-        <ul>
-          <li>Decided it should be short and lightweight so the other axes had less mass to move</li>
-          <li>Long enough to allow for different height pieces to burn</li>
-          <li>The shortest lead screw available was 100mm, which was close to the length of the axis we wanted, so we designed the mount around it.</li>
-          <li>More precise and stable than other axes - decided on lead screw</li>
-          <li>Need to be able to assemble - bolts needed to be accessible and not blocked by other parts</li>
-          <li>Limit switch on bottom to prevent tip from hitting base plate. Would have been useful on the top to prevent binding and help zero</li>
-        </ul>
-
-        <p>Consider 3D printing,</p>
-        <ul>
-          <li>Mount needed to be printable on the side so layers are sturdy</li>
-          <li>Slide needed to be vertical so holes were smooth with no supports, and most dimensionally accurate</li>
-        </ul>
-
+      <div class="subsection">
+        <h4>Design Needs</h4>
         <p>
-          The rods we had at first were shorter than the lead screw, so I came up with different standoff options. Realized it would be very difficult to get bolts in and was unnecessary. Ended up getting longer rods. The slider didn’t have a purposeful hard stop at the top, so it would hit the shaft coupler and bind. Needed to use pliers to get it to unstick.
+          First, we determined the design needs for the Z-axis mount. It had to attach to the linear slide on the X-axis,
+          clamp the ends of the belt, hold the wood-burning pen, and move the pen up and down. We wanted the Z-axis mount
+          to be small and lightweight so the other axes had less mass to move.
         </p>
+        <p>
+          When testing the wood burner, we found that the depth of the tip into the wood had a large impact on the line produced.
+          We needed precise control of the pen that was also sturdy and easily adjustable, so we determined a lead screw would be best.
+        </p>
+      </div>
 
-        <p>Difficulty tolerancing</p>
-        <ul>
-          <li>Considered using mill to get holes perfectly smooth and toleranced, decided for such a small part with minimal force that level of precision was not necessary. The prints and rods would have some give, there was not much travel, and the slide was tall enough to not rotate and get stuck when it’s slightly loose, so it was not crucial to be exact.</li>
-          <li>Tried drilling it out but it melted</li>
-          <li>Printed a test size piece to determine hole sizes</li>
-          <li>Considered using nylon bearings, but decided we could get a closer fit with 3D print</li>
-          <li>The rails were a hard press fit at first but became loose by the end</li>
-        </ul>
+      <div class="subsection">
+        <h4>Fundamental Design</h4>
+        <p>
+          The fundamental design is a wood-burning pen clamped into a slider that rides on support rails and is moved by a lead screw.
+          A motor is attached to the lead screw using a coupler, and a mounting piece holds the rails and motor in place. The back of the
+          mount has holes to attach to the X-axis linear slide and includes a belt clamp.
+        </p>
+      </div>
+
+      <div class="subsection">
+        <h4>Manufacturing</h4>
+        <p>
+          We considered using a mill to make the mount and slider so the holes could be precisely positioned, reducing friction and instability.
+          This would have been time-consuming and difficult to iterate on, so we chose 3D printing instead. The rods and printed parts have some
+          compliance, and we designed the slider to be tall enough to prevent rotation and jamming, so exact machining-level precision was not critical.
+        </p>
+      </div>
+
+      <div class="subsection">
+        <h4>Sizing</h4>
+        <p>
+          We debated the travel length of the axis. We wanted a few inches of motion to accommodate different wood thicknesses without making the
+          assembly too tall and unstable. The shortest lead screw we could find was 100 mm, which was close to the length we wanted, so we designed
+          the mount around it.
+        </p>
+      </div>
+
+      <div class="subsection">
+        <h4>Rod Mounts</h4>
+        <p>
+          We initially used free metal rods that were about 95 mm long, but the motor shaft and coupler added length at the top of the lead screw,
+          meaning the rods could not span the full distance. Our first design used a large block to offset the motor and shaft collar.
+        </p>
+        <p>
+          We could not find bolts that matched that configuration, and it would have been difficult to access the fasteners during assembly. We then tried
+          a thinner motor mount with rod features extending out, but ultimately decided this complexity was unnecessary. Instead, we sourced longer rods and
+          cut them to match the final motor mount.
+        </p>
+      </div>
+
+      <div class="subsection">
+        <h4>Hole Tolerancing</h4>
+        <p>
+          Another challenge was tolerancing the rail holes. The mount needs a tight press fit to hold the rods in place, while the slider needs to be loose
+          enough to move smoothly without wobbling. We tried drilling printed parts to final size, but the plastic melted and the holes got worse. We printed a
+          test piece with multiple hole sizes to identify the best fit.
+        </p>
+        <p>
+          After one iteration where we misread the test piece orientation and made holes too large, we corrected the dimensions and achieved a good press fit and
+          smooth sliding motion. If we had more time, we would add a secondary retention feature for the rods (beyond press fit). The press fit worked initially, but
+          wore out over time, allowing rods to shift and occasionally slip out of position.
+        </p>
+      </div>
+
+      <div class="subsection">
+        <h4>Slide and Wood-Burner Clamp</h4>
+        <p>
+          Our teaching team raised a concern about the wood-burning tip catching on changing wood grain and recommended adding compliance. We considered springs or
+          elastics, but it was difficult to add compliance without sacrificing stability. We ultimately mounted the pen using a clamp feature that prioritized repeatability
+          and stiffness.
+        </p>
+      </div>
+
+      <div class="subsection">
+        <h4>3D Printing Considerations</h4>
+        <p>
+          We designed the parts with print orientation in mind. We printed the mount on its side so filament layers were strongest across the height of the piece,
+          supporting the top and bottom. We printed the slide flat so the holes were smooth and dimensionally consistent. The precision-critical areas could not be printed
+          with supports.
+        </p>
+      </div>
+
+      <div class="subsection">
+        <h4>Belt Clamp</h4>
+        <p>
+          On the back of the Z-axis mount, a small channel captures the two ends of the belt. Two clamping pieces have grooves that match the belt teeth; they bolt to the
+          mount and clamp the belt in place.
+        </p>
+      </div>
+
+      <div class="subsection">
+        <h4>Limit Switch</h4>
+        <p>
+          We added a limit switch at the bottom of the Z-axis to simplify homing and prevent the tip from hitting the base plate. Near the end of the project, we realized
+          placing the switch at the top would have been better because the pen should not need to travel all the way down to “zero” during typical operation. During testing,
+          the slider occasionally traveled too far upward and hit the shaft coupler, causing binding that required pliers to free. A top limit switch would have prevented this.
+          Ironically, an earlier rod-standoff concept would have provided a better hard stop that also reduced the chance of binding.
+        </p>
+      </div>
       </div>
 
       <div class="mech-image-stack">
@@ -488,7 +634,6 @@
     </div>
   </div>
 
-  <!-- MOTOR HOUSE -->
   <div class="mech-block" id="mech-motor-house">
     <h3>Motor House</h3>
 
@@ -778,8 +923,6 @@
         <td><a href="https://www.mcmaster.com/9062K26-9062K352/" target="_blank" rel="noopener noreferrer">Link</a></td>
         <td>found</td>
       </tr>
-
-      <!-- ORDERED / PAID (Estimated Cost If Purchased = 0) — BOTTOM -->
 
       <tr>
         <td>Nema 17 Stepper Motor 2 Phase 1.8° 0.6Nm</td>

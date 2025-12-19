@@ -105,7 +105,7 @@ background-color: #f7f5f2;
   }
   
   .image-container img {
-    max-width: 900px; /* Set a smaller max width */
+    max-width: 900px;
     height: auto;
     margin: 10px;
     border: 2px solid #ddd;
@@ -209,7 +209,7 @@ background-color: #f7f5f2;
 
 .video-container {
     position: relative;
-    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    padding-bottom: 56.25%;
     height: 0;
     overflow: hidden;
     max-width: 100%;
@@ -310,7 +310,7 @@ section {
 
 .mech-main {
   display: grid;
-  grid-template-columns: 1.1fr 1fr; /* text slightly wider */
+  grid-template-columns: 1.1fr 1fr;
   gap: 1.5rem;
   align-items: start;
   margin-top: 1rem;
@@ -377,4 +377,85 @@ section {
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
 }
 
+.subsection { break-inside: avoid; page-break-inside: avoid; break-inside: avoid-column; }
+h4 { break-after: avoid; page-break-after: avoid; }
 
+p {
+  margin: 0.75rem 0;
+}
+
+h4 {
+  margin: 1.25rem 0 0.5rem 0;
+  line-height: 1.25;
+}
+
+.mech-text p {
+  margin: 0.75rem 0;
+}
+
+
+.subsection {
+  margin: 1rem 0;
+  padding: 1rem 1.1rem;
+  background: #faf9f7;
+  border: 1px solid #e6e0d9;
+  border-radius: 10px;
+}
+
+.subsection h4 {
+  margin: 0 0 0.5rem 0;
+  color: #3e2f25;
+}
+
+.subsection p {
+  margin: 0.6rem 0;
+}
+
+.mech-text {
+  max-width: 68ch;            
+}
+
+.mech-text p,
+.subsection p {
+  text-wrap: pretty;           
+}
+
+/* Software section image gallery */
+.software-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+  align-items: start;
+}
+
+.software-gallery img {
+  width: 100%;
+  max-width: 460px; /* makes them significantly bigger */
+  height: auto;
+  border-radius: 12px;
+  border: 1px solid #e6e0d9;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+}
+
+.software-gallery figure {
+  margin: 0;
+}
+
+.software-gallery figcaption {
+  margin-top: 0.6rem;
+  font-size: 0.95rem;
+  color: #555;
+  text-align: center;
+}
+
+/* Stack images on small screens */
+@media (max-width: 800px) {
+  .software-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .software-gallery img {
+    max-width: 100%;
+  }
+}
