@@ -55,25 +55,69 @@
 					<a href="#" class="image featured"><img src="images/Integrated System.JPG" alt="" /></a>
 
 					<header>
-						<h2>Overall Design & Tradeoffs</h2>
+						<h2>High-Level Design & Tradeoffs</h2>
 					</header>
 
 					<h3>Project Scale</h3>
 					<p>
-
+						Our initial goal was to design a portable star tracker that could be transported and deployed by
+						a single person in areas with little to no light pollution. We intentionally avoided a large,
+						stationary system that would need to remain in one location or require multiple people to move.
+						A smaller footprint also reduced manufacturing risk, which was important since this was the
+						first machining experience for some members of the team.
 					</p>
 
 					<h3>Materials & Aesthetics</h3>
 					<p>
-
+						One of our primary goals was to produce a machined final iteration to expand our machining
+						skills and present a more professional-level final product. At the same time, our design allows
+						for a completely 3D-printed build, which we tested extensively during earlier iterations. This
+						choice makes the system more accessible, as amateur astronomers can print the parts themselves
+						and assemble their own version. For the machined version, we chose 6061 aluminum because it is
+						easy to source, forgiving to machine, and stiff enough to prevent flex in the camera arm and
+						drive housing, which improves long-exposure image stability.
 					</p>
 
 					<h3>Design Tradeoffs</h3>
 					<ul>
-						<li></li>
+						<li>Printed vs. Machined Components: We kept the geometry printable during early development so
+							new astronomers could replicate the system without tooling. The final version used machined
+							6061 aluminum where rigidity directly improves consistency and thus image quality.</li>
+						<li>Equatorial vs. Alt-Az Alignment: An equatorial mount lets us track on a single axis once
+							aligned to Earth’s pole. This reduced the control problem and eliminated constant two-axis
+							motion. </li>
+						<li>Cycloidal Reduction vs. Planetary or Worm Gears: Cycloidal drives produce high ratios with
+							smooth motion and tolerate printed tolerances. A worm gear would stall smaller steppers and
+							microstepping would be too jittery.</li>
+						<li>NEMA-23 Steppers Instead of Smaller Motors: Smaller motors stalled during slow micro
+							stepping. NEMA-23s provided enough torque margin to avoid missed steps at 0.025deg/min
+							additionally their size and density made them integrate well into the final design as
+							structural components. </li>
+						<li>Software Timing vs. Hardware Timing: The original GPIO control suffered from Linux jitter.
+							Switching to pigpio and daemon-driven pulses fixed the timing problem and prevented step
+							loss.
+						</li>
+						<li>Standalone Camera Control vs. Manual Shooting: Automating capture through gphoto2 reduced
+							user error and allowed raw astrophotography presets instead of adjusting exposure by hand.
+						</li>
+						<li>One-Axis Tracking vs. Two-Axis Control: By aligning the RA axis mechanically, we avoided
+							writing a continuous two-axis correction loop. That made tracking simpler and more reliable.
+						</li>
+						<li>Portability vs. Size/Stiffness: A small system is easier to backpack into dark fields but
+							offers less mechanical rigidity. We accepted that trade-off and reinforced the final metal
+							version where needed.
+						</li>
+						<li>Low-Cost Replication vs. Maximum Rigidity: The BOM keeps a fully printed option viable for
+							under $250 while still supporting a higher-rigidity aluminum build for users with access to
+							a mill.
+						</li>
 					</ul>
 
+					<header>
+						<h3>Initial Design Organization</h3>
+					</header>
 					<div class="image featured"><img src="images/System Diagram.jpg" alt="" /></div>
+					<div class="image featured"><img src="images/energy flow diagram.jpg" alt="" /></div>
 					<header>
 						<h2>Mechanical Design</h2>
 					</header>
@@ -266,33 +310,63 @@
 					</header>
 					<section>
 						<header>
-							<h3>Stellar Localization System</h3>
+							<h3>Stellar Localization System & Programmatic Camera Control</h3>
 						</header>
 						<p>
-							Pretium tellus in euismod a integer sodales neque. Nibh quis dui quis mattis eget imperdiet
-							venenatis
-							feugiat. Neque primis ligula cum erat aenean tristique luctus risus ipsum praesent iaculis.
-							Fermentum elit
-							ut nunc urna volutpat donec cubilia commodo risus morbi. Lobortis vestibulum velit malesuada
-							ante
-							egestas odio nisl duis sociis purus faucibus morbi. Eget massa mus etiam sociis pharetra
-							magna.
+							The heart of ATLAS’s star tracking capabilities reside in its ability to autonomously
+							capture photos for both calibration and observations. This is done thanks to the gphoto2
+							library, which we chose over other solutions like digiCamControl and CHDK due to its
+							modularity and (relatively) detailed documentation. Through the library, we were able to
+							fully automate the photo-taking process. We also created a variety of “modes”, or specific
+							configurations of the camera’s settings built to optimize the photography of specific
+							astronomical objects.
+							Initial calibration is handled by a series of methods we’ve called set_capture_mode,
+							take_photo, plate_solver, and reset().
 						</p>
-					</section>
-					<section>
-						<header>
-							<h3>Programmatic Camera Control</h3>
-						</header>
 						<p>
-							Pretium tellus in euismod a integer sodales neque. Nibh quis dui quis mattis eget imperdiet
-							venenatis
-							feugiat. Neque primis ligula cum erat aenean tristique luctus risus ipsum praesent iaculis.
-							Fermentum elit
-							ut nunc urna volutpat donec cubilia commodo risus morbi. Lobortis vestibulum velit malesuada
-							ante
-							egestas odio nisl duis sociis purus faucibus morbi. Eget massa mus etiam sociis pharetra
-							magna.
+							First, we use the gphoto2 library to connect to our ATLAS’s camera, changing its settings to
+							a specific mode via the set_capture_mode function. Once the connection has been established
+							and the settings are to our liking, we command the camera to take a ten-second exposure
+							photo via gphoto2. This photo is used for calibration, so it is imperative that during this
+							time, ATLAS is aimed at a portion of the night sky with a good number of visible stars. The
+							actual calibration is handled by our Plate-Solving algorithm, which works by pulling the
+							.RAW calibration image off of the Camera’s SD card, converting it into a FITS file and
+							comparing its metadata (camera settings, time taken, coordinates, etc) to that of various
+							other images taken from seven distinct astronomical databases. Once a sufficient number of
+							images similar to the calibration image have been indexed, the Plate-Solver then uses their
+							asterisms to predict what objects are in them, as well as the coordinates, in Right
+							Ascension and Declination, that the original image was taken at.
 						</p>
+						<p>
+							Due to our initial plate-solving algorithm being extremely poorly optimized thanks to the many
+							requests we had to send back and forth, we decided to take advantage of the Astrometry
+							database’s resources to consolidate our algorithm. As a result, we merely need to provide an
+							appropriate image and query for the returned coordinates—the asterism cross-referencing is
+							done autonomously.
+						</p>
+						<p>
+							Once ATLAS’ coordinates have been determined, the user can request to track any of the twenty
+							million astronomical objects within the SIMBAD database, at which point the ATLAS Telescope
+							will move to the specified location. Upon reaching a predetermined distance in arcminutes
+							from the target, ATLAS will continually move at a speed of 0.25 degrees/minute to keep in
+							alignment with Earth’s sidereal time.
+						</p>
+						<a href="https://github.com/systamii/Smart-Dualscope">Starglazers GitHub Repo</a>
+						<p>A link to the entire ATLAS codebase can be found here. The following packages and libraries
+							are required in order to run the startracker code:
+						</p>
+						<ul>
+							<li>AstroPy</li>
+							<li>Requests</li>
+							<li>Gphoto2</li>
+							<li>Pathlib</li>
+							<li>Os Module</li>
+							<li>Raw2Fits</li>
+							<li>Json</li>
+							<li>Env</li>
+							<li>Time</li>
+							<li>Raspberry Pi</li>
+						</ul>
 					</section>
 					<section>
 						<header>

@@ -52,7 +52,7 @@
 							The steps we took to success.
 						</p>
 					</header>
-					<div class="image decent"><img src="images/FullTeamPic.jpeg"/></div>
+					<div class="image decent"><img src="images/FullTeamPic.jpeg" /></div>
 					<section>
 						<header>
 							<h2>Phase Structure</h2>
@@ -70,7 +70,7 @@
 
 						</p>
 					</section>
-					<div class="image decent"><img src="images/Prototype1.JPG"/></div>
+					<div class="image decent"><img src="images/Prototype1.JPG" /></div>
 					<section>
 						<header>
 							<h2>Phase One</h2>
@@ -109,18 +109,16 @@
 							<h2>Phase Two</h2>
 						</header>
 						<p>
-							The second design iteration fully integrated the NEMA-23 stepper motors planned for
-							the final system into a two-stage cycloidal gear system, a functioning belt system,
-							and a camera mount. The two-stage cycloidal system consists of stacked 1:18 and 1:10
-							cycloidal drives, which step down the motor a total of 1:180. This extreme reduction
-							allows for precise movements to reduce any potential disruptions during
-							long-exposure photography. However, this design iteration was not designed for
-							manufacturability and lacked the structural rigidity required for reliable tracking.
-							During this sprint, we decided to pivot to an equatorial mount through the
-							integrating of a three-leg system that attached directly to the cycloidal drive
-							housing with an adjustable front-leg to allow for elevation adjustments ranging from
-							30-45 degrees. This mount style allowed us to use a smaller reduction rate of 5:1 on
-							the declination axis, since precise movements were no longer needed.
+							During this sprint, the Polar Alignment System (PAS) was integrated into ATLAS. The PAS
+							converts ATLAS from an altazimuth to an equatorial mount through a three-leg system attached
+							directly to the cycloidal drive housing with an adjustable front-leg to allow for elevation
+							adjustments from 30-45 degrees. The adjustable equatorial mount allows the camera's polar
+							axis to be aligned with Earth’s rotational axis, simplifying star tracking by reducing the
+							required degrees of motion while tracking. Once aligned, tracking can be completed primarily
+							through the use of a single axis, driven by the cycloidal drive, which improves accuracy and
+							efficiency. Additionally, this mount style allows us to use a smaller reduction rate of 5:1
+							on the declination axis. This allows the telescope to adjust to a target astronomical object
+							and minimizes the need for high-precision stepping during tracking.
 						</p>
 						<p>
 							Both motors
@@ -177,6 +175,11 @@
 							files for cleaner processing. More preset capture modes were added and validated
 							with real-life testing, where we compiled long-exposure images of ( Betelgeuse ) and
 							( Rigel ).
+						</p>
+						<p>
+							Along with these changes, more preset capture modes were added and validated with real-life testing, where we used
+							10-second exposures coupled with an ISO of 400 to compile long-exposure images of Cassiopeia
+							and the Cat’s Eye Nebula.
 						</p>
 					</section>
 				</article>
