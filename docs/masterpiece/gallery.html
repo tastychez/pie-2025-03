@@ -1,0 +1,241 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Masterpiece – Gallery</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+
+  <style>
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .video-box {
+      background: #000;
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+
+    .video-box iframe,
+    .video-box video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      object-fit: contain;
+    }
+
+    h3 { margin-top: 30px; margin-bottom: 15px; }
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-auto-rows: 250px;
+      gap: 6px;
+    }
+
+    .photo-item {
+      position: relative;
+      grid-column: span 2; 
+      overflow: hidden;
+      border-radius: 4px;
+    }
+
+    .photo-item.tall {
+      grid-column: span 1; 
+      grid-row: span 2;
+    }
+
+    .photo-item img, 
+    .photo-item video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .photo-caption {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.55);
+      color: #fff;
+      font-size: 0.9em;
+      line-height: 1.4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 1em;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+      z-index: 2;
+    }
+
+    .photo-item:hover .photo-caption { opacity: 1; }
+    .photo-item video { pointer-events: auto; }
+  </style>
+</head>
+
+<body class="is-preload">
+
+<header id="top-nav">
+  <div class="inner">
+    <a href="index.html" class="brand">
+      <img src="images/MasterpieceLogo.jpg" alt="Masterpiece Logo">
+      <span>Masterpiece</span>
+    </a>
+
+    <nav>
+      <ul>
+        <li><a href="index.html" class="button small">Home</a></li>
+        <li><a href="mechanical.html" class="button small">Mechanical</a></li>
+        <li><a href="electrical.html" class="button small">Electrical</a></li>
+        <li><a href="software.html" class="button small">Software & Logic</a></li>
+        <li><a href="timeline.html" class="button small">Timeline</a></li>
+        <li><a href="budget.html" class="button small">Budget</a></li>
+        <li><a href="gallery.html" class="button small">Gallery</a></li>
+        <li><a href="team.html" class="button small">Team</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section id="header">
+  <div class="inner">
+    <h1>Gallery</h1>
+    <p>Masterpiece in action: setup, gameplay, and key features.</p>
+  </div>
+</section>
+
+<section class="main style1 special">
+  <div class="container">
+    <header class="major">
+      <h2>Video Demonstrations</h2>
+    </header>
+
+    <h3>Full Computer vs Computer Game</h3>
+    <div class="video-box">
+      <iframe src="https://www.youtube.com/embed/6tV0hDUYdYQ?autoplay=1&mute=1&playlist=6tV0hDUYdYQ&loop=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+
+    <h3>Full Game Timelapse & Game Reset</h3>
+    <div class="video-grid">
+      <div class="video-wrapper" style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;margin-bottom:2em;">
+            <video autoplay  controls muted playsinline preload="metadata" style="position:absolute;top:0;left:0;width:100%;height:100%;">
+              <source src="videos/KieranVid1.mov" type="video/mp4" />
+            </video>
+          </div>
+      <div class="video-wrapper" style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;margin-bottom:2em;">
+            <video autoplay controls muted playsinline preload="metadata" style="position:absolute;top:0;left:0;width:100%;height:100%;">
+              <source src="videos/KieranVid2.mov" type="video/mp4" />
+            </video>
+          </div>
+    </div>
+
+    <hr />
+
+    <header class="major">
+      <h2>Build Photos</h2>
+      <p>Documentation from Early Gantry Fabrication through Final System Integration</p>
+    </header>
+
+    <div class="photo-grid">
+      <div class="photo-item tall"><img src="images/gallery1.jpg"><div class="photo-caption">Cutting the Aluminum Extrusions to Size</div></div>
+      <div class="photo-item"><img src="images/gallery2.jpg"><div class="photo-caption">Pre-Gantry V1 Assembly</div></div>
+      <div class="photo-item"><img src="images/gallery3.jpg"><div class="photo-caption">Progress Gantry V1 Photo</div></div>
+      <div class="photo-item"><img src="images/gallery4.jpg"><div class="photo-caption">Magnet Carriage in Progress</div></div>
+      <div class="photo-item"><img src="images/gallery5.jpg"><div class="photo-caption">X-axis Pulley Block V1</div></div>
+      <div class="photo-item tall"><img src="images/gallery6.jpg"><div class="photo-caption">V1 Tensioner</div></div>
+
+      <div class="photo-item tall">
+        <video autoplay muted playsinline loop>
+          <source src="videos/Gantry_Test.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <div class="photo-item tall"><img src="images/gallery8.jpg"><div class="photo-caption">Limit Switch Integration and V2 Corner Blocks</div></div>
+      <div class="photo-item tall"><img src="images/gallery9.jpg"><div class="photo-caption">New Corner Blocks with Additional Tensioners</div></div>
+      <div class="photo-item"><img src="images/gallery10.jpg"><div class="photo-caption">V2 Gantry</div></div>
+      <div class="photo-item tall"><img src="images/gallery11.jpg"><div class="photo-caption">Gantry Extension Pieces</div></div>
+      <div class="photo-item"><img src="images/gallery12.jpg"><div class="photo-caption">Final Magnet Carriage Assembly with Centered Magnet</div></div>
+      <div class="photo-item"><img src="images/gallery13.jpg"><div class="photo-caption">V2 Gantry Assembly with Triple Tensioner Design</div></div>
+      <div class="photo-item tall"><img src="images/gallery14.jpg"><div class="photo-caption">V1 of Prototype Board Mounting</div></div>
+      <div class="photo-item"><img src="images/gallery15.jpg"><div class="photo-caption">First Layer of Chessboard Rastering</div></div>
+      <div class="photo-item"><img src="images/gallery16.jpg"><div class="photo-caption">Fully Rastered Chessboard</div></div>
+      <div class="photo-item tall"><img src="images/gallery17.jpg"><div class="photo-caption">3D Printing Chess Pieces</div></div>
+      <div class="photo-item"><img src="images/gallery18.jpg"><div class="photo-caption">Soldering Components onto PCB</div></div>
+      <div class="photo-item tall"><img src="images/gallery19.jpg"><div class="photo-caption">Manufacturing Wooden Support Frame</div></div>
+      <div class="photo-item tall"><img src="images/gallery20.jpg"><div class="photo-caption">Cleaned up Wiring for Electronics</div></div>
+      <div class="photo-item"><img src="images/gallery21.jpg"><div class="photo-caption">Laser Cutting Side Panels</div></div>
+      <div class="photo-item tall"><img src="images/gallery22.jpg"><div class="photo-caption">Initial Assembly of V1 Gantry</div></div>
+      <div class="photo-item"><img src="images/gallery23.jpg"><div class="photo-caption">Surge Protector Mounting</div></div>
+      <div class="photo-item tall"><img src="images/gallery24.jpg"><div class="photo-caption">Fixing a Warped 3D Print</div></div>
+      <div class="photo-item"><img src="images/gallery25.jpg"><div class="photo-caption">Fully Mounted Board with V1 Covering</div></div>
+      <div class="photo-item"><img src="images/gallery26.jpg"><div class="photo-caption">Laser Cut V2 Covering with PCB Wiring Accounted For</div></div>
+      <div class="photo-item"><img src="images/gallery27.jpg"><div class="photo-caption">Assembling V2 Covering</div></div>
+      <div class="photo-item"><img src="images/gallery29.jpg"><div class="photo-caption">Last day PCB Wiring and Soldering</div></div>
+      <div class="photo-item"><img src="images/gallery30.jpg"><div class="photo-caption">PCB Wiring Rats Nest</div></div>
+      <div class="photo-item tall"><img src="images/gallery31.jpg"><div class="photo-caption">Soldering Broken IO Expander Pins</div></div>
+      <div class="photo-item"><img src="images/gallery32.jpg"><div class="photo-caption">Aligning PCBs using Tape</div></div>
+      <div class="photo-item tall"><img src="images/gallery33.jpg"><div class="photo-caption">Kieran Erwin Sleeping</div></div>
+      <div class="photo-item tall"><img src="images/gallery34.jpg"><div class="photo-caption">Prem Fedtchenko Sleeping</div></div>
+      <div class="photo-item"><img src="images/gallery35.jpg"><div class="photo-caption">Unmounting Bowing PCBs</div></div>
+      <div class="photo-item"><img src="images/gallery36.jpg"><div class="photo-caption">Final Demo Day Presentation</div></div>
+      <div class="photo-item"><img src="images/gallery38.jpg"></div>
+      <div class="photo-item"><img src="images/gallery39.jpg"></div>
+      <div class="photo-item"><img src="images/gallery40.jpg"></div>
+      <div class="photo-item"><img src="images/gallery41.jpg"></div>
+      <div class="photo-item"><img src="images/gallery42.jpg"></div>
+    </div>
+  </div>
+<section id="gallery" class="main style1 special">
+  <div class="container">
+    <header class="major">
+      <h2>More Gallery</h2>
+      <p>
+        We documented Masterpiece throughout the semester, from early prototypes and wiring
+        to integrated motion tests. You can view the full gallery at the link below.
+      </p>
+    </header>
+
+    <ul class="actions special">
+      <li>
+        <a href="https://photos.app.goo.gl/b3NMnPXeSb1Tjgq39"
+           class="button primary"
+           target="_blank" rel="noopener">
+          Open Google Photos Gallery
+        </a>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<footer id="footer">
+  <div class="inner">
+    <ul class="copyright">
+      <li>&copy; Masterpiece Chessboard</li>
+      <li>Template: <a href="https://html5up.net">HTML5 UP – Photon</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.scrolly.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,253 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Masterpiece – Home</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+  </head>
+  <body class="is-preload">
+
+<header id="top-nav">
+  <div class="inner">
+    <!-- Logo on the left -->
+    <a href="index.html" class="brand">
+      <img src="images/MasterpieceLogo.jpg" alt="Masterpiece Logo">
+      <span>Masterpiece</span>
+    </a>
+    <nav>
+      <ul>
+        <li><a href="index.html"       class="button small">Home</a></li>
+        <li><a href="mechanical.html"  class="button small">Mechanical</a></li>
+        <li><a href="electrical.html"  class="button small">Electrical</a></li>
+        <li><a href="software.html"    class="button small">Software &amp; Logic</a></li>
+        <li><a href="timeline.html"    class="button small">Timeline</a></li>
+        <li><a href="budget.html"      class="button small">Budget</a></li>
+        <li><a href="gallery.html"        class="button small">Gallery</a></li>
+        <li><a href="team.html"        class="button small">Team</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <!-- Header -->
+    <section id="header">
+      <div class="inner">
+        <span class="major-logo">
+          <img src="images/MasterpieceLogo.jpg" alt="Masterpiece Logo">
+        </span>
+        <p>Automated Human vs. Computer Chessboard</p>
+        <ul class="actions special">
+          <li><a href="#summary" class="button scrolly">Discover</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Summary -->
+<section id="summary">
+      <div class="inner">
+        <header class="major">
+          <h2>Overview</h2>
+        </header>
+          <h2>
+            
+          </h2>
+        <span class="image fit">
+          <img src="images/overviewphoto.jpeg" alt="overviewphoto" />
+        </span>
+        <p>
+          In this project, we aimed to build an automated chessboard using a gantry system to move chess pieces using magnets embedded in each piece. For our MVP, we focused on designing and fabricating our gantry system and board to show a computer versus computer game for our final demo. For our stretch goal, we aimed to integrate a Hall Effect array under the playing surface to detect physical human moves and play against them, but due to integration challenges, we weren’t able to detect pieces consistently for our demo.
+        </p>
+
+        <p>
+          MVP: Conduct a full computer versus computer chess game with live generated moves.
+        </p>
+
+        <p>
+          Stretch goal: Integrate a Hall Effect array PCB underneath the chessboard to identify human moves and play a true Human versus Computer game.
+        </p>
+        
+      </div>
+    </section>
+     <!-- Diagram -->
+    <section id="one" class="main style1">
+      <div class="container">
+        <div class="row gtr-150">
+          <div class="col-6 col-12-medium imp-medium">
+            <span class="image fit">
+              <img src="images/diagram.jpg" alt="Gantry photo or CAD" />
+            </span>
+          </div>
+          <div class="col-6 col-12-medium">
+            <header class="major">
+              <h2>Energy Flow Diagram</h2>
+            </header>
+            <p>
+              Representation of the Energy and Data throughout the Masterpiece
+            </p>
+
+          </div>
+          
+        </div>
+      </div>
+    </section>
+    <!-- Mechanical  -->
+    <section id="one" class="main style1">
+      <div class="container">
+        <div class="row gtr-150">
+          <div class="col-6 col-12-medium">
+            <header class="major">
+              <h2>Mechanical</h2>
+            </header>
+            <p>
+              We designed and fabricated a Core-XY gantry system that moves chess pieces to any square on our board and plays an entire game of chess. All components of the board are contained within the board volume, and all internal components are concealed with side panels to preserve the magic!
+            </p>
+            <ul class="actions">
+              <li><a href="mechanical.html" class="button">View Mechanical Details</a></li>
+            </ul>
+          </div>
+          <div class="col-6 col-12-medium imp-medium">
+            <span class="image fit">
+              <img src="images/gantry.jpg" alt="Gantry photo or CAD" />
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Electrical  -->
+	<section id="one" class="main style1">
+      <div class="container">
+        <div class="row gtr-150">
+			<div class="col-6 col-12-medium imp-medium">
+            <span class="image fit">
+              <img src="images/pcb.jpg" alt="pcb" />
+            </span>
+          </div>
+			<div class="col-6 col-12-medium">
+            <header class="major">
+              <h2>Electrical</h2>
+            </header>
+            <p>
+              Stepper motors, motor drivers, and an electromagnet handle motion and piece pickup,
+              while a Hall-effect sensor array under the board detects where pieces are.
+              A custom PCB ties together power, sensors, and communication with the controllers.
+            </p>
+            <ul class="actions">
+              <li><a href="electrical.html" class="button">View Electrical Details</a></li>
+            </ul>
+          </div>
+          
+        </div>
+      </div>
+    </section>
+
+    <!-- Software & Logic  -->
+	     <section id="one" class="main style1">
+      <div class="container">
+        <div class="row gtr-150">
+          <div class="col-6 col-12-medium">
+            <header class="major">
+          <h2>Software &amp; Logic</h2>
+		            </header>
+            <p>
+          A Raspberry Pi runs a chess engine, while an Arduino reads the sensors and drives the motors. A Stockfish chess engine plans moves each turn based on the current board state, and has selectable skill levels. Our software has fully custom path planning and G-code generation for all moves including captures, promotions, castling, and en passant.
+            </p>
+            <ul class="actions">
+          <li><a href="software.html" class="button">View Software &amp; Logic</a></li>
+            </ul>
+          </div>
+          <div class="col-6 col-12-medium imp-medium">
+            <span class="image fit">
+              <img src="images/electrical.jpg" alt="Gantry photo or CAD" />
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Timeline -->
+    <section id="timeline-preview" class="main style1 special">
+      <div class="container">
+        <header class="major">
+          <h2>Timeline</h2>
+        </header>
+        <p>
+          See our progression throughout the weeks.
+        </p>
+        <ul class="actions special">
+          <li><a href="timeline.html" class="button wide">View Timeline</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Budget -->
+    <section id="budget-preview" class="main style1 special">
+      <div class="container">
+        <header class="major">
+          <h2>Budget</h2>
+        </header>
+        <p>
+          The budget tracks costs for rails, belts, motors, sensors, PCBs, the chessboard and frame,
+          3D-printed parts, and miscellaneous hardware.
+        </p>
+        <ul class="actions special">
+          <li><a href="budget.html" class="button wide">View Budget Breakdown</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Demo -->
+    <section id="demo-preview" class="main style1 special">
+      <div class="container">
+        <header class="major">
+          <h2>Gallery</h2>
+        </header>
+        <p>
+          In our final demo we play a short game against the built-in chess engine.
+      Masterpiece homes the gantry, senses each human move on the board, and then
+      slides the pieces smoothly to show the computer’s response. The demo
+      highlights reliable motion, accurate sensing, and how the physical board
+      stays in sync with the digital game. Even over the course of hundreds of moves, you don't have to worry about gantry slip, binding, or pieces getting dropped.
+        </p>
+        <ul class="actions special">
+          <li><a href="gallery.html" class="button wide">View Gallery</a></li>
+        </ul>
+      </div>
+    </section>
+
+        <section id="team-preview" class="main style1 special">
+      <div class="container">
+        <header class="major">
+          <h2>Team</h2>
+        </header>
+        <p>
+          Our team is a group of engineering students at Olin College of Engineering who split the work across mechanical, electrical, and software sub-teams. We met regularly to design, build, test, and debug Masterpiece together.
+        </p>
+        <ul class="actions special">
+          <li><a href="team.html" class="button wide">Meet the Team</a></li>
+        </ul>
+      </div>
+    </section>
+
+
+    <!-- Footer -->
+    <section id="footer">
+
+      <ul class="copyright">
+        <li>&copy; Masterpiece</li><li>Template: HTML5 UP</li>
+      </ul>
+    </section>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+
+  </body>
+</html>
