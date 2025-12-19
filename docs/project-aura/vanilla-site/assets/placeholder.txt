@@ -1,0 +1,20 @@
+Assets Directory
+
+This directory is for storing images, icons, and other media files used by the website.
+
+To add your own assets:
+1. Place your image files here (e.g., avatar.png, logo.svg, hero-image.jpg)
+2. Update the src attributes in index.html to point to your files
+3. Make sure to include descriptive alt text for accessibility
+
+Recommended image formats:
+- PNG for images with transparency or simple graphics
+- JPG/JPEG for photographs
+- SVG for logos and icons (scalable vector graphics)
+- WebP for modern browsers (with fallbacks)
+
+Example:
+- If you add avatar.png, update index.html: <img src="assets/avatar.png" alt="Your description">
+- For Open Graph images, add og-image.png and reference it in the meta tags
+
+

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Design Process - Project AURA" />
+    <title>Design Process - Project AURA</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header class="header">
+      <nav class="nav" role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+          <a href="index.html" class="nav-logo">Project AURA</a>
+          <button
+            class="nav-toggle"
+            aria-label="Toggle navigation menu"
+            aria-expanded="false"
+            aria-controls="nav-menu"
+          >
+            <span class="hamburger"></span>
+            <span class="hamburger"></span>
+            <span class="hamburger"></span>
+          </button>
+          <ul class="nav-menu" id="nav-menu">
+            <li class="nav-item">
+              <a href="overview.html" class="nav-link">Overview</a>
+            </li>
+            <li class="nav-item">
+              <a href="design-process.html" class="nav-link nav-link-active"
+                >Design Process</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="mechanical.html" class="nav-link">Mechanical</a>
+            </li>
+            <li class="nav-item">
+              <a href="electrical.html" class="nav-link">Electrical</a>
+            </li>
+            <li class="nav-item">
+              <a href="software.html" class="nav-link">Software</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main-content" class="page-content">
+      <section class="section-padding">
+        <div class="container">
+          <h1 class="page-title text-center">Design Process</h1>
+
+          <div class="design-overview">
+            <h2 class="section-heading">Overview</h2>
+            <div class="text-content">
+              <p>
+                Our design process felt like a sprint up a steep hill. We knew
+                from the start that even our MVP was pushing it, so the only way
+                to make progress was to move quickly, test ideas often, and
+                follow whatever paths created the least friction. We got each
+                subsystem working on its own first, almost like scattered puzzle
+                pieces, and then slowly brought them together into a single
+                system. There were plenty of moments when we disagreed about the
+                final design and couldn't settle on one direction, but each time
+                we returned to the MVP to figure out what was truly necessary.
+                If something didn't help us reach that minimal goal, we let it
+                go.
+              </p>
+              <p>
+                Money pushed us to be creative too. Even after adding some of
+                our own funds, we still couldn't afford certain parts like a
+                lidar. We borrowed one, struggled with its integration with our
+                cart, and was eventually lucky enough to borrow a depth camera
+                from another team that better suited our needs.
+              </p>
+            </div>
+          </div>
+
+          <div class="design-decisions">
+            <h2 class="section-heading text-center">Key Design Decisions</h2>
+
+            <div class="decision-cards">
+              <div class="decision-card">
+                <div class="decision-header">
+                  <h3>Why ROS?</h3>
+                  <span class="decision-author">Zaraius</span>
+                </div>
+                <p>[Placeholder - Zaraius will add content here]</p>
+              </div>
+
+              <div class="decision-card">
+                <div class="decision-header">
+                  <h3>Why Swerve?</h3>
+                  <span class="decision-author">Addison and Kefan</span>
+                </div>
+                <p>[Placeholder - Addison and Kefan will add content here]</p>
+              </div>
+
+              <div class="decision-card">
+                <div class="decision-header">
+                  <h3>Why Depth Camera?</h3>
+                </div>
+                <p>
+                  We chose a depth camera over a 360-degree lidar because we
+                  couldn't find a good way to mount the lidar where it could
+                  actually see everything around the cart. The best we could do
+                  was place it in the front, which would have limited it to
+                  about 180 degrees of coverage. On top of that, the lidar we
+                  had access to was older and much harder to work with. It
+                  needed PoE and a more complicated setup, while the depth
+                  camera (a RealSense) connected cleanly over USB-C and already
+                  had a ROS2 integration we could use right away. The existing
+                  ROS2 publisher made it simple to get depth data streaming, so
+                  the depth camera ended up being the most practical choice for
+                  our system.
+                </p>
+              </div>
+
+              <div class="decision-card">
+                <div class="decision-header">
+                  <h3>Why switch from UWB to camera for human following</h3>
+                </div>
+                <p>
+                  We originally relied on UWB modules for human-following, but
+                  the system struggled in real environments. The estimated
+                  position would drift even when the person wasn't moving, and
+                  accuracy broke down whenever the robot approached certain
+                  angles. Metal components on the robot reflected the UWB signal
+                  heavily, and other parts blocked line-of-sight altogether,
+                  making the ranging data noisy and unreliable. After extensive
+                  calibration, filtering, and controlled testing, the
+                  limitations were still too severe for consistent tracking.
+                  This led us to pivot to a computer-vision approach using
+                  reflective tape, which provides stable, front-facing detection
+                  without the environmental interference that plagued UWB.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+      <div class="container">
+        <h3 class="footer-title">Project AURA</h3>
+        <p class="footer-description">
+          A smart, autonomous cart that carries your heavy stuff and follows you
+          so you never have to haul it yourself.
+        </p>
+        <div class="footer-bottom">
+          <p class="footer-copyright">
+            © <span id="current-year"></span> Project AURA. Principles of
+            Integrated Engineering.
+          </p>
+          <div class="footer-links">
+            <a
+              href="https://github.com/Zaraius/AURA.git"
+              class="footer-link"
+              target="_blank"
+              rel="noopener noreferrer"
+              >GitHub</a
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>

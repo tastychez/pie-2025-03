@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Electrical Overview - Project AURA" />
+    <title>Electrical Overview - Project AURA</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header class="header">
+      <nav class="nav" role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+          <a href="index.html" class="nav-logo">Project AURA</a>
+          <button
+            class="nav-toggle"
+            aria-label="Toggle navigation menu"
+            aria-expanded="false"
+            aria-controls="nav-menu"
+          >
+            <span class="hamburger"></span>
+            <span class="hamburger"></span>
+            <span class="hamburger"></span>
+          </button>
+          <ul class="nav-menu" id="nav-menu">
+            <li class="nav-item">
+              <a href="overview.html" class="nav-link">Overview</a>
+            </li>
+            <li class="nav-item">
+              <a href="design-process.html" class="nav-link">Design Process</a>
+            </li>
+            <li class="nav-item">
+              <a href="mechanical.html" class="nav-link">Mechanical</a>
+            </li>
+            <li class="nav-item">
+              <a href="electrical.html" class="nav-link nav-link-active"
+                >Electrical</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="software.html" class="nav-link">Software</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main-content" class="page-content">
+      <section class="section-padding">
+        <div class="container">
+          <div class="text-center mb-16">
+            <h1 class="page-title">Electrical Overview</h1>
+            <p class="page-subtitle">
+              The circuits that connect it all together!
+            </p>
+          </div>
+
+          <div class="card mb-12">
+            <h2 class="card-title">Electrical Diagram</h2>
+            <div class="diagram-container">
+              <iframe
+                src="assets/PIEElectricalSchematic.pdf"
+                class="pdf-viewer"
+                title="Electrical Schematic PDF"
+              >
+                <p>
+                  Your browser does not support PDFs.
+                  <a href="assets/PIEElectricalSchematic.pdf" target="_blank"
+                    >Download the PDF</a
+                  >.
+                </p>
+              </iframe>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="text-content">
+              <p>
+                The electrical system originally began with three voltages: 24V,
+                12V, and 5V. We later simplified the design after realizing the
+                12V rail was unnecessary because we were no longer using the 12V
+                lidar. All high-power components could run directly from the 24V
+                battery, and the low-power devices did not require a dedicated
+                5V supply. Instead, we used a high-wattage power bank, which
+                provided an integrated BMS and safely powered the Raspberry Pi,
+                USB camera, and UWB modules. This reduced complexity and
+                increased system safety.
+              </p>
+
+              <ul class="detail-list">
+                <li>
+                  <strong>24V system:</strong> Breakers were sized slightly
+                  above the continuous current draw of each motor.
+                </li>
+                <li>
+                  <strong>5V system:</strong> All 5V devices were powered
+                  through the Raspberry Pi, which was connected to a
+                  high-wattage power bank.
+                </li>
+                <li>
+                  <strong>Mounting:</strong> 3D printed C-clamps secured the
+                  electrical system to the underside of the cart.
+                </li>
+                <li>
+                  <strong>Power distribution:</strong> Wago connectors were used
+                  on power lines to make it easy to isolate and test individual
+                  components.
+                </li>
+                <li>
+                  <strong>Data lines:</strong> Soldered connections were used
+                  because communication signals are more sensitive and require
+                  reliable joints.
+                </li>
+                <li>
+                  <strong>Prototyping:</strong> We transitioned from solderless
+                  breadboards to soldered boards to improve robustness during
+                  testing.
+                </li>
+                <li>
+                  <strong>Cable management:</strong> Velcro zip ties were used
+                  to organize and bundle wiring.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+      <div class="container">
+        <h3 class="footer-title">Project AURA</h3>
+        <p class="footer-description">
+          A smart, autonomous cart that carries your heavy stuff and follows you
+          so you never have to haul it yourself.
+        </p>
+        <div class="footer-bottom">
+          <p class="footer-copyright">
+            © <span id="current-year"></span> Project AURA. Principles of
+            Integrated Engineering.
+          </p>
+          <div class="footer-links">
+            <a
+              href="https://github.com/Zaraius/AURA.git"
+              class="footer-link"
+              target="_blank"
+              rel="noopener noreferrer"
+              >GitHub</a
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>

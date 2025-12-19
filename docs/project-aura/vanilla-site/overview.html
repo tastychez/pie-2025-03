@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Project AURA Overview - Project objectives, system diagrams, and financial breakdown"
+    />
+    <title>Overview - Project AURA</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header class="header">
+      <nav class="nav" role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+          <a href="index.html" class="nav-logo">Project AURA</a>
+          <button
+            class="nav-toggle"
+            aria-label="Toggle navigation menu"
+            aria-expanded="false"
+            aria-controls="nav-menu"
+          >
+            <span class="hamburger"></span>
+            <span class="hamburger"></span>
+            <span class="hamburger"></span>
+          </button>
+          <ul class="nav-menu" id="nav-menu">
+            <li class="nav-item">
+              <a href="overview.html" class="nav-link nav-link-active"
+                >Overview</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="design-process.html" class="nav-link">Design Process</a>
+            </li>
+            <li class="nav-item">
+              <a href="mechanical.html" class="nav-link">Mechanical</a>
+            </li>
+            <li class="nav-item">
+              <a href="electrical.html" class="nav-link">Electrical</a>
+            </li>
+            <li class="nav-item">
+              <a href="software.html" class="nav-link">Software</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main-content" class="page-content">
+      <section class="section-padding">
+        <div class="container">
+          <div class="text-center mb-12">
+            <h1 class="page-title">PROJECT OBJECTIVES</h1>
+            <h2 class="page-subtitle">OVERVIEW</h2>
+          </div>
+
+          <div class="overview-text">
+            <p>
+              Our design process felt like a sprint up a steep hill. We knew
+              from the start that even our MVP was pushing it, so the only way
+              to make progress was to move quickly, test ideas often, and follow
+              whatever paths created the least friction. We got each subsystem
+              working on its own first, almost like scattered puzzle pieces, and
+              then slowly brought them together into a single system. There were
+              plenty of moments when we disagreed about the final design and
+              couldn't settle on one direction, but each time we returned to the
+              MVP to figure out what was truly necessary. If something didn't
+              help us reach that minimal goal, we let it go.
+            </p>
+            <p>
+              Money pushed us to be creative too. Even after adding some of our
+              own funds, we still couldn't afford certain parts like a lidar. We
+              borrowed one, struggled with its integration with our cart, and
+              was eventually lucky enough to borrow a depth camera from another
+              team that better suited our needs.
+            </p>
+          </div>
+
+          <div class="objectives-grid">
+            <div class="objective-card">
+              <h3>Mechanical</h3>
+              <ul>
+                <li>[Mechanical objective placeholder 1]</li>
+                <li>[Mechanical objective placeholder 2]</li>
+                <li>[Mechanical objective placeholder 3]</li>
+              </ul>
+            </div>
+            <div class="objective-card">
+              <h3>Electrical</h3>
+              <ul>
+                <li>Robust wiring and soldering</li>
+                <li>Easily able to test parts individually for debugging</li>
+                <li>
+                  Clear electrical diagrams, so it can be easily understood by
+                  others
+                </li>
+              </ul>
+            </div>
+            <div class="objective-card">
+              <h3>Software</h3>
+              <ul>
+                <li>[Software objective placeholder 1]</li>
+                <li>[Software objective placeholder 2]</li>
+                <li>[Software objective placeholder 3]</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="card mt-12">
+            <h2 class="card-title">System Overview</h2>
+            <div class="diagrams-grid">
+              <div>
+                <h3 class="diagram-title">System Diagram</h3>
+                <div class="diagram-container">
+                  <img
+                    src="assets/system-diagram.jpg"
+                    alt="System Diagram showing the flow from Raspberry Pi through Depth Camera, UWB Modules, to Front Wheel Drive Modules"
+                    class="diagram-image"
+                  />
+                </div>
+              </div>
+              <div>
+                <h3 class="diagram-title">Data Flow & Energy Diagram</h3>
+                <div class="diagram-container">
+                  <img
+                    src="assets/data-flow-energy-diagram.jpg"
+                    alt="Data Flow and Energy Diagram showing power distribution (black lines) and communication pathways (purple lines) between Raspberry Pi, sensors, motor controllers, and power systems"
+                    class="diagram-image"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card mt-12">
+            <h2 class="card-title">Financial Breakdown</h2>
+            <div id="financial-table-container"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+      <div class="container">
+        <h3 class="footer-title">Project AURA</h3>
+        <p class="footer-description">
+          A smart, autonomous cart that carries your heavy stuff and follows you
+          so you never have to haul it yourself.
+        </p>
+        <div class="footer-bottom">
+          <p class="footer-copyright">
+            © <span id="current-year"></span> Project AURA. Principles of
+            Integrated Engineering.
+          </p>
+          <div class="footer-links">
+            <a
+              href="https://github.com/Zaraius/AURA.git"
+              class="footer-link"
+              target="_blank"
+              rel="noopener noreferrer"
+              >GitHub</a
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/financial-data.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/financial-table.js"></script>
+  </body>
+</html>
+

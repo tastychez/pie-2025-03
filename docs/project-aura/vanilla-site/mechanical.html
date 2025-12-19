@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Mechanical Overview - Project AURA" />
+    <title>Mechanical Overview - Project AURA</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header class="header">
+      <nav class="nav" role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+          <a href="index.html" class="nav-logo">Project AURA</a>
+          <button
+            class="nav-toggle"
+            aria-label="Toggle navigation menu"
+            aria-expanded="false"
+            aria-controls="nav-menu"
+          >
+            <span class="hamburger"></span>
+            <span class="hamburger"></span>
+            <span class="hamburger"></span>
+          </button>
+          <ul class="nav-menu" id="nav-menu">
+            <li class="nav-item">
+              <a href="overview.html" class="nav-link">Overview</a>
+            </li>
+            <li class="nav-item">
+              <a href="design-process.html" class="nav-link">Design Process</a>
+            </li>
+            <li class="nav-item">
+              <a href="mechanical.html" class="nav-link nav-link-active"
+                >Mechanical</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="electrical.html" class="nav-link">Electrical</a>
+            </li>
+            <li class="nav-item">
+              <a href="software.html" class="nav-link">Software</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main-content" class="page-content">
+      <section class="section-padding">
+        <div class="container">
+          <div class="text-center mb-16">
+            <h1 class="page-title">Mechanical Overview</h1>
+            <p class="page-subtitle">
+              How we made the frame, mounts, and more!
+            </p>
+          </div>
+
+          <div class="mechanical-content">
+            <div class="card mb-12">
+              <h2 class="card-title">Swerve Front Wheel Drive System</h2>
+              <div class="text-content">
+                <p>
+                  We designed a swerve front wheel drive system for project
+                  AURA. The independent steering feature of the two front wheels
+                  allows the robot to reach a perfect Ackermann steering
+                  geometry, making it turn smoothly with minimal resistance.
+                </p>
+              </div>
+            </div>
+
+            <div class="mechanical-grid">
+              <div class="card">
+                <h3 class="card-subtitle">Drive System</h3>
+                <div class="text-content">
+                  <p>
+                    The two wheels are driven by two MY1016Z6 24V DC motors with
+                    a sprocket ratio of 9:16. Allowing the robot to accelerate
+                    at 1m/s² with 200lbs of load. The two motors are controlled
+                    by a PN00218-CYT14 Motor Driver with maximum 30A continuous
+                    and 80A peak output.
+                  </p>
+                </div>
+              </div>
+
+              <div class="card">
+                <h3 class="card-subtitle">Power System</h3>
+                <div class="text-content">
+                  <p>
+                    The whole system is powered by a limeUSB 24V 25Ah 2C LiFePO4
+                    battery, allowing the robot to drive for at least 30 minutes
+                    with heavy load.
+                  </p>
+                </div>
+              </div>
+
+              <div class="card">
+                <h3 class="card-subtitle">Encoders</h3>
+                <div class="text-content">
+                  <p>
+                    We connected two LPD3806 encoders to the ⅜'' wheel shafts on
+                    the front wheels. The two encoders report precise wheel
+                    position, allowing us to monitor the speed and displacement
+                    of the robot.
+                  </p>
+                </div>
+              </div>
+
+              <div class="card">
+                <h3 class="card-subtitle">Steering System</h3>
+                <div class="text-content">
+                  <p>
+                    Two Nema 23 2.4Nm steppers steer each wheel independently
+                    with a sprocket ratio of 18:80. We use the 18 teeth
+                    sprockets as the driving sprocket that is connected to the
+                    steppers and the 80 teeth sprockets as the driven sprocket,
+                    making sure we have enough torque to steer the robot under
+                    200lbs of load.
+                  </p>
+                </div>
+              </div>
+
+              <div class="card">
+                <h3 class="card-subtitle">Wheels</h3>
+                <div class="text-content">
+                  <p>
+                    We chose a heavy-duty solid rubber wheel for our robot. The
+                    solid rubber wheels eliminated the risk of puncture under
+                    heavy load, making our robot safe under intense conditions.
+                  </p>
+                </div>
+              </div>
+
+              <div class="card">
+                <h3 class="card-subtitle">Materials & Fabrication</h3>
+                <div class="text-content">
+                  <p>
+                    The wheel houses and motor mounts are made from A36 Mild
+                    Steel, because A36 steel is easy to fabricate and weld,
+                    while keeping the structure strong. We waterjetted the wheel
+                    houses and motor mounts from a 0.25'' thick steel plate
+                    offered by the shop with an OMAX waterjet. After that, we
+                    TIG welded the pieces together and spray painted the pieces
+                    to avoid rust.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="card mt-12">
+              <h2 class="card-title">Bearings & Shafts</h2>
+              <div class="text-content">
+                <p>
+                  There are eight heavy-duty bearings in total for Project AURA,
+                  two in each wheel. We ran a stress test of putting more than
+                  500lbs of weight on the robot and the bearing survived under
+                  the extreme load test. The ⅜'' steel wheel shaft leaves the
+                  whole drivetrain with enough redundancy for expected
+                  situations.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+      <div class="container">
+        <h3 class="footer-title">Project AURA</h3>
+        <p class="footer-description">
+          A smart, autonomous cart that carries your heavy stuff and follows you
+          so you never have to haul it yourself.
+        </p>
+        <div class="footer-bottom">
+          <p class="footer-copyright">
+            © <span id="current-year"></span> Project AURA. Principles of
+            Integrated Engineering.
+          </p>
+          <div class="footer-links">
+            <a
+              href="https://github.com/Zaraius/AURA.git"
+              class="footer-link"
+              target="_blank"
+              rel="noopener noreferrer"
+              >GitHub</a
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>
