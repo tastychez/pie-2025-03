@@ -1,0 +1,20 @@
+-- Install configuration: ""
+-- Up-to-date: /home/benricket/school/chair/Desk-On-Demand/install/chair_robot/lib/chair_robot/pub_test.py
+-- Up-to-date: /home/benricket/school/chair/Desk-On-Demand/install/chair_robot/lib/chair_robot/sub_test.py
+-- Up-to-date: /home/benricket/school/chair/Desk-On-Demand/install/chair_robot/lib/chair_robot/pose_from_aruco.py
+-- Installing: /home/benricket/school/chair/Desk-On-Demand/install/chair_robot/lib/chair_robot/transform_helper.py
+-- Up-to-date: /home/benricket/school/chair/Desk-On-Demand/install/chair_robot/share/ament_index/resource_index/package_run_dependencies/chair_robot
+-- Up-to-date: /home/benricket/school/chair/Desk-On-Demand/install/chair_robot/share/ament_index/resource_index/parent_prefix_path/chair_robot
+-- Up-to-date: /home/benricket/school/chair/Desk-On-Demand/install/chair_robot/share/chair_robot/environment/ament_prefix_path.sh
+-- Up-to-date: /home/benricket/school/chair/Desk-On-Demand/install/chair_robot/share/chair_robot/environment/ament_prefix_path.dsv
+-- Up-to-date: /home/benricket/school/chair/Desk-On-Demand/install/chair_robot/share/chair_robot/environment/path.sh
+-- Up-to-date: /home/benricket/school/chair/Desk-On-Demand/install/chair_robot/share/chair_robot/environment/path.dsv
+-- Up-to-date: /home/benricket/school/chair/Desk-On-Demand/install/chair_robot/share/chair_robot/local_setup.bash
+-- Up-to-date: /home/benricket/school/chair/Desk-On-Demand/install/chair_robot/share/chair_robot/local_setup.sh
+-- Up-to-date: /home/benricket/school/chair/Desk-On-Demand/install/chair_robot/share/chair_robot/local_setup.zsh
+-- Up-to-date: /home/benricket/school/chair/Desk-On-Demand/install/chair_robot/share/chair_robot/local_setup.dsv
+-- Installing: /home/benricket/school/chair/Desk-On-Demand/install/chair_robot/share/chair_robot/package.dsv
+-- Up-to-date: /home/benricket/school/chair/Desk-On-Demand/install/chair_robot/share/ament_index/resource_index/packages/chair_robot
+-- Up-to-date: /home/benricket/school/chair/Desk-On-Demand/install/chair_robot/share/chair_robot/cmake/chair_robotConfig.cmake
+-- Up-to-date: /home/benricket/school/chair/Desk-On-Demand/install/chair_robot/share/chair_robot/cmake/chair_robotConfig-version.cmake
+-- Up-to-date: /home/benricket/school/chair/Desk-On-Demand/install/chair_robot/share/chair_robot/package.xml

@@ -1,0 +1,48 @@
+[0.013s] Invoking command in '/home/benricket/school/chair/Desk-On-Demand/build/chair_robot': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/benricket/ros2_ws/install/sample_node_architectures:/home/benricket/ros2_ws/install/ros_behaviors_fsm:/home/benricket/ros2_ws/install/neato_soccer:/home/benricket/ros2_ws/install/neato_node2:/home/benricket/ros2_ws/install/in_class_day04_solutions:/home/benricket/ros2_ws/install/in_class_day03_solutions:/home/benricket/ros2_ws/install/multi_neato:/home/benricket/ros2_ws/install/in_class_day02_solutions:/home/benricket/ros2_ws/install/draw_square_with_estop:/opt/ros/humble /usr/bin/cmake /home/benricket/school/chair/Desk-On-Demand/ros2_ws/src/chair_robot -DCMAKE_INSTALL_PREFIX=/home/benricket/school/chair/Desk-On-Demand/install/chair_robot
+[0.166s] -- The C compiler identification is GNU 11.4.0
+[0.285s] -- The CXX compiler identification is GNU 11.4.0
+[0.302s] -- Detecting C compiler ABI info
+[0.386s] -- Detecting C compiler ABI info - done
+[0.396s] -- Check for working C compiler: /usr/lib/ccache/cc - skipped
+[0.397s] -- Detecting C compile features
+[0.397s] -- Detecting C compile features - done
+[0.401s] -- Detecting CXX compiler ABI info
+[0.492s] -- Detecting CXX compiler ABI info - done
+[0.501s] -- Check for working CXX compiler: /usr/lib/ccache/c++ - skipped
+[0.502s] -- Detecting CXX compile features
+[0.502s] -- Detecting CXX compile features - done
+[0.510s] -- Found ament_cmake: 1.3.12 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.726s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[0.850s] -- Found ament_lint_auto: 0.12.14 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[0.958s] -- Added test 'flake8' to check Python code syntax and style conventions
+[0.959s] -- Added test 'lint_cmake' to check CMake code style
+[0.960s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[0.961s] -- Added test 'xmllint' to check XML markup files
+[0.963s] -- Configuring done
+[0.966s] -- Generating done
+[0.968s] -- Build files have been written to: /home/benricket/school/chair/Desk-On-Demand/build/chair_robot
+[0.974s] Invoked command in '/home/benricket/school/chair/Desk-On-Demand/build/chair_robot' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/benricket/ros2_ws/install/sample_node_architectures:/home/benricket/ros2_ws/install/ros_behaviors_fsm:/home/benricket/ros2_ws/install/neato_soccer:/home/benricket/ros2_ws/install/neato_node2:/home/benricket/ros2_ws/install/in_class_day04_solutions:/home/benricket/ros2_ws/install/in_class_day03_solutions:/home/benricket/ros2_ws/install/multi_neato:/home/benricket/ros2_ws/install/in_class_day02_solutions:/home/benricket/ros2_ws/install/draw_square_with_estop:/opt/ros/humble /usr/bin/cmake /home/benricket/school/chair/Desk-On-Demand/ros2_ws/src/chair_robot -DCMAKE_INSTALL_PREFIX=/home/benricket/school/chair/Desk-On-Demand/install/chair_robot
+[0.978s] Invoking command in '/home/benricket/school/chair/Desk-On-Demand/build/chair_robot': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/benricket/ros2_ws/install/sample_node_architectures:/home/benricket/ros2_ws/install/ros_behaviors_fsm:/home/benricket/ros2_ws/install/neato_soccer:/home/benricket/ros2_ws/install/neato_node2:/home/benricket/ros2_ws/install/in_class_day04_solutions:/home/benricket/ros2_ws/install/in_class_day03_solutions:/home/benricket/ros2_ws/install/multi_neato:/home/benricket/ros2_ws/install/in_class_day02_solutions:/home/benricket/ros2_ws/install/draw_square_with_estop:/opt/ros/humble /usr/bin/cmake --build /home/benricket/school/chair/Desk-On-Demand/build/chair_robot -- -j22 -l22
+[1.028s] Invoked command in '/home/benricket/school/chair/Desk-On-Demand/build/chair_robot' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/benricket/ros2_ws/install/sample_node_architectures:/home/benricket/ros2_ws/install/ros_behaviors_fsm:/home/benricket/ros2_ws/install/neato_soccer:/home/benricket/ros2_ws/install/neato_node2:/home/benricket/ros2_ws/install/in_class_day04_solutions:/home/benricket/ros2_ws/install/in_class_day03_solutions:/home/benricket/ros2_ws/install/multi_neato:/home/benricket/ros2_ws/install/in_class_day02_solutions:/home/benricket/ros2_ws/install/draw_square_with_estop:/opt/ros/humble /usr/bin/cmake --build /home/benricket/school/chair/Desk-On-Demand/build/chair_robot -- -j22 -l22
+[1.040s] Invoking command in '/home/benricket/school/chair/Desk-On-Demand/build/chair_robot': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/benricket/ros2_ws/install/sample_node_architectures:/home/benricket/ros2_ws/install/ros_behaviors_fsm:/home/benricket/ros2_ws/install/neato_soccer:/home/benricket/ros2_ws/install/neato_node2:/home/benricket/ros2_ws/install/in_class_day04_solutions:/home/benricket/ros2_ws/install/in_class_day03_solutions:/home/benricket/ros2_ws/install/multi_neato:/home/benricket/ros2_ws/install/in_class_day02_solutions:/home/benricket/ros2_ws/install/draw_square_with_estop:/opt/ros/humble /usr/bin/cmake --install /home/benricket/school/chair/Desk-On-Demand/build/chair_robot
+[1.051s] -- Install configuration: ""
+[1.052s] -- Installing: /home/benricket/school/chair/Desk-On-Demand/install/chair_robot/lib/chair_robot/pub_test.py
+[1.052s] -- Installing: /home/benricket/school/chair/Desk-On-Demand/install/chair_robot/lib/chair_robot/sub_test.py
+[1.052s] -- Installing: /home/benricket/school/chair/Desk-On-Demand/install/chair_robot/lib/chair_robot/pose_from_aruco.py
+[1.052s] -- Installing: /home/benricket/school/chair/Desk-On-Demand/install/chair_robot/lib/chair_robot/transform_helper.py
+[1.052s] -- Installing: /home/benricket/school/chair/Desk-On-Demand/install/chair_robot/share/ament_index/resource_index/package_run_dependencies/chair_robot
+[1.052s] -- Installing: /home/benricket/school/chair/Desk-On-Demand/install/chair_robot/share/ament_index/resource_index/parent_prefix_path/chair_robot
+[1.053s] -- Installing: /home/benricket/school/chair/Desk-On-Demand/install/chair_robot/share/chair_robot/environment/ament_prefix_path.sh
+[1.053s] -- Installing: /home/benricket/school/chair/Desk-On-Demand/install/chair_robot/share/chair_robot/environment/ament_prefix_path.dsv
+[1.053s] -- Installing: /home/benricket/school/chair/Desk-On-Demand/install/chair_robot/share/chair_robot/environment/path.sh
+[1.053s] -- Installing: /home/benricket/school/chair/Desk-On-Demand/install/chair_robot/share/chair_robot/environment/path.dsv
+[1.053s] -- Installing: /home/benricket/school/chair/Desk-On-Demand/install/chair_robot/share/chair_robot/local_setup.bash
+[1.053s] -- Installing: /home/benricket/school/chair/Desk-On-Demand/install/chair_robot/share/chair_robot/local_setup.sh
+[1.053s] -- Installing: /home/benricket/school/chair/Desk-On-Demand/install/chair_robot/share/chair_robot/local_setup.zsh
+[1.054s] -- Installing: /home/benricket/school/chair/Desk-On-Demand/install/chair_robot/share/chair_robot/local_setup.dsv
+[1.054s] -- Installing: /home/benricket/school/chair/Desk-On-Demand/install/chair_robot/share/chair_robot/package.dsv
+[1.054s] -- Installing: /home/benricket/school/chair/Desk-On-Demand/install/chair_robot/share/ament_index/resource_index/packages/chair_robot
+[1.054s] -- Installing: /home/benricket/school/chair/Desk-On-Demand/install/chair_robot/share/chair_robot/cmake/chair_robotConfig.cmake
+[1.054s] -- Installing: /home/benricket/school/chair/Desk-On-Demand/install/chair_robot/share/chair_robot/cmake/chair_robotConfig-version.cmake
+[1.054s] -- Installing: /home/benricket/school/chair/Desk-On-Demand/install/chair_robot/share/chair_robot/package.xml
+[1.057s] Invoked command in '/home/benricket/school/chair/Desk-On-Demand/build/chair_robot' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/benricket/ros2_ws/install/sample_node_architectures:/home/benricket/ros2_ws/install/ros_behaviors_fsm:/home/benricket/ros2_ws/install/neato_soccer:/home/benricket/ros2_ws/install/neato_node2:/home/benricket/ros2_ws/install/in_class_day04_solutions:/home/benricket/ros2_ws/install/in_class_day03_solutions:/home/benricket/ros2_ws/install/multi_neato:/home/benricket/ros2_ws/install/in_class_day02_solutions:/home/benricket/ros2_ws/install/draw_square_with_estop:/opt/ros/humble /usr/bin/cmake --install /home/benricket/school/chair/Desk-On-Demand/build/chair_robot
