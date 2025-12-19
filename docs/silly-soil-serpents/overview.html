@@ -1,0 +1,429 @@
+<!DOCTYPE HTML>
+<!--
+	Story by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+<head>
+    <title>Silly Soil Serpents</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript>
+        <link rel="stylesheet" href="assets/css/noscript.css" />
+    </noscript>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+</head>
+
+<body class="is-preload">
+
+    <!-- Wrapper -->
+    <div id="wrapper" class="divided">
+
+        <!-- Navigation -->
+		<nav id="scrollNav">
+			<div class="nav-left">
+				<a href="index.html#top" class="site-name">Silly Soil Serpents</a>
+			</div>
+
+			<div class="nav-right">
+				<a href="overview.html">Overview</a>
+
+				<div class="nav-dropdown">
+					<a href="mechanical.html" class="nav-parent">
+						Mechanical
+					</a>
+
+					<div class="dropdown-menu">
+						<a href="mechanical.html#links">Links</a>
+						<a href="mechanical.html#skin">Skin</a>
+						<a href="mechanical.html#head">Head</a>
+					</div>
+				</div>
+
+
+				<div class="nav-dropdown">
+					<a href="software.html" class="nav-parent">
+						Software
+					</a>
+
+					<div class="dropdown-menu">
+						<a href="software.html#movement">Movement</a>
+						<a href="software.html#dashboard">Dashboard</a>
+					</div>
+				</div>
+
+				<div class="nav-dropdown">
+					<a href="electrical.html" class="nav-parent">
+						Electrical
+					</a>
+
+					
+				</div>
+				<div class="nav-dropdown">
+					<a href="team.html" class="nav-parent">
+						About
+					</a>
+
+					
+				</div>
+
+			</div>
+		</nav>
+
+
+
+        <!-- One -->
+        <section id="home"
+            class="banner style2 orient-right content-align-left image-position-right fullscreen onload-image-fade-in onload-content-fade-right">
+            <div class="content">
+                <h1>Project Overview</h1>
+                
+            </div>
+            <div class="image">
+                <img src="images/snake_head_on.jpeg" alt="" />
+            </div>
+        </section>
+
+<!-- process -->
+		<section class="wrapper style1 align-left" id="process">
+			<div class="inner">
+				<h2 class="align-center">Process</h2>
+				<p> To get from our idea to our product, we followed a process of design, testing, and iteration. We
+                    used scrum project management to delegate tasks and stay on track. As designs started working better, 
+                    we promoted them to high fidelity fabrication and implementation.
+				</p>
+
+				<section class="flex-grid">
+					<div class="grid-item">
+						<h3>Starting Off: Project Management and Ideation</h3>
+						<p>
+							The first part of the process involved setting up a Miro board to track and delegate
+                            tasks. At this point in the project, most tasks were researching electrical components 
+                            that we should purchase and making our first mechanical designs in Onshape. 
+						</p>
+					</div>
+					<div class="grid-item">
+						<img src="images/sprint_board_1.jpg" alt="Large image">
+                        <ul class="actions stacked">
+						    <li><a href="https://miro.com/app/board/uXjVJzHVwos=/?share_link_id=519854111433" class="button">View our Miro Board</a></li>
+					    </ul>
+					</div>
+                    <div class="grid-item">
+						<img src="images/early_u_links.png" alt="Large image">
+					</div>
+				</section>
+
+				<p></p>
+				<section class="video-grid">
+					<div class="grid-text">
+						<h3>Sprint 1</h3>
+						<p>
+							Once we had made decisions about what electrical components to purchase and use,
+                            specifically the servo motors and the sensor, we designed and 3D printed our first
+                            iteration. The first iteration helped us identify what needed to be added to the 
+                            mechanical design, such as holes for wiring, and what we could do to improve electrical
+                            performance, which in this case was using stronger motors. We also managed to get a working
+                            prototype of the snake moving in an inchworm motion using an Arduino.
+						</p>
+					</div>
+
+                    <div class="grid-video">
+						<video controls>
+							<source src="images/first_snake.MP4" type="video/mp4">
+							Your browser does not support the video tag.
+						</video>
+					</div>
+				</section>
+
+				<p>
+
+				</p>
+
+				<section class="flex-grid">
+					<div class="grid-item span-2">
+						<h3>Sprint 2</h3>
+						<p>
+							After testing out what worked and did not work with our first iteration, we started
+                            designing the next. We wanted to try using smaller servo motors and making the robot
+                            lighter overall, however we found that the smaller motors did not have high enough 
+                            torque to accomplish the movements we desired. We started designing more mechanisms,
+                            such as the "head" and "tail" of the snake, and the sensor-lowering mechanism. We also 
+                            starting testing and calibrating our soil moisture sensor in different levels of wet soil.
+                            A major goal for this sprint was getting the snake to move in a serpentine movement,
+                            which we managed to do using an arduino. This sprint also involved getting the 
+                            live dashboard set up and starting to iterate on the skin design. 
+						</p>
+					</div>
+                    
+					<div class="grid-item">
+						<img src="images/small_motor_u_links.jpg" alt="Large image">
+					</div>
+                    <div class="grid-video span-2">
+						<video controls>
+							<source src="images/sprint2movement.MOV" type="video/mp4">
+							Your browser does not support the video tag.
+						</video>
+					</div>
+                    <div class="grid-item">
+						<img src="images/head_design.jpg" alt="Large image">
+					</div>
+                    
+				</section>
+
+				<p></p>
+                <h3>Sprint 3</h3>
+				<p>We came across several challenges in this project, and most of them came
+                    at this integration stage. Specifically, integrating electrical hardware with
+                    software was difficult for the moisture sensor, camera, and Pico boards. This is 
+                    when we decided to add the raspberry pi as a ground station instead of our computers.
+                    We were able to meet two of our goals for software, having a wireless snake and a 
+                    dashboard that could control the snake remotely. But they did not work together...
+				</p>
+
+				<section class="flex-grid">
+
+
+					<div class="grid-video span-2">
+						<video controls>
+							<source src="images/wireless_motion_with_skin.mp4" type="video/mp4">
+							Your browser does not support the video tag.
+						</video>
+                        <p class="align-center">Top: wireless control, Right: keyboard control</p>
+					</div>
+                    <div class="grid-video">
+						<video controls>
+							<source src="images/keyboardcontrolsnakemove.mp4" type="video/mp4">
+							Your browser does not support the video tag.
+						</video>
+					</div>
+					
+					
+
+
+				</section>
+			</div>
+		</section>
+
+
+<!-- Energy and Data Flow Diagram -->
+        <section class="wrapper style1 align-center" id="objectives">
+            <div class="inner">
+                <h2>System Diagram</h2>
+                <p>Core goals behind each design decision we made.</p>
+                <span class="image fit"><img src="images/System Diagram.jpg" alt="" /></span>
+                <p>Diagram of systems. How everything integrates.
+
+                </p>
+            </div>
+        </section>
+
+        <!-- System Diagram -->
+        <section class="wrapper style1 align-center" id="objectives">
+            <div class="inner">
+                <h2>Energy and Data Flow Diagram</h2>
+                <span class="image fit"><img src="images/energy_diagram.jpg" alt="" /></span>
+                <p>Energy and data flow through several paths in our integrated system. 
+                One challenge that we faced with integration is the weight of the power source, 
+                which in our case was a NiMh battery. We found that it weighed the tail down, 
+                and therefore shaped decisions about motor power and mechanical design around this.
+                </p>
+            </div>
+        </section>
+
+        <!-- Bill of Materials-->
+         <section class="wrapper style1 align-center" id="bom">
+			<div class="inner">
+        <section>
+            <header>
+                <h2>Bill of Materials</h2>
+            </header>
+            <div class="content">
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th>Purpose</th>
+                                <th>Found/Bought From</th>
+                                <th>Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Soil Sensor (x2)</td>
+                                <td>Measure soil moisture</td>
+                                <td>Digikey</td>
+                                <td>15.00</td>
+                            </tr>
+                            <tr>
+                                <td>JST Wire</td>
+                                <td>Connect soil sensor to microcontroller</td>
+                                <td>Adafruit</td>
+                                <td>0.95</td>
+                            </tr>
+                            <tr>
+                                <td>JST Wire</td>
+                                <td>Connect soil sensor to microcontroller</td>
+                                <td>Amazon</td>
+                                <td>8.06</td>
+                            </tr>
+                            <tr>
+                                <td>HM01B0 Arducam</td>
+                                <td>Camera for dashboard</td>
+                                <td>Amazon</td>
+                                <td>12.99</td>
+                            </tr>
+                            <tr>
+                                <td>ICM-20948 (x2)</td>
+                                <td>IMU for location data</td>
+                                <td>Adafruit</td>
+                                <td>29.90</td>
+                            </tr>
+                            <tr>
+                                <td>6V Battery</td>
+                                <td>Power supply</td>
+                                <td>Amazon</td>
+                                <td>19.99</td>
+                            </tr>
+                            <tr>
+                                <td>Pico W (x4)</td>
+                                <td>Microcontroller</td>
+                                <td>Adafruit</td>
+                                <td>24.00</td>
+                            </tr>
+                            <tr>
+                                <td>Raspberry Pi 4*</td>
+                                <td>Microcontroller as Ground Station</td>
+                                <td>Robolab</td>
+                                <td>35.00</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>Zinc Screw</td>
+                                <td>To attach motors</td>
+                                <td>McMaster</td>
+                                <td>14.59</td>
+                            </tr>
+                            <tr>
+                                <td>Zinc hex nut</td>
+                                <td>To attach motors</td>
+                                <td>McMaster</td>
+                                <td>2.22</td>
+                            </tr>
+                            <tr>
+                                <td>Miscellaneous Screws*</td>
+                                <td>For attaching stuff</td>
+                                <td>Shop/Pie Room</td>
+                                <td>5.00</td>
+                            </tr>
+                            <tr>
+                                <td>Burlap Skin</td>
+                                <td>Skin prototyping</td>
+                                <td>McMaster</td>
+                                <td>5.00</td>
+                            </tr>
+                            <tr>
+                                <td>Cotton Fabric*</td>
+                                <td>Skin prototyping and final</td>
+                                <td>Library</td>
+                                <td>8.00</td>
+                            </tr>
+                            <tr>
+                                <td>Elmer's Glue*</td>
+                                <td>Skin prototyping and final</td>
+                                <td>Library</td>
+                                <td>16.00</td>
+                            </tr>
+                            <tr>
+                                <td>PLA*</td>
+                                <td>Fillament for modules</td>
+                                <td>Shop</td>
+                                <td>24.00</td>
+                            </tr>
+                            <tr>
+                                <td>Euca Board*</td>
+                                <td>head</td>
+                                <td>Shop</td>
+                                <td>2.90</td>
+                            </tr>
+                            <tr>
+                                <td>USBA to micro USB cable (x2)*</td>
+                                <td>pico and pi connection</td>
+                                <td>Home</td>
+                                <td>14</td>
+                            </tr>
+                            <tr>
+                                <td>MG996r Servos*</td>
+                                <td>For joints</td>
+                                <td>Pie Room</td>
+                                <td>25.50</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="1"></td>
+                                <td colspan="1"></td>
+                                <td>Total Purchased (excluding found/borrowed)</td>
+                                <td>194.36</td>
+                            </tr>
+                            <tr>
+                                <td colspan="1"></td>
+                                <td colspan="1"></td>
+                                <td>Grand Total</td>
+                                <td>299.26</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <p>*Bought/found items. Costs are only estimates.</p>
+            </div>
+        </section>    </div>
+        </section>
+
+
+        
+
+        
+
+
+
+        
+
+        <!-- Footer -->
+        <footer class="wrapper style1 align-center">
+			<div class="inner">
+			
+  <a href="index.html">
+    <img
+      src="images/logo.png"
+      alt="Home"
+      class="footer-image"
+    >
+  </a>
+
+
+				                <p>Quick Links: <a href="index.html">Home</a> | <a href="overview.html">Overview</a> | <a href="mechanical.html">Mechanical</a> | <a href="software.html">Software</a> | <a href="electrical.html">Electrical</a> | <a href="team.html">About</a></p>
+
+				<p>&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+			</div>
+		</footer>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,233 @@
+<!DOCTYPE HTML>
+<!--
+	Story by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+<head>
+	<title>Silly Soil Serpents</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<noscript>
+		<link rel="stylesheet" href="assets/css/noscript.css" />
+	</noscript>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+</head>
+
+<body class="is-preload">
+
+	<!-- Wrapper -->
+	<div id="wrapper" class="divided">
+
+		<!-- Navigation -->
+		<nav id="scrollNav">
+			<div class="nav-left">
+				<a href="index.html#top" class="site-name">Silly Soil Serpents</a>
+			</div>
+
+			<div class="nav-right">
+				<a href="overview.html">Overview</a>
+
+				<div class="nav-dropdown">
+					<a href="mechanical.html" class="nav-parent">
+						Mechanical
+					</a>
+
+					<div class="dropdown-menu">
+						<a href="mechanical.html#links">Links</a>
+						<a href="mechanical.html#skin">Skin</a>
+						<a href="mechanical.html#head">Head</a>
+					</div>
+				</div>
+
+
+				<div class="nav-dropdown">
+					<a href="software.html" class="nav-parent">
+						Software
+					</a>
+
+					<div class="dropdown-menu">
+						<a href="software.html#movement">Movement</a>
+						<a href="software.html#dashboard">Dashboard</a>
+					</div>
+				</div>
+
+				<div class="nav-dropdown">
+					<a href="electrical.html" class="nav-parent">
+						Electrical
+					</a>
+
+					
+				</div>
+				<div class="nav-dropdown">
+					<a href="team.html" class="nav-parent">
+						About
+					</a>
+
+					
+				</div>
+
+			</div>
+		</nav>
+
+
+
+		<!-- One -->
+		<section id="home"
+			class="banner style1 orient-left content-align-left image-position-right fullscreen onload-image-fade-in onload-content-fade-right">
+			<div class="content">
+				<h1>Soil Analyzing Snake</h1>
+				<p class="major"> A robotic snake that analyzes wildfire risk in forests.</p>
+			</div>
+			<div class="image">
+				<img src="images/snake_irridescant_background.png" alt="" />
+			</div>
+		</section>
+
+		
+
+
+		<!-- Summary of Objectives -->
+		<section class="wrapper style1 align-center" id="objectives">
+			<div class="inner">
+				<h2>Objectives</h2>
+				<p>Core goals behind each design decision we made.</p>
+				<div class="items style1 medium onscroll-fade-in">
+
+					<section>
+						<span class="icon solid style2 major fa-tree"></span>
+						<h3>Sustainability</h3>
+						<p>Reduce any environmental impacts left by the snake, measure soil conditions to evaluate fire risk.
+						</p>
+					</section>
+					<section>
+						<span class="icon solid style2 major fa-gear"></span>
+						<h3>Biomimcry</h3>
+						<p>Design a modular snake that can be extended. Create an snake inspired movement pattern.</p>
+					</section>
+					<section>
+						<span class="icon solid style2 major fa-desktop"></span>
+						<h3>User Interface</h3>
+						<p>Create a dashboard to display real time soil moisture and temperature while allowing the user
+							to
+							remotely control the snake.
+						</p>
+					</section>
+
+				</div>
+				<p>The objective of our project was to create a robot, inspired by a snake, that takes
+					measurements to evaluate soil. We designed it to be used in the context of evaluating
+					risk of forest fire. The equipped sensor is therefore a moisture sensor, and
+					measurements map to the user's dashboard so that they can see areas with dry soil.
+					We drew inspiration from snakes in terms of the three styles of motion that the
+					snake performs, all exhibited by species of snakes.
+
+				</p>
+<a href="overview.html" class="button big wide smooth-scroll-middle">System Overview</a>
+			</div>
+
+		</section>
+
+		<!-- Final Video -->
+		<section class="wrapper style1 align-center">
+			<div class="inner">
+				<h2>Final Product</h2>
+				<video controls>
+							<source src="images/wireless_motion_with_skin.mp4" type="video/mp4">
+							Your browser does not support the video tag.
+						</video>
+				<p>Unfortunately, our pico that was controlling the motors burned out and stopped connecting via 
+					cable or via wifi so it was not operational on demo day. 
+					This video show the snake moving with its skin but not its head attached.
+				</p>
+			</div>
+		</section>
+
+		<!-- Two -->
+		<section class="spotlight style1 orient-right content-align-left image-position-center onscroll-image-fade-in"
+			id="first">
+			<div class="content">
+				<h2>Mechanical Design</h2>
+				<p>Read more about how we designed the snake to move and keep it water/dirt resistant.</p>
+				<ul class="actions stacked">
+					<li><a href="mechanical.html" class="button">Learn More</a></li>
+				</ul>
+			</div>
+			<div class="image">
+				<img src="images/cad_assembly_skeleton.jpg" alt="" />
+			</div>
+		</section>
+
+		<!-- Three -->
+		<section class="spotlight style1 orient-left content-align-left image-position-center onscroll-image-fade-in">
+			<div class="content">
+				<h2>Software Design</h2>
+				<p>Read more about the math that brought the snake movement together and how we integrated
+					a dashboard for users to both monitor data and control the snake.
+				</p>
+				<ul class="actions stacked">
+					<li><a href="software.html" class="button">Learn More</a></li>
+				</ul>
+			</div>
+			<div class="image">
+				<img src="images/software-cover.jpg" alt="" />
+			</div>
+		</section>
+
+		<!-- Four -->
+		<section class="spotlight style1 orient-right content-align-left image-position-center onscroll-image-fade-in">
+			<div class="content">
+				<h2>Electrical Design</h2>
+				<p>Read more about how we chose electrical components, connected them all together, and how
+					we wrote firmware to control the snake.
+				</p>
+				<ul class="actions stacked">
+					<li><a href="electrical.html" class="button">Learn More</a></li>
+				</ul>
+			</div>
+			<div class="image">
+				<img src="images/electrical-cover.jpg" alt="" />
+			</div>
+		</section>
+
+		
+
+        </section>
+
+		<!-- Footer -->
+		<footer class="wrapper style1 align-center">
+			<div class="inner">
+			
+  <a href="index.html">
+    <img
+      src="images/logo.png"
+      alt="Home"
+      class="footer-image"
+    >
+  </a>
+
+
+				                <p>Quick Links: <a href="index.html">Home</a> | <a href="overview.html">Overview</a> | <a href="mechanical.html">Mechanical</a> | <a href="software.html">Software</a> | <a href="electrical.html">Electrical</a> | <a href="team.html">About</a></p>
+
+				<p>&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+			</div>
+		</footer>
+
+	</div>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.scrollex.min.js"></script>
+	<script src="assets/js/jquery.scrolly.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+
+</body>
+
+</html>

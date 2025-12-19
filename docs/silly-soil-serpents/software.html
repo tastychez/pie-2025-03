@@ -1,0 +1,290 @@
+<!DOCTYPE HTML>
+<!--
+	Story by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+<head>
+	<title>Silly Soil Serpents</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<noscript>
+		<link rel="stylesheet" href="assets/css/noscript.css" />
+	</noscript>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+</head>
+
+<body class="is-preload">
+
+	<!-- Wrapper -->
+	<div id="wrapper" class="divided">
+
+		<!-- Navigation -->
+		<nav id="scrollNav">
+			<div class="nav-left">
+				<a href="index.html#top" class="site-name">Silly Soil Serpents</a>
+			</div>
+
+			<div class="nav-right">
+				<a href="overview.html">Overview</a>
+
+				<div class="nav-dropdown">
+					<a href="mechanical.html" class="nav-parent">
+						Mechanical
+					</a>
+
+					<div class="dropdown-menu">
+						<a href="mechanical.html#links">Links</a>
+						<a href="mechanical.html#skin">Skin</a>
+						<a href="mechanical.html#head">Head</a>
+					</div>
+				</div>
+
+
+				<div class="nav-dropdown">
+					<a href="software.html" class="nav-parent">
+						Software
+					</a>
+
+					<div class="dropdown-menu">
+						<a href="software.html#movement">Movement</a>
+						<a href="software.html#dashboard">Dashboard</a>
+					</div>
+				</div>
+
+				<div class="nav-dropdown">
+					<a href="electrical.html" class="nav-parent">
+						Electrical
+					</a>
+
+					
+				</div>
+				<div class="nav-dropdown">
+					<a href="team.html" class="nav-parent">
+						About
+					</a>
+
+					
+				</div>
+
+			</div>
+		</nav>
+
+
+
+		<!-- One -->
+		<section id="home"
+			class="banner style2 orient-left content-align-left image-position-right fullscreen onload-image-fade-in onload-content-fade-right">
+			<div class="content">
+				<h1>Software Design</h1>
+			
+				
+			</div>
+			<div class="image">
+				<img src="images/snakesnake.jpeg" alt="" />
+			</div>
+		</section>
+
+
+
+
+
+
+		<!-- Movement-->
+		<section class="wrapper style1 align-center" id="movement">
+			<div class="inner medium">
+				<h2>Snake Movement</h2>
+				<p>Our snake exhibits three types of movement: Concertina, Serpentine, and Sidewiding - all inspired by real snake behavior.</p>
+			</div>
+			<div class="inner">
+				<img src="images/movement.png" alt="" />
+			
+			<section class="flex-grid">
+
+
+				<div class="grid-item">
+					<img src="images/serpentine_animation.gif" alt="Large image">
+					<p>Serpentine Motion</p>
+					<p>A classic snake motion, serpentine motion relies on friction between the 
+					snake and the ground to push it forward. We recreated this movement with a mathematical 
+					model with parameters that are tuned based on the snakes length, number of segments, speed, 
+					and direction of motion. The image below shows a simulation in MATLAB of direction of the 
+					after adjusting the direction parameter.</p>
+					<img src="images/serpentine_sim_photo.jpg" alt="Large image">
+				</div>
+				<div class="grid-item">
+					<img src="images/concertina_animation.gif" alt="Large image">
+					<p>Concertina Motion</p>
+					<p>Concertina motion resembles inchworm motion, and is used by snakes when they have
+						objects to push off of tp propel them forward. Our snake pushed off of the floor,
+						and was propelled by the friction between the head and the rug.
+					</p>
+					<img src="images/concertina_illustration.jpg" alt="Large image">
+				</div>
+				<div class="grid-item">
+					<img src="images/sidewinding_animation.gif" alt="Large image">
+					<p>Sidewinding Motion</p>
+					<p>Sidewinding motion moves the snake perpendicular to the direction that it 
+						would be moving in if it were using serpentine motion. It lifts some parts of 
+						its body while pushing off of the ground with the others, creating a distinct trail 
+						behind it. Snakes use this form of motion in the desert when they need to move up slopes
+						covered with sand. The image below shows an early sketch of sidewinding motion being 
+						translated to our snake's mobility.
+					</p>
+					<img src="images/sidewinding_sketch.jpg" alt="Large image">
+				</div>
+			</section>
+			<p> </p>
+			<p> </p>
+
+			<section class="video-grid">
+					<div class="grid-text">
+						<h3>Application to the Robot</h3>
+						<p>
+							After reading researchers' work on how snake locomotion can be applied to 
+							robotics, we calculated how the motors should move to replicate snake motion 
+							in our robot. This video shows successful execution of serpentine motion. 
+						</p>
+						
+						
+					</div>
+
+					<div class="grid-video">
+						<video controls>
+							<source src="videos/serpentine_motion_vid.mp4" type="video/mp4">
+							Your browser does not support the video tag.
+						</video>
+					</div>
+					<div class="grid-text">
+						<h3>References</h3>
+						
+						
+						<p>Akbarzadeh, Alireza, Safehian, Jalil, Safehian, Javad, and Kalani, Hadi.
+							 "Generating Snake Robot Concertina Locomotion Using a New Dynamic Curve". 
+							 International Journal of Modeling and Optimization, Vol. 1, No. 2, 
+							 June 2011
+							 https://www.ijmo.org/papers/24-T0125.pdf
+						</p>
+
+						<p>Ivan Virgala, Martin Varga, Peter Ján Sinčák, Tomáš Merva, Roman Mykhailyshyn, Michal Kelemen,
+							Mathematical framework for snake robot motion in a confined space,
+							Applied Mathematical Modelling,
+							Volume 132,
+							2024,
+							Pages 22-40,
+							ISSN 0307-904X,
+							https://doi.org/10.1016/j.apm.2024.04.020.
+						</p>
+
+						<p>Burdick, J.W. & Radford, J. & Chirikjian, Gregory. (1993). 
+							'Sidewinding' locomotion gait for hyper-redundant robots. 
+							Advanced Robotics. 9. 101 - 106 vol.3. 10.1109/ROBOT.1993.291864. 
+							https://www.researchgate.net/publication/3556554_
+						</p>
+					</div>
+					</div>
+			</section>
+
+
+			<!-- Two -->
+			<section
+				class="spotlight style1 orient-right content-align-left image-position-center onscroll-image-fade-in"
+				id="dashboard">
+				<div class="content">
+					<h2>Software Setup</h2>
+					<p>
+					We communicated with our Raspberry Pi and Picos through a linux based terminal on
+					a Windows machine. Our initial plan was to use USB connection between the Windows 
+					machine and Picos but it proved to be unreliable. We experienced a multitude of 
+					connection issues, such as changing ports, inconsistent usb detection, and errors
+					when uploading firmware. Given that these issues sprouted from passing the connection
+					to the Linux terminal through the Windows terminal, we shifted to using a Linux machine
+					in hopes of reducing the possibility of instability.
+					</p>
+					<p>
+					This shift, in theory, would have allowed us to communicate directly with the Picos.
+					Unfortunately, we continued to have connnection issues. With the deadline approaching,
+					the Raspberry Pi seemed to be our only hope. Luckily, we were able to establish a reliable connection
+					via SSH within a few minutes! We did not have connection issues for the remainder of the project
+					</p>
+				
+					<h2>MicroPython and Firmware</h2>
+					<p>
+					Our Pico Ws were connected to the Pi via usb for the first week of testing. We then shifted to
+					wifi based connection to avoid chord and wire pulling. The Picos were flashed with micropython 
+					firmware to allow python files to be communicated through the linux terminal. 
+					<p>
+					We changed the firmware on our Picos depending on their needs. Our soil sensor Pico required us 
+					to flash Circuit Python while our camera Pico required us to flash C, as we communicated through
+					Arduino IDE. 
+					</p>
+
+					<h2>Pico and Pi Communication</h2>
+					<p>
+					Connected to the Pi via SSH, we were able to push python scripts to the Picos from our terminal. All 
+					mathematical computations for the snake's movement were performed by the Pi. These computations were
+					then converted to serial data and communicated to the Picos via usb or wifi.
+					</p>
+					
+					<p>
+
+					</p>
+
+					<ul class="actions stacked">
+						<li><a href="https://github.com/elliedbq/silly-soil-serpents" class="button">Github</a></li>
+					</ul>
+				</div>
+				<div class="image">
+					<img src="images/gallery/fulls/10.jpg" alt="" />
+				</div>
+			</section>
+
+			<section class="wrapper style1 align-center" id="dashboard">
+		<div class="inner">
+			<h2>Dashboard</h2>
+			<p> Mockup dashboard for sensor data and location. Updates live based on a csv file read more  <a href="https://github.com/elliedbq/silly-soil-serpents/tree/main/testing/dashboard#soil-analyzing-snake-dashboard " >here.</a> </p>
+			<span class="image fit"><img src="images/oscar-working.jpeg" alt="" /></span>
+			
+		</div>
+	</section>
+
+			
+
+
+
+			<footer class="wrapper style1 align-center">
+			<div class="inner">
+			
+  <a href="index.html">
+    <img
+      src="images/logo.png"
+      alt="Home"
+      class="footer-image"
+    >
+  </a>
+
+
+				                <p>Quick Links: <a href="index.html">Home</a> | <a href="overview.html">Overview</a> | <a href="mechanical.html">Mechanical</a> | <a href="software.html">Software</a> | <a href="electrical.html">Electrical</a> | <a href="team.html">About</a></p>
+
+				<p>&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+			</div>
+		</footer>
+
+	</div>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.scrollex.min.js"></script>
+	<script src="assets/js/jquery.scrolly.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
