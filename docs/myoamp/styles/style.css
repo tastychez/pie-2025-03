@@ -34,24 +34,25 @@ li {
 
 
 .intro {
-  margin: 50px 0;
+  margin: 10px 0;
   text-align: right;
 }
 
 .intro h1{
-  margin: 10px auto 50px 700px;
+  margin: 0 auto 5px 700px;
+  padding: 0;
 }
 
 .intro h2{
   text-align: right;
-  margin: 0 0 30px 0;
+  margin: 0 0 20px 0;
 }
 
 .intro p{
   color: rgb(0, 0, 0);
   width: auto;
   max-width: 650px;
-  margin: 20px 0 0 800px;
+  margin: 5px 0 0 800px;
   font-size: 25px;
 }
 
