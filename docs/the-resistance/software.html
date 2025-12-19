@@ -1,172 +1,175 @@
 <!DOCTYPE HTML>
-<!--
-	Editorial by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
 <html>
-	<head>
-		<title>The Resistance - Automatic Resistor Sorter</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-	</head>
-	<body class="is-preload">
+    <head>
+        <title>Software - The Resistance</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="stylesheet" href="assets/css/main.css" />
+        
+        <style>
+            .modal { display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.9); }
+            .modal-content { margin: auto; display: block; width: 80%; max-width: 1000px; max-height: 90vh; object-fit: contain; position: relative; top: 50%; transform: translateY(-50%); }
+            .close { position: absolute; top: 20px; right: 35px; color: #f1f1f1; font-size: 40px; font-weight: bold; cursor: pointer; z-index: 10001; }
+            .close:hover { color: #bbb; }
+            .image.fit img { cursor: pointer; transition: opacity 0.2s; }
+            .image.fit img:hover { opacity: 0.8; }
+            
 
-		<!-- Wrapper -->
-			<div id="wrapper">
+            .equation {
+                font-family: 'Courier New', Courier, monospace;
+                background: #f4f4f4;
+                padding: 15px;
+                border-left: 5px solid #f4b41a; 
+                margin: 1.5em 0;
+                text-align: center;
+                font-weight: bold;
+                font-size: 1.1em;
+                color: #3d4449;
+            }
+        </style>
+    </head>
+    <body class="is-preload">
 
-				<!-- Main -->
-					<div id="main">
-						<div class="inner">
+        <div id="wrapper">
+            <div id="main">
+                <div class="inner">
 
-							<!-- Header -->
-								<header id="header">
-									<a href="index.html" class="logo"><strong>The Resistance</strong> ~ PIE 2025FA</a>
-									<ul class="icons">
-										<li><a href="https://github.com/jalikins/The-Resistors" class="icon brands fa-github"><span class="label">Github</span></a></li>
-									</ul>
-								</header>
+                    <header id="header">
+                        <a href="index.html" class="logo"><strong>The Resistance</strong> ~ PIE 2025FA</a>
+                        <ul class="icons">
+                            <li><a href="https://github.com/jalikins/The-Resistors" class="icon brands fa-github"><span class="label">Github</span></a></li>
+                        </ul>
+                    </header>
 
-							<!-- Content -->
-								<section>
-									<header class="main">
-										<h1>Software</h1>
-									</header>
+                    <section>
+                        <header class="main">
+                            <h1>Software Design</h1>
+                        </header>
 
-									<span class="image main"><img src="images/pic11.jpg" alt="" /></span>
+                        <div class="sticky-nav">
+                            <ul>
+                                <li><a href="#logic">Logic</a></li>
+                                <li><a href="#ui">User Interface</a></li>
+                                <li><a href="#bridge">Hardware Bridge</a></li>
+                            </ul>
+                        </div>
 
-									<p>We present a fully automatic resistor sorter, with bee-hive inspired design elements. The active components of the  resistor sorter consist of a modular conveyor belt, a two-pronged resistor probe, linearly-actuated “paddles”, and an array of bins. To sort the resistors, the resistors are first placed on the conveyor belt. Each of the conveyor belt modules has conductive copper tape on either end to act as conductive contacts with the resistors. 
-										When the conveyor belt moves, the modules pass under the two-pronged resistor probe, which comes into contact with the copper tape, passing current through the resistor. Using another resistor of a known value, we can determine the resistance of the resistor by measuring the voltage across the resistor. The resistor then passes to the underside of the conveyor belt, where the paddles knock the resistors into their respective bins. To stylize our 
-										resistor sorter like a beehive we rastered hexagonal motifs to the body of the sorter and added “melting honey” resin-printed accents, made one of the walls out of clear acrylic, and added LED lighting to the interior. </p>
+                        <h2 id="logic">Logic & Control</h2>
 
-									<hr class="major" />
+                        <div class="scroll-reveal">
+                            <h3>Motor Control and Timing</h3>
+                            <p>All resistor measurement and dropping is coordinated based on the belt position, a variable that increments each time the belt advances by one module as detected by the limit switch). The bin width of exactly one module means that with each increment in belt position, one resistor can be measured and assigned to a bin, and up to fourteen resistors can be dropped via individual actuators triggering. The seamless integration of these actions is achieved using a three dimensional array. This array encodes the assigned bin for each measured resistor, the belt position at which it will be dropped, and the index for each bin dimension to accommodate additional resistors of the same category. When a given resistor is measured, all of these dimensions are computed so that, when it reaches the correct bin, a separate function can detect that the current the belt position matches its designated drop location and trigger the appropriate actuator. Notably, the array only needs to be large enough to accommodate all 14 bins and the number of belt increments between the measurement point and the farthest bin. Once the array is full, it can safely overwrite entries at lower indices because the resistors associated with those entries are guaranteed to have already reached and been dropped into their target bin.</p>
+                        </div>
 
-									<h2>User Interface</h2>
-									<p>User Interface
-									To allow the user to control which resistors get sorted into each of XX bins, we use a touchscreen controlled by a Raspberry Pi. The UI depicts 12 boxes, each representing one bin, and uses a beehive-inspired color scheme to match our design goal. When the user clicks on a box, a number pad appears. Here the user can input a new resistance value (in Ohms) that they want to assign to the bin. Once they confirm, the Raspberry Pi updates a JSON file 
-									where all the bin states are stored for future use, and a signal is sent to the PCB by way of an Arduino Nano to update the PCB on the new bin state. We use a JSON to store the bin states as it allows us to maintain user preferences across multiple runs for convenience, storing the resistance values assigned to each bin during the prior use. We chose an Arduino Nano to bridge between the Raspberry Pi and the PCB because the Raspberry Pi operates on 
-									3.3V, while the PCB operates on 5V. Connecting these two directly with a communication system like UART would fry the GPIO pins on the Raspberry Pi. Instead, we plug the Nano into the Raspberry Pi through the USB ports, and then connect the Nano to the PCB using its Serial pins. This prevents the pins on the Raspberry Pi from burning out and bypasses having to use a logic level converter or a similar voltage buffer that could impact signal integrity. 
-									</p>
+                        <div class="scroll-reveal">
+                            <h3>Measuring Logic</h3>
+                            <p>The code for the measuring station is relatively straightforward. To calculate resistance, we use the equation:</p>
+                            
+                            <div class="equation">
+                                R = V<sub>net</sub> &times; R<sub>ref</sub> / (V<sub>net</sub> - V<sub>R</sub>)
+                            </div>
+                            
+                            <p>Where <strong>V<sub>net</sub></strong> is the supply voltage from logic power (approximately 5V), <strong>R<sub>ref</sub></strong> is the known reference resistor selected by the multiplexer, and <strong>V<sub>R</sub></strong> is the voltage across the unknown resistor R.</p> 
+                            
+                            <p>To derive the voltage across the unknown resistor, we use the conversion factor:</p>
+                            
+                            <div class="equation">
+                                V<sub>R</sub> = A &times; (V<sub>net</sub> / 1024)
+                            </div>
+                            
+                            <p>This is for our 10-bit AVR device (the same resolution as on Arduino Uno), where <strong>A</strong> is the raw analog-to-digital conversion value.</p>
+                        </div>
 
-									<hr class="major" />
+                        <hr class="major" />
 
-									<h2>Magna etiam veroeros</h2>
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facilisis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam tristique libero eu nibh porttitor fermentum. Nullam venenatis erat id vehicula viverra. Nunc ultrices eros ut ultricies condimentum. Mauris risus lacus, blandit sit amet venenatis non, bibendum vitae dolor. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In non lorem sit amet elit placerat maximus. Pellentesque aliquam maximus risus, vel sed vehicula.</p>
-									<p>Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fersapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque enim turpis, hendrerit tristique lorem ipsum dolor.</p>
+                        <h2 id="ui">User Interface (UI)</h2>
+                        <div class="scroll-reveal">
+                            <p>To allow the user to control which resistors are routed to each of the 13 bins, we use a touchscreen interface driven by a Raspberry Pi. The UI shows 13 boxes, each representing one bin, and uses a beehive-inspired color scheme that aligns with our overall design aesthetic. When the user taps a box, a numeric keypad appears, allowing them to input a new resistance value (in ohms) to assign to that bin Once the value is confirmed, the Raspberry Pi updates a JSON file that stores all bin states for future use, and a signal via an Arduino Nano to inform the PCB of the updated bin state. We use a JSON file to store the bin states so that user preferences persist across multiple runs, retaining the resistance values assigned to each bin from the previous session. We used Kivy, an open-source, cross-platform GUI framework, for UI development . We chose it because it enabled a relatively simple interactive GUI without requiring a full-stack web app to run on the Raspberry Pi OS.</p>
+                            
+                            <div class="box alt">
+                                <div class="row gtr-50 gtr-uniform">
+                                    <div class="col-4 col-12-medium"><span class="image fit"><img src="images/ui.png" alt="UI Dashboard" /></span></div>
+                                    <div class="col-4 col-12-medium"><span class="image fit"><img src="images/numpad.png" alt="Numpad" /></span></div>
+                                    <div class="col-4 col-12-medium"><span class="image fit"><img src="images/full_sorter.png" alt="Full System" /></span></div>
+                                </div>
+                            </div>
+                        </div>
 
-									<hr class="major" />
+                        <hr class="major" />
 
-									<h2>Lorem aliquam bibendum</h2>
-									<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fergiat. Pellentesque in mi eu massa lacinia malesuada et a elit. Donec urna ex, lacinia in purus ac, pretium pulvinar mauris. Curabitur sapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque enim turpis, hendrerit.</p>
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facilisis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam tristique libero eu nibh porttitor fermentum. Nullam venenatis erat id vehicula viverra. Nunc ultrices eros ut ultricies condimentum. Mauris risus lacus, blandit sit amet venenatis non, bibendum vitae dolor. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In non lorem sit amet elit placerat maximus. Pellentesque aliquam maximus risus, vel sed vehicula.</p>
+                        <h2 id="bridge">Hardware-Software Bridge</h2>
+                        <div class="scroll-reveal">
+                            <p>We chose an Arduino Nano to bridge between the Raspberry Pi and the PCB because the Raspberry Pi operates at 3.3V logic, while the PCB requires 5V. Connecting these two directly over a communication interface like UART could exceed the Raspberry Pi’s 3.3V GPIO limits and risk permanently damaging its pins. Instead, the Arduino Nano connects to the Raspberry Pi via USB, and then interfaces with the PCB over its hardware Serial pins. This approach protects the Raspberry Pi’s GPIO pins from overvoltage damage and eliminates the need for an external logic level converter or similar voltage buffer, which could otherwise degrade signal integrity.</p>
+                        </div>
 
-								</section>
+                    </section>
 
-						</div>
-					</div>
+                </div>
+            </div>
 
-				<!-- Sidebar -->
-					<div id="sidebar">
-						<div class="inner">
+            <div id="sidebar">
+                <div class="inner">
+                    <nav id="menu">
+                        <header class="major"><h2>Menu</h2></header>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="mission.html">Mission</a></li>
+                            <li><a href="software.html">Software</a></li>
+                            <li><a href="electrical.html">Electrical</a></li>
+                            <li><a href="mechanical.html">Mechanical</a></li>
+                            <li><a href="sprints.html">Sprints</a></li>
+                            <li><a href="gallery.html">Gallery</a></li>
+                            <li><a href="budget.html">Budget</a></li>
+                            <li><a href="aboutus.html">About Us</a></li>
+                        </ul>
+                    </nav>
 
-							<!-- Search -->
-								<section id="search" class="alt">
-									<form method="post" action="#">
-										<input type="text" name="query" id="query" placeholder="Search" />
-									</form>
-								</section>
+                    <section>
+                                    <header class="major">
+                                        <h2>Get in touch</h2>
+                                    </header>
+                                    <p></p>
+                                    <ul class="contact">
+                                        <li class="icon solid fa-home">1000 Olin Way<br />
+                                        Needham, MA 02492</li>
+                                    </ul>
+                             	</section>
+                    <footer id="footer"><p class="copyright">&copy; Untitled. All rights reserved.</p></footer>
+                </div>
+            </div>
+        </div>
+        
+        <div id="imageModal" class="modal">
+            <span class="close">&times;</span>
+            <img class="modal-content" id="img01">
+        </div>
 
-							<!-- Menu -->
-								<nav id="menu">
-									<header class="major">
-										<h2>Menu</h2>
-									</header>
-									<ul>
-										<li><a href="index.html">Home</a></li>
-										<li><a href="mission.html">Generic</a></li>
-										<li><a href="software.html">Software</a></li>
-										<li><a href="budget.html">Budget</a></li>
-										<li>
-											<span class="opener">Submenu</span>
-											<ul>
-												<li><a href="#">Lorem Dolor</a></li>
-												<li><a href="#">Ipsum Adipiscing</a></li>
-												<li><a href="#">Tempus Magna</a></li>
-												<li><a href="#">Feugiat Veroeros</a></li>
-											</ul>
-										</li>
-										<li><a href="#">Etiam Dolore</a></li>
-										<li><a href="#">Adipiscing</a></li>
-										<li>
-											<span class="opener">Another Submenu</span>
-											<ul>
-												<li><a href="#">Lorem Dolor</a></li>
-												<li><a href="#">Ipsum Adipiscing</a></li>
-												<li><a href="#">Tempus Magna</a></li>
-												<li><a href="#">Feugiat Veroeros</a></li>
-											</ul>
-										</li>
-										<li><a href="#">Maximus Erat</a></li>
-										<li><a href="#">Sapien Mauris</a></li>
-										<li><a href="#">Amet Lacinia</a></li>
-									</ul>
-								</nav>
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/browser.min.js"></script>
+        <script src="assets/js/breakpoints.min.js"></script>
+        <script src="assets/js/util.js"></script>
+        <script src="assets/js/main.js"></script>
+        
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                var observer = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("visible");
+                        }
+                    });
+                }, { threshold: 0.1 });
+                document.querySelectorAll(".scroll-reveal").forEach(el => observer.observe(el));
+            });
 
-							<!-- Section -->
-								<section>
-									<header class="major">
-										<h2>Ante interdum</h2>
-									</header>
-									<div class="mini-posts">
-										<article>
-											<a href="#" class="image"><img src="images/pic07.jpg" alt="" /></a>
-											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
-										</article>
-										<article>
-											<a href="#" class="image"><img src="images/pic08.jpg" alt="" /></a>
-											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
-										</article>
-										<article>
-											<a href="#" class="image"><img src="images/pic09.jpg" alt="" /></a>
-											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
-										</article>
-									</div>
-									<ul class="actions">
-										<li><a href="#" class="button">More</a></li>
-									</ul>
-								</section>
-
-							<!-- Section -->
-								<section>
-									<header class="major">
-										<h2>Get in touch</h2>
-									</header>
-									<p>Sed varius enim lorem ullamcorper dolore aliquam aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin sed aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-									<ul class="contact">
-										<li class="icon solid fa-envelope"><a href="#">information@untitled.tld</a></li>
-										<li class="icon solid fa-phone">(000) 000-0000</li>
-										<li class="icon solid fa-home">1234 Somewhere Road #8254<br />
-										Nashville, TN 00000-0000</li>
-									</ul>
-								</section>
-
-							<!-- Footer -->
-								<footer id="footer">
-									<p class="copyright">&copy; Untitled. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
-								</footer>
-
-						</div>
-					</div>
-
-			</div>
-
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-
-	</body>
+            var modal = document.getElementById("imageModal");
+            var modalImg = document.getElementById("img01");
+            var span = document.getElementsByClassName("close")[0];
+            document.querySelectorAll('.image.fit img').forEach(img => {
+                img.onclick = function(){ modal.style.display = "block"; modalImg.src = this.src; }
+            });
+            span.onclick = function() { modal.style.display = "none"; }
+            window.onclick = function(event) { if (event.target == modal) modal.style.display = "none"; }
+        </script>
+    </body>
 </html>
