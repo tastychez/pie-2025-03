@@ -798,7 +798,34 @@ a:focus {
 .software-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--spacing-xl);
+  gap: var(--spacing-lg);
+}
+
+/* Generic diagram frame used on software page */
+.diagram-frame {
+  margin-top: var(--spacing-xl);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Improve placeholders used for future images/diagrams */
+.diagram-placeholder {
+  background: var(--color-bg-gray);
+  border-radius: var(--border-radius);
+  min-height: 260px;
+  padding: var(--spacing-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.diagram-placeholder p {
+  color: var(--color-text-light);
+  font-size: var(--font-size-base);
+  max-width: 24rem;
 }
 
 /* Mechanical Page */
@@ -995,5 +1022,72 @@ a:focus {
 
   .nav-toggle[aria-expanded="true"] .hamburger:nth-child(3) {
     transform: rotate(-45deg) translate(7px, -6px);
+  }
+}
+
+/* --- NEW STYLES FOR SOFTWARE PAGE --- */
+
+/* Tech Stack Badges */
+.tech-stack-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.tech-badge {
+  background-color: var(--color-blue-50);
+  color: var(--color-primary-dark);
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border: 1px solid var(--color-blue-200);
+  box-shadow: 0 2px 4px rgba(37, 99, 235, 0.1);
+}
+
+/* Updated Decision Cards */
+.decision-card {
+  border-left: 5px solid var(--color-primary); /* Blue accent on left */
+  transition: transform 0.2s ease;
+}
+
+.decision-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.problem-box {
+  margin-bottom: 1rem;
+  color: var(--color-text-gray);
+}
+
+.solution-box {
+  background-color: #ecfdf5; /* Very light green */
+  border: 1px solid #a7f3d0; /* Green border */
+  border-radius: var(--border-radius);
+  padding: 1rem 1.5rem;
+  color: #065f46; /* Dark green text */
+}
+
+.solution-box strong {
+  color: #047857;
+}
+
+.caption {
+    text-align: center;
+    color: var(--color-text-light);
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+    font-style: italic;
+}
+
+/* Adjust software grid for better flow */
+@media (min-width: 768px) {
+  .software-grid {
+    grid-template-columns: 1fr 1fr; /* Side by side text and image */
+    align-items: center;
+    gap: 3rem;
   }
 }

@@ -55,9 +55,6 @@
               <a href="overview.html" class="nav-link">Overview</a>
             </li>
             <li class="nav-item">
-              <a href="design-process.html" class="nav-link">Design Process</a>
-            </li>
-            <li class="nav-item">
               <a href="mechanical.html" class="nav-link">Mechanical</a>
             </li>
             <li class="nav-item">
@@ -144,13 +141,10 @@
           <h2 class="section-heading">View Our Machine in Action!</h2>
           <div class="video-container">
             <div class="video-placeholder">
-              <div class="video-icon">▶️</div>
-              <p class="video-text">
-                Video placeholder - Insert your video here
-              </p>
-              <p class="video-note">
-                Your browser does not support HTML5 video.
-              </p>
+              <video controls autoplay loop>
+                <source src="assets/AURADemo.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
             </div>
           </div>
         </div>
@@ -189,17 +183,9 @@
       <div class="container">
         <h3 class="footer-title">Project AURA</h3>
         <p class="footer-description">
-          A smart, autonomous cart that carries your heavy belongings and follows you
+          A smart, autonomous cart that carries your heavy stuff and follows you
           so you never have to haul it yourself.
         </p>
-        <div class="footer-actions">
-          <button
-            onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
-            class="btn btn-white"
-          >
-            Back to Top
-          </button>
-        </div>
         <div class="footer-bottom">
           <p class="footer-copyright">
             © <span id="current-year"></span> Project AURA. Principles of
@@ -215,25 +201,6 @@
             >
           </div>
         </div>
-        <button
-          onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
-          class="footer-scroll-top"
-          aria-label="Scroll to top"
-        >
-          <svg
-            class="footer-icon"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M5 10l7-7m0 0l7 7m-7-7v18"
-            />
-          </svg>
-        </button>
       </div>
     </footer>
 
