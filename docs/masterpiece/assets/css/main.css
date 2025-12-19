@@ -2454,14 +2454,19 @@ input, select, textarea {
 			vertical-align: middle;
 		}
 
-		ul.actions.special {
-			-moz-justify-content: center;
-			-webkit-justify-content: center;
-			-ms-justify-content: center;
-			justify-content: center;
-			width: 100%;
-			margin-left: 0;
-		}
+
+ul.actions.special {
+    display: inline-flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    
+    background-color: #00000054;
+    padding: 0em 0em;
+    border-radius: 6px;
+    
+    margin: 0 auto;
+}
+		
 
 			ul.actions.special li:first-child {
 				padding-left: 0;
@@ -2957,7 +2962,7 @@ input, select, textarea {
 		#header button,
 		#header .button {
 			box-shadow: inset 0 0 0 1px #ffffff;
-			color: #000000 !important;
+			color: #ffffff !important;
 		}
 
 			#header input[type="submit"]:hover,
