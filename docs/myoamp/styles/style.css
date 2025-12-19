@@ -305,6 +305,7 @@ code {
   cursor: pointer;
   width: 79px;
   margin-top: 0px;
+  z-index: 1;
 }
 
 .dropdown-menu li a {
