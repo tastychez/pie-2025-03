@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Mechanical</title>
+  <link rel="stylesheet" href="css/style.css?v=FINAL">
+  <style>
+    /* Phase cards styling */
+    .phase-cards { display:flex; gap:12px; flex-wrap:wrap; margin-bottom:16px; }
+    .phase-card { flex:1; min-width:150px; background:#f3f3f3; padding:12px; border-radius:8px; cursor:pointer; text-align:center; transition:0.2s; }
+    .phase-card:hover, .phase-card.active { background:#e0e0e0; }
+    .phase-content { display:none; margin-top:12px; padding:12px; background:#fafafa; border-radius:8px; }
+    .phase-content.active { display:block; }
+    /* Remove subsection borders/padding so font matches Electrical page */
+    .subsection { margin-top:12px; padding-left:0; border-left:none; }
+    /* Horizontal image row with label */
+    .image-row { display:flex; flex-wrap:wrap; gap:12px; justify-content:center; margin-top:6px; }
+    .image-row div { text-align:center; }
+    .image-row img { max-width:200px; height:auto; border-radius:6px; display:block; margin-bottom:4px; }
+  </style>
+</head>
+
+<body data-letter="M">
+
+<header class="topbar">
+  <div class="container navwrap">
+    <div class="brand">RUBLING</div>
+    <nav class="navlinks">
+      <a href="index.html">Overview</a>
+      <a href="system.html">System</a>
+      <a href="team.html">Team</a>
+      <a href="electrical.html">Electrical</a>
+      <a class="active" href="mechanical.html">Mechanical</a>
+      <a href="software.html">Software</a>
+      <a href="process.html">Process</a>
+      <a href="demo.html">Demo</a>
+      <a href="budget.html">Budget</a>
+    </nav>
+  </div>
+</header>
+
+<div class="container hero">
+  <div class="headingRow">
+    <div class="cubeInline">
+      <div id="cubeMount"></div>
+    </div>
+    <h1 class="pageHeading">ECHANICAL</h1>
+  </div>
+</div>
+
+<main class="container">
+
+  <!-- IMAGE INTRO -->
+  <section class="card section">
+    <div style="display:flex; gap:18px; justify-content:center;">
+      <img src="media/CAD Render Final Box.png" alt="CAD Render of Final Box" style="width:32%; height:auto; border-radius:12px;">
+      <img src="media/picture of final box.jpeg" alt="Final Physical Box" style="max-width:32%; border-radius:12px;">
+      <img src="media/mario.jpeg" alt="Mario Test Image" style="max-width:32%; border-radius:12px;">
+    </div>
+  </section>
+
+  <!-- GENERAL OVERVIEW -->
+  <section class="card section">
+    <h2>General Overview</h2>
+    <p>
+      <strong>Overall System</strong> — The mechanical portion of this project concerned how the motors are mounted/positioned in a way that can solve certain configurations of the cube given an image and how we can present the cube to the user in a specific configuration.
+      <br><br>
+      <strong>Motors + Mounts and General Structure</strong> -  We utilize five NEMA17 motors to physically turn the cube. Mounted on the shafts of the Nemas are 3D printed pieces that allow these five motors - mounted on 4 sides + the relative bottom - to turn the cube. Throughout our machine, we utilize lasercut  ¼ inch acrylic to create the basis/foundation for the sliding mechanism and the general housing of our entire machine. We utilized a collection of different colored acrylic to make our casing aesthetically pleasing and functional. The motor mounts slide along acrylic rods to move the motors in and out of clamping the cube. These moving motor mounts allowed the motors to detach from the cube, allowing us to place the cubes manually in the frame.
+	    <br><br>
+      <strong>Lead Screw Elevator</strong> — In order to detach from the cube, motor mounts detach from the sides of the cube, and a lead screw elevator slowly brings the rubiks cube down to place the rubik's cube flat on the face of the structure. This lead screw implementation allows the user to easily grab the cube without manually detaching any connections between the machine and the cube.
+      <br><br>
+      <strong>Timed Belt + Pulley System</strong> — In order to move the motor mounts suspended on acrylic rods, we utilize a belt and pulley system that drives paired motor mounts towards and away from the cube. 
+</p>
+  </section>
+
+  <!-- PHASE CARDS -->
+  <section class="card section">
+    <h2>Mechanical Development Cycle</h2>
+    <div class="phase-cards">
+      <div class="phase-card" data-phase="phase1">Phase 1 — Solver Prototype</div>
+      <div class="phase-card" data-phase="phase2">Phase 2–3 — Mechanism Prototyping</div>
+      <div class="phase-card" data-phase="phase4">Phase 4 — Final Assembly</div>
+    </div>
+
+    <!-- Phase Contents -->
+    <div id="phase1" class="phase-content">
+      <p>
+        In this phase, our main concern was developing the solver mechanism. We prototyped a general basis for the Rubik's cube solving using ¼ inch MDF, 3D-printed motor mounts, and tape. Given a mechanical chassis, electrical and software testing could progress.
+      </p>
+      <div class="image-row">
+        <div>
+          <img src="media/stud attachment.png" alt="Phase 1 Stud Attachment">
+          <div>Stud Attachment</div>
+        </div>
+        <div>
+          <img src="media/cad-sprint1.png" alt="Phase 1 CAD Sprint">
+          <div>CAD Sprint 1</div>
+        </div>
+        <div>
+          <img src="media/sprint1mech.jpg" alt="Phase 1 Mechanical Sprint">
+          <div>Mechanical Sprint 1</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="phase2" class="phase-content">
+      <p>
+        Given the general basis was for software and electrical testing, these phases instead focused on mechanical prototyping, testing many designs for proof of concept.
+      </p>
+      <div class="image-row">
+        <div>
+          <img src="media/relativeslidercad.png" alt="Phase 2 Slider CAD">
+          <div>Slider CAD</div>
+        </div>
+        <div>
+          <img src="media/mdfversion2.jpg" alt="Phase 2 MDF Version 2">
+          <div>MDF Version 1</div>
+        </div>
+        <div>
+          <img src="media/mdfversion.png" alt="Phase 2 MDF Version">
+          <div>MDF Version 2</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="phase4" class="phase-content">
+      <p>
+        With proof of concept for our mechanisms like the belt and pulley system, we were capable of final prototyping and assembly. This concerned cutting the final acrylic and assembling the final machine for solving the Rubik's cube.
+      </p>
+      <div class="image-row">
+        <div>
+          <img src="media/picture of final box.jpeg" alt="Phase 4 Final Box">
+          <div>Final Box</div>
+        </div>
+        <div>
+          <img src="media/penguin.jpeg" alt="Phase 4 Penguin Image">
+          <div> Penguin Image</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="footer">PIE Final · Mechanical</div>
+
+</main>
+
+<script src="js/nav.js"></script>
+<script src="js/cube.js"></script>
+<script>
+  // Clickable Phase Cards JS
+  const cards = document.querySelectorAll('.phase-card');
+  const contents = document.querySelectorAll('.phase-content');
+
+  cards.forEach(card => {
+    card.addEventListener('click', () => {
+      cards.forEach(c => c.classList.remove('active'));
+      contents.forEach(c => c.classList.remove('active'));
+      card.classList.add('active');
+      document.getElementById(card.dataset.phase).classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>

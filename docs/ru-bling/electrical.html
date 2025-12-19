@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Electrical</title>
+  <link rel="stylesheet" href="css/style.css?v=FINAL">
+</head>
+<body data-letter="E">
+
+<header class="topbar">
+  <div class="container navwrap">
+    <div class="brand">RUBLING</div>
+    <nav class="navlinks">
+      <a href="index.html">Overview</a>
+      <a href="team.html">Team</a>
+      <a href="system.html">System</a>
+      <a class="active" href="electrical.html">Electrical</a>
+      <a href="mechanical.html">Mechanical</a>
+      <a href="software.html">Software</a>
+      <a href="process.html">Process</a>
+      <a href="demo.html">Demo</a>
+      <a href="budget.html">Budget</a>
+    </nav>
+  </div>
+</header>
+
+<div class="container hero">
+    <div class="headingRow">
+      <div class="cubeInline"><div id="cubeMount"></div></div>
+      <h1 class="pageHeading">LECTRICAL</h1>
+    </div>
+</div>
+
+<main class="container">
+
+  <section class="card section">
+    <h2>Overview</h2>
+    The electrical system provides the movement of the cubes through cube motors that rotate the cube to solve it. It consists of motors (5 cube motors, 3 secondary motors and 1 motor for the rack-and-pinion), motor drivers, and Arduinos.
+    <img src="media/kicad.jpg" class="img-responsive">
+  </section>
+
+  <section class="card section">
+    <h2>Electrical Components</h2>
+    <section class="card section grid" aria-label="Team subs">
+    <div class="cards">
+
+    <article class="sub-card" tabindex="0" aria-labelledby="name-1" aria-describedby="role-1">
+      <img src="media/arduino.jpeg" class="sub-photo">
+      <div class="sub-info">
+        <h3 id="name-1">Arduino Uno R4 Wifi</h3>
+        <p class="bio">We use three Arduino Uno R4s to control the motors. The Arduinos receive commands from the Raspi through Serial input via USB cable. The commands from the Raspi are in the form of a 3-digit integer. The first digit corresponds to the Arduino board ID, the second identifies the motor, and the third digit informs of the direction to rotate. </p>
+      </div>
+    </article>
+
+    <article class="sub-card" tabindex="0" aria-labelledby="name-2" aria-describedby="role-2">
+      <img src="media/cube_motors.jpeg" class="sub-photo">
+      <div class="sub-info">
+        <h3 id="name-2">Cube Motors (NEMA17)</h3>
+        <p class="bio">We use NEMA17 motors with mounts and inserts to attach to the cube. We set the basic unit of movement for the cube motors to be a single 90 degree turn, which translates to 200 microsteps for the driver we use.</p>
+      </div>
+    </article>
+
+    <article class="sub-card" tabindex="0" aria-labelledby="name-3" aria-describedby="role-3">
+      <img src="media/cube_motors.jpeg" class="sub-photo">
+      <div class="sub-info">
+        <h3 id="name-3">Secondary Motors (NEMA17)</h3>
+        <p class="bio">We use NEMA17 motors for these as well. For the two pulley motors, we use 90 degree turns to move it in and out; for the bottom motor with the lead screw, we use twenty 90 degree turns to bring the bottom cube motor up and down.</p>
+      </div>
+    </article>
+
+    <article class="sub-card" tabindex="0" aria-labelledby="name-4" aria-describedby="role-4">
+      <img src="media/drivers.jpeg" class="sub-photo">
+      <div class="sub-info">
+        <h3 id="name-4">Motor Drivers (TB6600)</h3>
+        <p class="bio">We use TB6600 drivers to drive our motors, microstepped to 200.</p>
+        </div>
+    </article>
+
+    <article class="sub-card" tabindex="0" aria-labelledby="name-5" aria-describedby="role-5">
+      <img src="media/power_supply.jpeg" class="sub-photo">
+      <div class="sub-info">
+        <h3 id="name-5">Power Supply</h3>
+        <p class="bio">The Raspi derives its power from a power supply (5.1V, 2.5A) and powers the Arduinos. The motors are powered by a 12V, 4A power supply, fed in by the drivers.</p>
+        </div>
+    </article>
+
+  </section>
+  
+<section class="card section"><h1>Key Design Decisions</h1></section>
+
+<section class="card section two-column single-image">
+  <div class="card-left">
+    <img src="media/two_motor.jpeg" class="card-img">
+  </div>
+  <div class="card-right">
+    <h2>Two-motor set up</h2>
+    <p>
+      We started with testing two motors controlled by one Arduino to determine timing and latency. After experimenting with a variety of delay mechanisms in the code, we were able to finalize the delay 
+      between microsteps and between the two motors moving.
+    </p>
+  </div>
+  </section>
+<section class="card section two-column single-image">
+  <div class="card-left">
+    <img src="media/five_motor.jpeg" class="card-img">
+  </div>
+  <div class="card-right">
+    <h2>Five-motor set up</h2>
+    <p>
+      Expanding to 5 motors required adding a second Arduino and communication with the Raspi. In Phase 2 and 3 we iteated on communication
+      protocols (as seen in the software page). 
+    </p>
+  </div>
+  </section>
+
+  <section class="card section two-column single-image">
+  <div class="card-left">
+    <img src="media/final_motor_connections.jpeg" class="card-img">
+  </div>
+  <div class="card-right">
+    <h2>Final wiring</h2>
+    <p>
+      Pictured here is the final wiring setup without the motors pugged in. We use 8 drivers and 2 arduinos that connect to the raspi and the power rail.
+    </p>
+  </div>
+  </section>
+
+  <div class="footer">PIE Final · Electrical</div>
+</main>
+
+<script src="js/nav.js"></script>
+<script src="js/cube.js"></script>
+</body>
+</html>
