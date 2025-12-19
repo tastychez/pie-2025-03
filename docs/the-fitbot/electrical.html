@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The FitBot - About Us</title> 
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mediaquaries.css">
+</head>
+<body>
+    
+    <nav id="hamburger-nav">
+        <div class="logo">The FitBot</div>
+        <div class="hamburger-menu">
+            <div class="hamburger-icon" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="menu-links">
+                <li><a href="index.html" onclick="toggleMenu()">This is The FitBot</a></li>
+                <li><a href="process.html" onclick="toggleMenu()">The Process</a></li>
+                <li><a href="systems.html" onclick="toggleMenu()">Systems Overview</a></li>
+                <li><a href="aboutus.html" onclick="toggleMenu()">About Us</a></li>
+            </div>
+        </div>
+    </nav>
+
+    <section id="systems-hero" class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title">ELECTRICAL</h1>
+            <a href="#process-content" class="scroll-down-icon">
+                &#8595; 
+            </a>
+        </div>
+
+        <div class="bottom-nav">
+            <ul class="bottom-nav-links">
+                <li><a href="index.html">THIS IS THE FITBOT</a></li> 
+                <li><a href="process.html">THE PROCESS</a></li>
+                <li><a href="systems.html">SYSTEMS OVERVIEW</a></li>
+                <li><a href="aboutus.html">ABOUT US</a></li>
+            </ul>
+            <div class="social-links">
+                <a href="https://github.com/titiooshy/fitbot-final">github</a>
+            </div>
+        </div>
+    </section>
+    <div class="main-content-wrapper">
+    
+        <section id="process-content" class="white-content-block">
+            <h1 class="block-title">ELECTRICAL</h1>
+
+            <div class="block-image-container">
+                <img src="PIE_Final_Circuit.jpg" alt="Sprint 1 Diagram" style="width:400px;height:500px;">
+                </div>
+
+            <h3 class="bold body">Electrical Design</h3>
+
+            <p class="description-text">
+                We choose to use only sensors and electronics from the site Adafruit for strategic reasons. No one on our team are ECEs and have minimal experience with electrical components. Adafruit devices all come with instructions, a starter manual, and a very easy to read explanation of how the workings of the device. All these resources made it easier for use to use our electrical components and understand the electrical components for our device. 
+            </p>
+            <p class="description-text"> 
+                We had a lot of trouble getting the correct components that caused many delays and problems during phase 1 to 3. We originally bought a pulse oximeter that was non-functional due to a faulty resistor. We also did not think about the power source thoroughly until the end of phase 2. Due to this oversight we had bought a battery that was too big physically and power wise for our sensor components and needed to rethink how we would effectively power our FitBot.
+            </p>
+            <p class="description-text">
+                Originally we planned on having our FitBot be powered by a lithium battery, and when a battery died it could be switched out for a new one. We abandoned this idea because it was not a compatible battery source for our sensors. We then considered using other types of batteries, making a larger device, or making our own charger for the device. We eventually decided to have a rechargeable battery port be our power source because it would not require having to create a latch device in our mechanical build, it allowed the FitBot to operate without having to be attached to another device, and it conserved power best and could regulate the power distributed to sensors. We used a fixed positive regulator to manage the charge sent from the battery to the arduino to not overcharge it. 
+            </p>
+            <p class="description-text">
+                We originally wanted to have 3 different vitals read off of the FitBot, we didn’t have the 3 chosen but knew that it would be among the options of heart rate, blood pressure, body temperature, muscle tension, or respiratory rate. After the first phase we choose to scale down the project slightly and read only 2 vitals, choosing pulse as our primary vital and blood pressure as our secondary vital with body temperature being our backout. We chose these vitals because they were generated from the easiest sensors for us to get. 
+            </p>
+            <p class="description-text">
+                Later on in the project we encountered errors in our blood pressure readings and pulse reading, such as giving false results or null results. We were able to debug the pulse sensor, after discovering that we were not performing the calculation on the input reading to turn the oxygen saturation levels into an BPM. But we were not able to debug the blood pressure readings so we turned to our backout vital, body temperature, as one of our main vital readings. 
+            </p>
+            <p class="description-text">
+                We considered using respiratory rate instead of body temperature for our second main vital readings but decided against it. We made this decision because if we were to use respiratory rate, we would use a calibration curve of pulse to respiratory rate to get our vital results. This calibration curve was developed based on a study done on a group of individuals in the peak of health, and the user group of our FitBot device are not individuals in the peak of health, so this data would be unreliable to use. Therefore the two vitals red and displayed were to be pulse and temperature. 
+            </p>
+        </section>

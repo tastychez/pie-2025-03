@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The FitBot - About Us</title> 
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mediaquaries.css">
+</head>
+<body>
+    
+    <nav id="hamburger-nav">
+        <div class="logo">The FitBot</div>
+        <div class="hamburger-menu">
+            <div class="hamburger-icon" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="menu-links">
+                <li><a href="index.html" onclick="toggleMenu()">This is The FitBot</a></li>
+                <li><a href="process.html" onclick="toggleMenu()">The Process</a></li>
+                <li><a href="systems.html" onclick="toggleMenu()">Systems Overview</a></li>
+                <li><a href="aboutus.html" onclick="toggleMenu()">About Us</a></li>
+            </div>
+        </div>
+    </nav>
+
+    <section id="systems-hero" class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title">SOFTWARE</h1>
+            <a href="#software-content" class="scroll-down-icon">
+                &#8595; 
+            </a>
+        </div>
+
+        <div class="bottom-nav">
+            <ul class="bottom-nav-links">
+                <li><a href="index.html">THIS IS THE FITBOT</a></li> 
+                <li><a href="process.html">THE PROCESS</a></li>
+                <li><a href="systems.html">SYSTEMS OVERVIEW</a></li>
+                <li><a href="aboutus.html">ABOUT US</a></li>
+            </ul>
+            <div class="social-links">
+                <a href="https://github.com/titiooshy/fitbot-final">Github</a>
+                <a href="https://drive.google.com/drive/folders/1hKCHxZFzLo3oH06keraqSNGLmUtV0mvS?usp=sharing">Google Drive</a>
+            </div>
+        </div>
+    </section>
+    <div class="main-content-wrapper">
+    
+        <section id="process-content" class="white-content-block">
+            <h1 class="block-title">SOFTWARE</h1>
+
+            <div class="block-image-container">
+                <img src="software placeholder.jpg" alt="Software Stuff" >
+                </div>
+
+            <h3 class="bold body">Code System Notes</h3>  
+            <ul class="listed tools">
+                <li>Here is Our <a href="https://github.com/titiooshy/fitbot-final">GitHub Repo</a></li>
+                <li>We used Arduino IDE to write out the program: The Screen UI and the sensor communication using the Arduino Nano ESP-32</li>
+                <li>The main code to run our program is <a href="https://github.com/titiooshy/fitbot-final/blob/main/Arduino%20Code/improved-heart.ino">Here</a></li>
+                <li>Essentially what the code does is that it runs the entire FitBot system on a file called improved_heart.ino, on the Arduino ESP32 that reads heart-rate data from an analog pulse sensor, calculates BPM in real time, and gives audio alerts if the heart rate is unsafe. It displays the time, heart rate, and workout progress on an OLED screen, automatically cycling between screens. It also connects to WiFi to sync time, manages work and cooldown workout intervals, plays buzzer tones on each heartbeat and during alerts, and replaces the MAX30102 with custom analog beat-detection logic to keep everything lightweight and self-contained.</li>
+
+            
+            <h3 class="bold body">Website Design</h3> 
+            <p class="my_words">
+                The overall website design was created using HTML, CSS, and JavaScript. It was then launched into GitHub Pages as final submission.
+            </p>
+        </section>
