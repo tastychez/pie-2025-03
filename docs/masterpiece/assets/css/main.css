@@ -2008,7 +2008,7 @@ input, select, textarea {
 	}
 
 	header p {
-		color: #161615;
+		color: rgba(255, 255, 255, 0.78);
 		margin: 0 0 1.5em 0;
 		position: relative;
 	}
@@ -2702,10 +2702,10 @@ input, select, textarea {
 		border-radius: 4px;
 		border: 0;
 		box-shadow: inset 0 0 0 1px rgba(144, 144, 144, 0.5);
-		color: #555 !important;
+		color: #ffffff !important;
 		cursor: pointer;
 		display: inline-block;
-		font-size: 0.9em;
+		font-size: 1.25em;
 		font-weight: 400;
 		height: 2.75em;
 		letter-spacing: 0.125em;
@@ -3886,7 +3886,7 @@ body {
 }
 
 #top-nav .button.small {
-  font-size: 0.85rem;
+  font-size: 1.1rem;
   padding: 0.4rem 0.9rem;
   text-transform: none;
   letter-spacing: 0.06em;
@@ -3901,7 +3901,7 @@ body {
 
 /* Final override: ensure a single static header image with no overlays */
 #header {
-	background-image: url("/images/bestboardcolored.png") !important;
+	background-image: url("images/bestboardcolored.png") !important;
 	background-position: center center !important;
 	background-size: cover !important;
 	background-repeat: no-repeat !important;
