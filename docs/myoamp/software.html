@@ -1,32 +1,32 @@
-<!doctype html> <!--helps prevent any issues - runs error checks and stuff -->
-<html lang="en-US"> <!--sets the language as HTML-->
-  <head> <!--this is hidden - keywords-->
+<!doctype html>
+<html lang="en-US">
+  <head>
     <link href="styles/style.css" rel="stylesheet" />
-    <meta charset="utf-8" /> <!--allows for most characters and languages-->
-    <meta name="viewport" content="width=device-width" /> <!--sets the size of the page to the device screen/browser window-->
-    <title>My test page</title> <!-- name/word associated with page (ex. what it will be named if favorited)-->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>MyoAmp | Software</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Karla:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
     <script async src="scripts/main.js"></script>
   </head>
   <body>
-    <section class = "nav-bar">
+    <section class="nav-bar">
       <nav>
-        <ul class = "nav">
+        <ul class="nav">
           <a href="index.html">Home</a>
           <li class="dropdown">
-            <a href = "#"> Systems </a>
-            <ul class = "dropdown-menu">
-              <li><a href = "mechanical_systems.html" class = "components" > Mechanical </a></li>
-              <li><a href = "electrical.html" class = "components" > Electrical </a></li>
-              <li><a href = "firmware.html" class = "components" > Firmware </a></li>
-              <li><a href = "software.html" class = "components" > Software </a></li>
+            <a href="#"> Systems </a>
+            <ul class="dropdown-menu">
+              <li><a href="mechanical_systems.html" class="components"> Mechanical </a></li>
+              <li><a href="electrical.html" class="components"> Electrical </a></li>
+              <li><a href="firmware.html" class="components"> Firmware </a></li>
+              <li><a href="software.html" class="components"> Software </a></li>
             </ul>
           </li>
           <li class="dropdown">
-            <a href = "#"> Sprints </a>
-            <ul class = "dropdown-menu">
+            <a href="#"> Sprints </a>
+            <ul class="dropdown-menu">
               <li><a href="sprint1.html" class="components">Sprint 1</a></li>
               <li><a href="sprint2.html" class="components">Sprint 2</a></li>
               <li><a href="sprint3.html" class="components">Sprint 3</a></li>
@@ -37,4 +37,285 @@
         </ul>
       </nav>
     </section>
+
+    <section class="first">
+      <h1>Software Design</h1>
+      <p>
+        The purpose of the software subsystem was to process and classify forearm EMG signals into
+        discrete gesture commands.
+      </p>
+    </section>
+
+    <section class="overview">
+      <h3>Overview</h3>
+      <p>
+        The purpose of the software subsystem was to process and classify forearm EMG signals into
+        discrete gesture commands. It is responsible for ingesting raw sensor data, organizing it
+        into temporally structured inputs, and interfacing with the trained Temporal Convolutional
+        Network to perform gesture inference. In addition to model execution, the software
+        subsystem manages data preprocessing, train-validation splitting, performance evaluation
+        (including confusion matrix generation), and result visualization. Together, these
+        components enable reliable interpretation of muscle activity and serve as the
+        computational bridge between the physical sensing hardware and higher-level control or
+        interaction logic.
+      </p>
+    </section>
+
+    <section class="overview">
+      <h3>Why TCN?</h3>
+      <p>
+        Several sequence-modeling approaches were considered for classifying EMG time-series data,
+        including time-delay neural networks (TDNNs), recurrent neural networks such as LSTMs, and
+        convolutional architectures. TDNNs are feedforward models that incorporate temporal
+        context by concatenating time-shifted inputs, rather than explicitly modeling state over
+        time. While computationally simple, this approach is generally less robust for complex
+        temporal patterns and less flexible than more modern sequence models.
+      </p>
+      <p>
+        LSTMs, a widely used form of recurrent neural network, were also considered due to their
+        strong ability to capture temporal dependencies and their extensive support in
+        machine-learning frameworks such as PyTorch and TensorFlow. However, LSTMs rely on
+        sequential processing, which makes them comparatively slower and less efficient on
+        resource-constrained hardware. Although LSTMs are particularly well suited for forecasting
+        tasks, the EMG signals in this project are relatively consistent over short time windows,
+        reducing the need for long-term temporal memory.
+      </p>
+      <p>
+        Temporal Convolutional Networks were ultimately selected because they combine the
+        strengths of convolutional models with effective temporal modeling. TCNs use causal,
+        dilated convolutions to capture temporal dependencies while allowing for parallel
+        computation, making them significantly faster and more efficient than recurrent models.
+        Prior work has shown that TCNs often match or slightly outperform LSTMs on
+        sequence-classification tasks, including physiological signal analysis, while maintaining
+        lower inference latency. Although the performance gains over LSTMs are sometimes marginal,
+        the improved computational efficiency and suitability for embedded deployment make TCNs a
+        strong fit for this project.
+      </p>
+    </section>
+
+    <section class="overview left-align">
+      <h3>TCN Architecture</h3>
+      <pre><code>model = TCN(
+  num_inputs = 3, # 3 sensors
+  num_channels = [32, 32, 64],
+  kernel_size = 4, # default
+  dilations = None, # default
+  dilation_reset = None, # default
+  dropout = 0.1, # default
+  causal = True, # default
+  use_norm = 'weight_norm', # default
+  activation = 'relu', # default
+  kernel_initializer = 'xavier_uniform', # default, bai et al. paper had normal initialization
+  use_skip_connections = False, # default
+  input_shape = 'NCL', # default
+  embedding_shapes = None, # default
+  embedding_mode = 'add', # default
+  use_gate = False, # default, true 
+  lookahead = 0, # default, deprecated
+  output_projection = num_classes, # default
+  output_activation= None # defaults to None
+)</code></pre>
+    </section>
+
+    <section class="overview">
+      <h3>Explanation of the Architecture</h3>
+      <p><strong>num_inputs = 3</strong></p>
+      <p>
+        Specifies the number of input channels per time step. In this project, the model receives
+        EMG data from three forearm sensors, each treated as a separate input channel.
+      </p>
+      <p><strong>num_channels = [32, 32, 64]</strong></p>
+      <p>
+        Defines the number of convolutional filters in each temporal block of the network. The
+        increasing channel depth allows the model to learn progressively higher-level temporal
+        features from the EMG signals.
+      </p>
+      <p><strong>kernel_size = 4</strong></p>
+      <p>
+        Sets the temporal width of the convolutional kernels, meaning each filter processes
+        windows of four consecutive time steps to capture short-term temporal dependencies in the
+        signal.
+      </p>
+      <p><strong>dilations = None</strong></p>
+      <p>
+        Uses the default exponentially increasing dilation factors across layers, enabling the
+        network to model long-range temporal dependencies without increasing kernel size.
+      </p>
+      <p><strong>dilation_reset = None</strong></p>
+      <p>
+        Indicates that dilation factors are not periodically reset and instead follow the default
+        dilation progression through the network depth.
+      </p>
+      <p><strong>dropout = 0.1</strong></p>
+      <p>
+        Applies a 10% dropout rate during training to reduce overfitting by randomly disabling
+        neurons and encouraging more robust feature learning.
+      </p>
+      <p><strong>causal = True</strong></p>
+      <p>
+        Enforces causal convolutions so that predictions at a given time step depend only on past
+        and present inputs, which is essential for real-time EMG gesture recognition.
+      </p>
+      <p><strong>use_norm = 'weight_norm'</strong></p>
+      <p>
+        Applies weight normalization to stabilize training by decoupling the magnitude and
+        direction of weight vectors, improving convergence behavior.
+      </p>
+      <p><strong>activation = 'relu'</strong></p>
+      <p>
+        Uses the Rectified Linear Unit activation function, introducing nonlinearity while
+        maintaining computational efficiency.
+      </p>
+      <p><strong>kernel_initializer = 'xavier_uniform'</strong></p>
+      <p>
+        Initializes convolutional weights using Xavier uniform initialization, helping maintain
+        stable signal variance across layers at the start of training.
+      </p>
+      <p><strong>use_skip_connections = False</strong></p>
+      <p>
+        Disables residual skip connections between layers. While skip connections can improve
+        gradient flow, they were not used in this configuration to keep the architecture simpler.
+      </p>
+      <p><strong>input_shape = 'NCL'</strong></p>
+      <p>
+        Specifies the input tensor format as (batch size, number of channels, sequence length),
+        which is appropriate for time-series EMG data.
+      </p>
+      <p><strong>embedding_shapes = None</strong></p>
+      <p>
+        Indicates that no additional learned embeddings (e.g., for categorical metadata) are
+        incorporated into the model.
+      </p>
+      <p><strong>embedding_mode = 'add'</strong></p>
+      <p>
+        Defines how embeddings would be combined with inputs if present; here, embeddings would
+        be added element-wise, though none are used.
+      </p>
+      <p><strong>use_gate = False</strong></p>
+      <p>
+        Disables gated activations (as in gated TCNs). While gating can improve expressiveness, it
+        increases computational cost and was not required for this task.
+      </p>
+      <p><strong>lookahead = 0</strong></p>
+      <p>
+        Specifies zero lookahead, meaning the model does not access future time steps. This
+        setting is deprecated but reinforces strict causality.
+      </p>
+      <p><strong>output_projection = 5</strong></p>
+      <p>
+        Projects the final network output to five classes, corresponding to the five hand gesture
+        categories used in the classification task.
+      </p>
+      <p><strong>output_activation = None</strong></p>
+      <p>
+        Applies no activation function at the output layer, producing raw logits that are later
+        processed by a loss function such as softmax cross-entropy during training.
+      </p>
+    </section>
+
+    <section class="overview">
+      <h3>Confusion Matrix</h3>
+      <figure>
+        <img src="Images/confusion_matrix.png" alt="Confusion matrix for EMG gesture classification" />
+
+      </figure>
+      <p>
+        Confusion matrix summarizing the performance of the EMG gesture classification model
+          across all CSV files. Rows correspond to the true gesture labels and columns to the
+          predicted labels. The model demonstrates near-perfect classification for active gestures,
+          achieving 100% accuracy for full_fist, open_hand, and true_rest, and 90% accuracy for
+          air_pinch, with a single misclassification as open_hand. The primary source of error
+          arises from confusion between rest and true_rest, where most rest samples are predicted
+          as true_rest, indicating highly similar EMG signatures between these two classes. This
+          suggests that rest and true_rest are likely too similar in terms of forearm muscle
+          activation—differing mainly in whether the arm is supported on a flat surface—and
+          therefore may have been more appropriately grouped into a single class.
+      </p>
+      <p>
+        The confusion matrix was generated by evaluating the trained EMG gesture classification
+        model on a held-out validation set created using an 80/20 split of the available training
+        data. Specifically, 80% of the labeled EMG samples were used to train the model, while the
+        remaining 20% were reserved for evaluation to assess generalization performance on unseen
+        data. After training, the model’s predictions on this validation subset were compared
+        against the corresponding ground-truth labels, and the resulting counts of correct and
+        incorrect classifications were aggregated into the confusion matrix.
+      </p>
+    </section>
+
+    <section class="next">
+      <h3>Next Steps</h3>
+      <ul class="next-steps">
+        <li>
+          <strong>Model deployment on embedded hardware:</strong> The trained Temporal
+          Convolutional Network will be converted into a TensorFlow Lite (TFLite) format to enable
+          deployment on a Raspberry Pi Pico–class microcontroller. This step is necessary to
+          reduce model size and computational complexity while preserving classification
+          performance, allowing the model to run within the memory and processing constraints of
+          embedded hardware.
+        </li>
+        <li>
+          <strong>Evaluation with newly collected sensor data:</strong> The deployed model will be
+          tested using new EMG data collected from the sensors to evaluate its ability to
+          generalize beyond the original training dataset. This testing phase will help identify
+          performance degradation due to sensor noise, placement variation, or user-specific
+          differences that were not present in the initial data.
+        </li>
+        <li>
+          <strong>Real-time performance validation:</strong> The system will be evaluated under
+          real-time operating conditions to ensure that gesture classification remains accurate
+          and responsive when processing streaming EMG signals. This includes verifying that
+          inference latency meets real-time requirements and that predictions remain stable during
+          continuous use.
+        </li>
+        <li>
+          <strong>Overfitting mitigation and data robustness:</strong> Additional analysis will be
+          conducted to ensure the model is not overfit to the original dataset. This includes
+          comparing training and validation performance, testing on unseen data, and potentially
+          expanding the dataset or adjusting regularization strategies to improve robustness and
+          ensure reliable performance in real-world scenarios.
+        </li>
+        <li>
+          <strong>User generalization and usability:</strong> Future work will also involve
+          training and evaluating the model using EMG data collected from a larger and more
+          diverse group of users to improve cross-user generalization. By incorporating inter-user
+          variability in muscle physiology and sensor placement, the system can be made more
+          robust and reduce reliance on extensive per-user calibration. The goal is to ensure a
+          positive user experience in which new users can achieve reliable gesture recognition
+          with minimal or no individualized training, making the system practical for real-world
+          adoption.
+        </li>
+      </ul>
+    </section>
+
+    <section class="overview left-align">
+      <h3>Code Architecture</h3>
+      <pre><code>.
+├── README.md
+├── activate_scripts
+│ └── …
+├── data
+│ ├── air_pinch
+│ │ └── …
+│ ├── full_fist
+│ │ └── …
+│ ├── open_hand
+│ │ └── …
+│ ├── rest
+│ │ └── …
+│ └── true_rest
+│ └── …
+├── gpu-requirements.txt
+├── ml
+│ ├── checkpoints
+│ │ └── best_model.pt
+│ ├── confusion_matrix.py
+│ ├── model.py
+│ ├── quantize_tcn.py
+├── python
+│ ├── clean_data.py
+│ ├── main.py
+│ └── read_sensor_values.py
+└── requirements.txt</code></pre>
+    </section>
   </body>
+</html>
