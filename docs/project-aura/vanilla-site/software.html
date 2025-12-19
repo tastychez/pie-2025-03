@@ -84,10 +84,10 @@
             </div>
           </div>
 
-          <div class="card mb-12">
+          <div class="card mb-12" style="width:100%; max-width:none;">
             <h2 class="card-title">External Software Dependencies</h2>
-            <div class="software-grid">
-              <div class="text-content">
+            <div style="width: 100%;">
+              <div class="text-content" style="width: 100%;">
                 <p>
                   The AURA software stack is intentionally built from widely used, well-documented tools so that others can reproduce or extend our work:
                 </p>
@@ -100,9 +100,6 @@
                 <p>
                   Together these dependencies give us a flexible platform capable of real-time control on the Pi while still supporting remote computation and visualization on a laptop when needed.
                 </p>
-              </div>
-              <div class="diagram-placeholder">
-                <p>Placeholder for a screenshot of the ROS 2 graph / rqt_graph showing AURA nodes.</p>
               </div>
             </div>
           </div>
@@ -130,9 +127,10 @@
                   We use a <strong>Kalman filter</strong> to smooth noisy measurements and estimate both position and velocity. If the target is temporarily occluded, the filter continues predicting motion for up to ~0.5&nbsp;seconds (about 15 frames) before declaring the target lost and stopping the robot, avoiding jittery starts and stops.
                 </p>
               </div>
-              <div class="diagram-placeholder">
-                <p>Placeholder for an annotated screenshot of the reflective belt in the IR image and detected contour bounding box.</p>
-              </div>
+                <video controls autoplay loop muted>
+                  <source src="assets/camera_tracker.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
             </div>
 
             <div class="text-content" style="margin-top: var(--spacing-xl);">
@@ -171,9 +169,7 @@
                   As a result, the robot cannot move accidentally, and autonomous behavior only runs when the operator deliberately enables it by holding the correct bumper. This interlock pattern proved intuitive for new users and aligned well with our safety goals.
                 </p>
               </div>
-              <div class="diagram-placeholder">
                 <img src="assets/joystick.png" alt="Joystick Control and Safety Interlocks">
-              </div>
             </div>
           </div>
 
@@ -209,9 +205,11 @@
                   Our key takeaway is that accurate high-speed odometry requires <strong>hardware interrupts or a dedicated microcontroller</strong> (e.g., STM32 or ESP32) or the use of <strong>absolute encoders</strong> with built-in counting. In this iteration we constrained the robot&rsquo;s top speed to stay within the Pi&rsquo;s reliable sampling window.
                 </p>
               </div>
-              <div class="diagram-placeholder">
-                <p>Placeholder for a photo of the drivetrain showing motors, Cytron driver, and wheel encoders.</p>
-              </div>
+                <video controls autoplay loop mutedposter="assets/drivetrain-thumb.png" style="width:100%; border-radius:12px; margin-bottom:8px;">
+                  <source src="assets/manual_driving.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+                <p class="caption">Manual driving demonstration—motors, Cytron driver, and encoder feedback in action.</p>
             </div>
           </div>
 
