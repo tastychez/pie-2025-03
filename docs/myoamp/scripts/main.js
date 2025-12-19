@@ -27,21 +27,27 @@ window.addEventListener('load', () => {
 
   const slides = [
     {
-      img: "Images/tada2.png",
-      text: "This is the first image description."
+      img: "Images/initialdrawing.png",
+      text: " Made the initial finger mounts and wrist mounts, but found they were too thin and provided circulation issues. I also prototyped a forearm mount, but found a full solid mount did not work."
     },
     {
-      img: "Images/wifi.png",
-      text: "This text appears with the second image."
+      vid: "Images/video.mp4",
+      text: "Made a second finger prototype that was thicker, and added rubber padding and the actuation system. Rubber padding did not stick right. Also iterated on other mounts, but found that velcro attachment systems were weak and some mounting holes were slightly misaligned."
     },
     {
-      img: "Images/reach.jpg",
-      text: "Here is some context for the third image."
+      img: "Images/ironmanhand.png",
+      text: "Remade the finger mount to best fit rubber padding, skeletonized the forearm grip, and fixed the fitting and integration of the bicepmount. Also made a battery mount."
+    },
+    {
+      img:"Images/cad1.png",
+      text: "A drawing of the forearm and wrist mounts."
     }
+
+
   ];
 
   let index = 0;
-  const slideImg = document.getElementById("slide");
+  const slideContainer = document.getElementById("slide-container");
   const caption = document.getElementById("caption");
 
   function update() {

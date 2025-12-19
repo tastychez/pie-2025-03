@@ -681,11 +681,52 @@ video {
   margin: -300px -1400px 0 0;
 }
 
-.key{
-  margin:-500px 0 0 0;
+.key h3{
+  margin:100px 0 0 0;
 }
-.try{
-  margin: 150px 0 0 0;
+
+.research1{
+  font-size: 20px;
+  margin: -500px 50px 0 0px;
+}
+.research1 p{
+  font-size: 20px;
+}
+
+.research-list{
+  display: flex;
+  justify-content: center;
+ margin-top: -275px;
+  transform: translateX(350px);
+
+}
+.research-list ul{
+  font-size: 23px;
+  font-weight: 600;
+  padding: 4px 100px;
+  text-align: center;
+}
+
+.research2{
+  font-size: 20px;
+  margin: -275px -650px 0 0px;
+}
+.research2 p{
+  font-size: 20px;
+}
+
+
+.msystems{
+  margin: 0px 0 0 0;
+}
+.msystems p{
+  font-size: 20px;
+  padding: 4px;
+}
+.msystems h3{
+  font-size: 40px;
+  margin: 0 0 0px 0;
+
 }
 
 .slideshow {
@@ -727,4 +768,5 @@ video {
   margin-top: 12px;
   font-size: 16px;
 }
+
 

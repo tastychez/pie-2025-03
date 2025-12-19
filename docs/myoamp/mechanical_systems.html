@@ -71,44 +71,67 @@
       </p>
       <div class = "member pointfive">
         <img class = "pointfive" src="Images/pointfive.png" alt="pointfive" />
-        <p>3 hours before presentation</p>
+        <p>Preparing for demo</p>
       </div>
     </section>
 
     <!-- ================= SUBSYSTEMS ================= -->
-    <div class = "key">
-    <section class="system-diagrams">
-      <h3>Key Mechanical Components</h3>
-      <p>
-        The following elements form the backbone of the mechanical system and directly influence performance,
-        reliability, and ease of assembly.
-      </p>
-    </section>
-    <div>
     
-      <div class="try">
+    <div class = "research1">
+    <section class="system-diagrams">
+      <h3>Research</h3>
+      <p> We began the mechanical process by researching what current technologies exist to do what we are trying to do. 
+        After speaking to some companies working in this sector, we came to a few conclusions about what would make a good product:</p>
+    </section>
+    </div>
+
+    <div class="research-list">
+    <section class="system-diagrams">
+      <ul>
+        <li> Users prefer lightweight and easy to operate over almost every other quality, making something extremely technically advanced suboptimal. </li>
+        <li> Since this is meant to be a transitional system to be used while people are recovering, long term reliability is only important if 
+        multiple users plan to use it.</li>
+        <li>Instead of trying to cover every grip, it is much more effective to have a few key grips that are able to perform a majority of daily tasks. </li>
+      </ul>
+    </section>
+    </div>
+
+    <div class = "research2">
+    <section class="system-diagrams">
+    <p>With this in mind, we started designing our first design, using 3 linear actuators, some string, and some rubber bands. Since then we have 
+        continued doing research to develop a final product.</p>
+    </section>
+    </div>
+    
+    
+    <section class="key">
+      <h3>Key Mechanical Components</h3>
+      
+    </section>
+    
+      <div class="msystems">
     <section class="timeline">
       <div class="info-box">
-        <h3 class="title">Hand Frame</h3>
+        <h3 class="title">Actuation System</h3>
         <p class="more">
-          A 3D-printed skeletal structure that supports all moving components. The frame was optimized
-          for weight reduction while maintaining stiffness under load.
+          The most critical part of the design was the actuation system.I used linear actuators going to a cable drive system on the 
+          face of the hand. We chose to use linear actuators because it was the easiest motion to use to curl the fingers.
         </p>
       </div>
 
       <div class="info-box">
-        <h3 class="title">Linear Actuators</h3>
+        <h3 class="title">Flexion System</h3>
         <p class="more">
-          Small linear actuators convert electrical input into linear motion. These actuators pull tendons
-          to flex the fingers and release to allow extension.
+          Flexion System: To complement the actuation system, I also created a flexion system. Its purpose was to counteract 
+          the linear actuator, bringing the hand back to rest after the actuator returns itself to neutral.
+
         </p>
       </div>
 
       <div class="info-box">
-        <h3 class="title">Tendon System</h3>
+        <h3 class="title">Mounting System</h3>
         <p class="more">
-          High-strength string is routed through the fingers to mimic biological tendons. This approach
-          simplifies actuation and enables smoother, more natural motion.
+          Along with the main system, I also developed mounting systems to attach needed hardware to the fingers, wrist, forearm, bicep, and wrist.
         </p>
       </div>
     </section>
@@ -117,7 +140,7 @@
 
     <div class="slideshow">
       <button class="arrow left" onclick="prev()">&#10094;</button>
-      <img id="slide" src="Images/img1.jpg" alt="slideshow image">
+      <img id="slide-container" src="Images/img1.jpg" alt="slideshow image">
       <button class="arrow right" onclick="next()">&#10095;</button>
     </div>
     <p id="caption"></p>
@@ -129,8 +152,10 @@
     <section class="overview">
       <h3>Grip Modes</h3>
       <p>
-        The mechanical design supports three grip configurations, each optimized for common daily tasks.
-        Grip selection is controlled electronically, while execution is handled entirely by the mechanical system.
+        The goal of the mechanical system of MyoAmp was to create the actual orthotic system to integrate electrical parts onto the users. 
+        This was done in a few parts: integrating boards and power electronics (bicep mount and battery mount), integrating driving system 
+        (forearm and wrist mount), and integrating onto hand (finger mounts). This was meant to provide a solution leveraging mechanical 
+        advantage and electromechanical systems for affordability and ease of use.
       </p>
 
       <ul class="nav">
@@ -150,13 +175,29 @@
       </p>
     </section>
 
-    <!-- ================= NAVIGATION ================= -->
+    <section class="next">
+      <h3>Next Steps</h3>
+      <p> If this project is continued beyond this class, there are a few large mechanical changes that could vastly improve results. 
+        The first would be purchasing a slightly longer linear actuator with an encoder. The issue that we ran into was that our linear actuator 
+        was slightly too short, but the next step up was too long (since they didn’t have encoders, we couldn’t stop it part way). Having encoders
+         would allow us to stop it at variable distances and get how much torque the motor was using, allowing us to do more impressive things like
+        having more gentle grips for certain delicate objects. </p>
+        <p>
+        Another change that would be implemented is changing the elastic material used, as well as the driving material. I chose to use rubber 
+        bands as my elastic material to counteract cable drive, which posed problems with tensioning and wear over time. It would have been a 
+        better choice to use a more reliable material that would be able to sustain continuous use. Along with this, I would buy more expensive 
+        materials to create a more compliant product by making more pleasant surfaces, making it more convenient to wear.
+        </p>
+    </section>
+
+    <!-- ================= NAVIGATION ================= 
     <section class="overview">
       <h3>Explore Other Systems</h3>
       <a href="systems.html#electrical" class="components">Electrical</a>
       <a href="systems.html#firmware" class="components">Firmware</a>
       <a href="systems.html#software" class="components">Software</a>
     </section>
+      -->
 
     <script src="scripts/main.js"></script>
   </body>
