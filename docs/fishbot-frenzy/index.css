@@ -185,7 +185,7 @@ nav.scrolled {
 }
 
 .logo-text {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Inter', serif;
     font-size: 1.5rem;
     font-weight: 700;
     background: linear-gradient(135deg, var(--ocean-surface), var(--sea-foam), var(--coral-orange));
@@ -295,7 +295,7 @@ nav ul a.active::after {
 }
 
 .ocean-title {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Inter', serif;
     font-size: 4.8rem;
     font-weight: 800;
     position: relative;
@@ -429,7 +429,7 @@ section#subteams {
 }
 
 .section-title {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Inter', serif;
     font-size: 3.5rem;
     font-weight: 700;
     margin-bottom: 60px;
@@ -514,7 +514,7 @@ section#subteams {
 }
 
 .about-hero h3 {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Inter', serif;
     font-size: 2.8rem;
     font-weight: 700;
     margin-bottom: 30px;
@@ -598,7 +598,7 @@ section#subteams {
 }
 
 .about-card h4 {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Inter', serif;
     font-size: 1.4rem;
     font-weight: 600;
     margin-bottom: 15px;
@@ -652,7 +652,7 @@ section#subteams {
 }
 
 .achievement-number {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Inter', serif;
     font-size: 3rem;
     font-weight: 800;
     color: var(--ocean-surface);
@@ -764,7 +764,7 @@ section#subteams {
 }
 
 .phase-content h3 {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Inter', serif;
     font-size: 2.2rem;
     font-weight: 700;
     margin-bottom: 30px;
@@ -773,7 +773,7 @@ section#subteams {
 }
 
 .subteam-category h3 {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Inter', serif;
     font-size: 2.2rem;
     font-weight: 700;
     margin-bottom: 30px;
@@ -849,7 +849,7 @@ section#subteams {
 }
 
 .stat-item .number {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Inter', serif;
     font-size: 2rem;
     font-weight: 800;
     color: var(--coral-orange);
@@ -953,7 +953,7 @@ section#subteams {
 }
 
 /* .subteam-category h3 {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Inter', serif;
     font-size: 1.6rem;
     font-weight: 700;
     margin-bottom: 20px;
@@ -1063,7 +1063,7 @@ section#subteams {
 }
 
 .category-stat .number {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Inter', serif;
     font-size: 1.5rem;
     font-weight: 800;
     color: var(--coral-orange);
@@ -1123,7 +1123,7 @@ section#subteams {
 }
 
 .contact-info h3 {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Inter', serif;
     font-size: 2rem;
     font-weight: 700;
     margin-bottom: 30px;
@@ -1336,7 +1336,7 @@ footer::before {
 }
 
 .footer-main .logo-footer .logo-text {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Inter', serif;
     font-size: 1.8rem;
     font-weight: 700;
     background: linear-gradient(135deg, var(--ocean-surface), var(--sea-foam));
@@ -1365,7 +1365,7 @@ footer::before {
 }
 
 .footer-stat .number {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Inter', serif;
     font-size: 1.8rem;
     font-weight: 800;
     color: var(--coral-orange);
@@ -1385,7 +1385,7 @@ footer::before {
 }
 
 .footer-section h3 {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Inter', serif;
     color: var(--ocean-surface);
     margin-bottom: 25px;
     font-size: 1.4rem;
