@@ -1,0 +1,17 @@
+/* Electrical Page Specific Styles */
+
+/* Inherit all base styles from styles.css */
+
+/* Page-specific intro section - shorter than index */
+#intro {
+    min-height: 50vh;
+    padding: 2rem 5%;
+}
+
+/* Any additional page-specific styling can go here */
+
+.main-title {
+    animation: none;
+    opacity: 1;
+    transform: none;
+}

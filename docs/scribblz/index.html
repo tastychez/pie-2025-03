@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCRIBBLZ - Wall Drawing Robot Project</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="system-diagram.css">
+    <link rel="stylesheet" href="gallery.css">
+    <link rel="stylesheet" href="design-layout.css">
+
+    <!-- Three.js for embedded 3D viewer -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/STLLoader.js"></script>
+</head>
+
+<body class="is-preload">
+
+    <!-- Random Background Sketches Container -->
+    <svg class="sketch-container" id="sketchContainer"></svg>
+
+    <!-- Spot It Doodles Container -->
+    <svg class="spot-it-container" id="spotItContainer"></svg>
+
+    <!-- Robot Drawing Trails Container -->
+    <svg class="robot-trail-container" id="robotTrailContainer"></svg>
+
+    <nav id="nav">
+        <div class="logo">
+            SCRIBBLZ
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="mechanical.html">Mechanical</a></li>
+            <li><a href="electrical.html">Electrical</a></li>
+            <li><a href="software.html">Software</a></li>
+            <li><a href="about.html">About Us</a></li>
+        </ul>
+    </nav>
+
+    <div id="intro">
+        <img id="robot-intro" class="robot-element" src="images\content.png" alt="Robot Intro">
+        <img id="robot-intro-star" class="robot-element" src="images\content.png" alt="Robot Star">
+        <h1 class="main-title">SCRIBBLZ</h1>
+        <p class="subtitle">
+            <strong>Make your window drawing dreams come true!</strong> <br>
+            Meet the robot that turns your glass surfaces into infinite canvases. <br>
+            Wireless control. Suction-powered agility. Pure creativity.
+        </p>
+        <a href="#about-project" class="cta-button scroll-down" id="explore-button">
+            ⬇ Explore The Bot
+        </a>
+    </div>
+
+    <!-- About Project Section -->
+    <section id="about-project" class="wave-section">
+        <div class="drawing-clipper">
+            <img src="system_diagram_images/impeller.png" class="side-drawing left" alt="Impeller Drawing">
+            <img src="system_diagram_images/wheels.png" class="side-drawing right" alt="Wheels Drawing">
+        </div>
+        <div class="content-wrapper">
+            <h2 class="section-title">The Project</h2>
+            <div class="project-overview-grid">
+                <div class="project-left-col">
+                    <div class="project-goal-card">
+                        <h3>OUR GOAL</h3>
+                        <p>To design and build an autonomous robot capable of navigating vertical glass surfaces and
+                            creating precise drawings based on user input.</p>
+                    </div>
+                    <div class="project-robot-image-container">
+                        <canvas id="embedded-stl-viewer"
+                            style="width: 100%; height: 300px; border-radius: 8px; cursor: grab;"></canvas>
+                        <p class="img-caption">Interactive 3D Model - Drag to rotate, scroll to zoom</p>
+                        <div
+                            style="margin-top: 0.5rem; display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap;">
+                            <button onclick="resetEmbeddedView()"
+                                style="font-family: 'Cabin Sketch', cursive; background: #ffadad; color: white; border: 2px solid #2C3E50; padding: 0.4rem 0.8rem; border-radius: 6px; cursor: pointer; font-size: 0.9rem;">🔄
+                                Reset</button>
+                            <button onclick="toggleEmbeddedWireframe()"
+                                style="font-family: 'Cabin Sketch', cursive; background: #ffd6a5; color: #2C3E50; border: 2px solid #2C3E50; padding: 0.4rem 0.8rem; border-radius: 6px; cursor: pointer; font-size: 0.9rem;">📐
+                                Wireframe</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-steps-col">
+                    <!-- Step 1 -->
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Suction System</h4>
+                            <p>High-powered custom impeller creates negative pressure for reliable adhesion to glass.
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Step 2 -->
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Wall Driving</h4>
+                            <p>Omni-wheel drivetrain enables holonomic motion for precise maneuvering in any direction.
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Step 3 -->
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Drawing Mechanism</h4>
+                            <p>Servo-operated marker lift allows for minimal erasure and complex, disconnected strokes.
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Step 4 -->
+                    <div class="step-card">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>Auto Docking</h4>
+                            <p>Computer vision guided return-to-home sequence for efficent energy usage.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content-wrapper">
+            <h2 class="section-title">‎</h2>
+            <div class="featured-post">
+                <div class="project-left-col">
+                    <div class="project-goal-card">
+                        <h3>MOTIVATIONS</h3>
+                        <p>Our project was driven by three main pillars of motivation: Purpose, Novelty, and Longevity.
+                        </p>
+                    </div>
+                    <!-- Step 1 -->
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Purpose</h4>
+                            <p>Not wanting to make something just for the sake of making, we decided to be ambitious
+                                when choosing a project. So when we were inspired by existing wall-climbing bots, we
+                                wondered: How can we give it purpose? That’s when the idea of Scribblz came to life.
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Step 2 -->
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Novelty</h4>
+                            <p>Our team didn’t just want to make, we wanted to create. Our vision for Scribblz was
+                                not only to captivate surrounding people, but be completely unique. Scribblz embodies
+                                all of our inspirations and engineering journeys, amplifying a beautiful blend of
+                                diversity.
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Step 3 -->
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Longevity</h4>
+                            <p>Building on top of our previous two motivations, we wanted Scribblz to last long after we
+                                finished the course. We designed it around being lightweight and easy to maintain. Our
+                                hope
+                                is that even once we’re gone from campus, our legacy can continue through other people.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h2 class="section-title">Design Process + Tradeoffs</h2>
+            <article class="featured-post">
+               <div class="project-left-col">
+                    <div class="project-goal-card">
+                        <h3>Sprint Progression</h3>
+                        <p>*More information included in subsections</p>
+                    </div>
+                    <!-- Step 1 -->
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Sprint 1</h4>
+                            <p>
+                                Decide on drivetrain and suction method <br>
+                                Component selection, PCB schematic <br>
+                                Path following, software architecture and Arduino firmware <br>
+
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Step 2 -->
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Sprint 2</h4>
+                            <p>
+                                Path following, software architecture and arduino firmware <br>
+                                Mechanical Optimization <br>
+                                PCB layout <br>
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Step 3 -->
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Sprint 3</h4>
+                            <p>
+                                Impeller optimization <br>
+                                Robot localization <br>
+                                Full integration/cleanup<br>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content-wrapper">
+            <div class="featured-post">
+                <div class="project-left-col">
+                    <div class="project-goal-card">
+                        <h3>Challenges and Tradeoffs</h3>
+                        <p>*More information included in subsections</p>
+                    </div>
+                    <!-- Step 1 -->
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Mechanical</h4>
+                            <p>
+                                The chassis design needs high enough friction to reduce slippage, while not having so much
+                                that it doesn’t move (necessary for localization). Impacted by the skirt material, wheel placement, and impeller design. <br>
+
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Step 2 -->
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Electrical</h4>
+                            <p>
+                                Instead of trying to fix our failed PCB design, we pivoted to just using the Arduino Nano and prioritizing a working prototype.
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Step 3 -->
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Software/Firmware</h4>
+                            <p>
+                                Localizing the robot is one of the largest challenges due to slippage. With slippage, wheel encoders were not effective. Instead, we localize the robot by using a LiDAR from the docking station. 
+
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Step 4 -->
+                    <div class="step-card">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>Overall</h4>
+                            <p>
+                                To prevent slippage, we have heavy weight constraints due to the force of gravity being a problem.
+                                This is the reason we attempted designing a compact, custom PCB. All other design decisions were made for the bot to be light as possible.
+                            </p>
+                        </div>
+                    </div>
+                </div>              
+            </article>
+        </div>
+    </section>
+
+
+    <!-- Final System Section -->
+    <section id="final-system-section" class="wave-section">
+        <div class="drawing-clipper">
+            <svg class="section-doodles-container"></svg>
+        </div>
+        <div class="content-wrapper">
+            <img id="robot-gallery" class="robot-element" src="images\content.png" alt="Robot Gallery">
+            <h2 class="section-title">Final System</h2>
+            <article class="featured-post">
+                <!-- YouTube Video Embed -->
+                <div class="video-container">
+                    <iframe width="100%" height="100%" src="images/scribblz_smiles.mp4" title="SCRIBBLZ Robot Demo"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+
+                <!-- Description below video -->
+                <p class="video-description"> <b>Watch as SCRIBBLZ brings art to
+                        vertical surfaces!</b>
+                    <br>
+                    With a custom impeller design and omniwheels arranged in a kiwi-drive, our Nano-controlled robot
+                    creates a vacuum to suction itself to a vertical window and is capable of driving in any direction.
+                    At its head is a dry-erase marker which toggles up and down to draw lines. Teleop commands are sent
+                    through our interface and communicated wirelessly to the RaspPi on the docking station. Once it’s
+                    finished doodling, the bot docks until the next command is issued.
+                    </br>
+                </p>
+            </article>
+        </div>
+    </section>
+
+
+    <!-- Design Section -->
+    <section id="design" class="section-content wave-section">
+        <div class="drawing-clipper">
+            <svg class="section-doodles-container"></svg>
+        </div>
+        <div class="content-wrapper">
+            <img id="robot-design" class="robot-element" src="images\content.png" alt="Robot Design">
+            <h2 class="section-title">How We Built It</h2>
+
+            <div class="design-layout">
+                <!-- Large Mechanical Card -->
+                <article class="mechanical-card-large">
+                    <header>
+                        <h3>Mechanical Design</h3>
+                    </header>
+                    <div class="mechanical-photos">
+                        <div class="photo-placeholder">
+                            <span class="emoji-placeholder">🔧</span>
+                        </div>
+                        <div class="photo-placeholder">
+                            <span class="emoji-placeholder">⚙️</span>
+                        </div>
+                    </div>
+                    <div class="mechanical-text">
+                        <p>Deep dive into our mechanical design. The CAD, the chassis, custom parts,
+                            and how we made the impeller suction system work!</p>
+                        <a href="mechanical.html" class="card-button"
+                            style="display: block; text-decoration: none; text-align: center;">Full Details</a>
+                    </div>
+                </article>
+
+                <!-- Bottom Grid for Electrical and Software -->
+                <div class="posts-grid-bottom">
+                    <article class="post-card">
+                        <header>
+                            <h3>Electrical Design</h3>
+                        </header>
+                        <div class="card-image" style="padding: 0.5rem; background: white;">
+                            <img src="Electrical_Images/Final_electrical_Schematic.png" alt="Electrical Schematic"
+                                style="width: 100%; height: auto; border-radius: 8px;">
+                        </div>
+                        <p>Our custom PCB, microcontroller choice, sensors, and power system.
+                            The full schematic and electrical analysis!</p>
+                        <a href="electrical.html" class="card-button"
+                            style="display: block; text-decoration: none; text-align: center;">Full Details</a>
+                    </article>
+
+                    <article class="post-card">
+                        <header>
+                            <h3>Software & Firmware</h3>
+                        </header>
+                        <div class="card-image" style="padding: 0.5rem; background: white;">
+                            <img src="Software_Images/ros architecture.png" alt="ROS Architecture"
+                                style="width: 100%; height: auto; border-radius: 8px;">
+                        </div>
+                        <p>The brains of the operation! Main logic, RaspPi control, wireless communication,
+                            and the code architecture that brings it all together.</p>
+                        <a href="software.html" class="card-button"
+                            style="display: block; text-decoration: none; text-align: center;">Full Details</a>
+                    </article>
+                </div>
+            </div>
+    </section>
+
+
+
+    <!-- System Diagram -->
+    <section id="system" class="section-content wave-section">
+        <div class="drawing-clipper">
+            <svg class="section-doodles-container"></svg>
+        </div>
+        <div class="content-wrapper">
+            <h2 class="section-title">System Diagram + Data/Energy Flow</h2>
+            <p class="bom-intro">Hover over the boxes and arrows for more information!</p>
+            <!-- Dynamic System Diagram -->
+            <div id="system-diagram-container">
+                <!-- JS will populate this -->
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="wave-section">
+        <div class="content-wrapper">
+            <h2 class="section-title">Gallery</h2>
+            <div class="gallery-showcase">
+                <div class="gallery-container" id="galleryContainer">
+                    <!-- Gallery items will be injected here by JS -->
+                </div>
+                <div class="gallery-controls">
+                    <button class="gallery-btn prev" id="prevBtn">❮</button>
+                    <div class="gallery-dots" id="galleryDots"></div>
+                    <button class="gallery-btn next" id="nextBtn">❯</button>
+                </div>
+                <p class="gallery-hint">Swipe or drag to explore</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bill of Materials Section -->
+    <section id="bom" class="wave-section">
+        <div class="drawing-clipper">
+            <svg class="section-doodles-container"></svg>
+        </div>
+        <div class="content-wrapper">
+            <h2 class="section-title">Bill of Materials</h2>
+            <p class="bom-intro">Complete list of components and materials used in the SCRIBBLZ project. Free or
+                discounted items have an estimated <b>~$</b> cost.</p>
+
+            <div class="bom-container">
+                <div class="bom-category">
+                    <h3>Mechanical Components</h3>
+                    <table class="bom-table">
+                        <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th>Quantity</th>
+                                <th>Cost</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><a href="https://a.co/d/f15cljR">Plastic Straw</a></td>
+                                <td>1</td>
+                                <td>$0.02</td>
+                            </tr>
+                            <tr>
+                                <td><a
+                                        href="https://www.uline.com/Product/Detail/H-2759/Erasable-Markers/Expo-Dry-Erase-Markers-Assortment-Pack?pricode=WB2845&utm_source=Bing&utm_medium=pla&utm_term=H-2759&utm_campaign=Markers%2B%2F%2BStencils&utm_source=Bing&utm_medium=pla&utm_term=H-2759&utm_campaign=Markers%2B%2F%2BStencils&msclkid=fea6188084001cac568c71c461d1bcf1">Dry
+                                        Erase Marker</a></td>
+                                <td>1</td>
+                                <td>~$2.00</td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://a.co/d/bXN7hQv">Brushless Motor</a></td>
+                                <td>1</td>
+                                <td>~$9.75</td>
+                            </tr>
+                            <tr>
+                                <td><a
+                                        href="https://www.robotshop.com/products/nexus-38mm-plastic-omni-wheel?qd=ff7fce175605b44d7e5280c43ac7d0bb">Omni
+                                        Wheels</a></td>
+                                <td>3</td>
+                                <td>$13.77</td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://a.co/d/0V3Hosw">Grip Spray</a></td>
+                                <td>1</td>
+                                <td>$18.99</td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://a.co/d/fupodkv">Rotary Electrical Contact</a></td>
+                                <td>1</td>
+                                <td>$36.94</td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://a.co/d/0dRenul">Micro DC Gear Motor</a></td>
+                                <td>3</td>
+                                <td>$38.97</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="bom-category">
+                    <h3>Electrical Components</h3>
+                    <table class="bom-table">
+                        <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th>Quantity</th>
+                                <th>Cost</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><a href="https://a.co/d/45tBhKa">Buck Converter</a></td>
+                                <td>1</td>
+                                <td>$1.30</td>
+                            </tr>
+                            <tr>
+                                <td><a
+                                        href="https://www.robotshop.com/products/sunfounder-gy-521-mpu-6050-6-dof-gyro-accelerometer-imu?srsltid=AfmBOopvRt1xuLr0XvHxUcoYf9OO4sUus1k7Epz1yl1zkGAIWyPGf7LH">6-Axis
+                                        IMU</a></td>
+                                <td>1</td>
+                                <td>~$11.06</td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://a.co/d/7iydJIy">Servo Motor</a></td>
+                                <td>1</td>
+                                <td>$2.33</td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://a.co/d/6mBLvfU">Motor Driver</a></td>
+                                <td>1</td>
+                                <td>$2.62</td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://a.co/d/3IiPQ9L">40A Brushless ESC</a></td>
+                                <td>1</td>
+                                <td>$12.99</td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://a.co/d/0yopRsL">Power Supply</a></td>
+                                <td>1</td>
+                                <td>$56.99</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="bom-category">
+                    <h3>Software/Firmware</h3>
+                    <table class="bom-table">
+                        <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th>Quantity</th>
+                                <th>Cost</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><a href="https://store-usa.arduino.cc/products/nano-esp32">Arduino Nano ESP32</a>
+                                </td>
+                                <td>1</td>
+                                <td>~$18.30</td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://lidarengineering.com/product/parakeet-pro-2d-lidar/">LiDAR</a></td>
+                                <td>1</td>
+                                <td>~$60.00</td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://a.co/d/03dGq8C">RaspPi 4B</a></td>
+                                <td>1</td>
+                                <td>~$63.29</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="bom-container">
+                <div class="bom-category">
+                    <h3>Combined</h3>
+                    <table class="bom-table">
+                        <thead>
+                            <tr>
+                                <th>Budget</th>
+                                <th>Estimated Total Cost</th>
+                                <th>Remaining</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>$250</td>
+                                <td>$319.02</td>
+                                <td>$-69.02</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- More Info Section -->
+    <section id="more-info" class="wave-section">
+        <div class="drawing-clipper">
+            <svg class="section-doodles-container"></svg>
+        </div>
+        <div class="content-wrapper">
+            <h2 class="section-title">More Resources</h2>
+            <div class="info-links-grid">
+                <a href="https://cad.onshape.com/documents/879927a40bfb765bbc0bb783/w/2cf04403f6e6348eb65023a8/e/d584a85dbb0ee024d47ea593" class="info-card">
+                    <img src="Additional_info_images\onshape.png" class="info-icon-img" alt="Onshape Logo">
+                    <h3>CAD Files</h3>
+                    <p>Download our 3D models</p>
+                </a>
+                <a href="https://github.com/Scribblz-pie" class="info-card">
+                    <img src="Additional_info_images/GitHub-Logo.png" class="info-icon-img" alt="GitHub Logo">
+                    <h3>GitHub</h3>
+                    <p>Source code & Firmware</p>
+                </a>
+                <a href="https://drive.google.com/drive/folders/1BIj-iDQvHRURCDXNMfdoPVn0RB_E9ykJ?usp=sharing"
+                    class="info-card">
+                    <img src="Additional_info_images/Google_Drive_icon_(2020).svg.png" class="info-icon-img"
+                        alt="Google Drive Logo">
+                    <h3>Design Review</h3>
+                    <p>View our slide decks</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="copyright">
+        <p>© SCRIBBLZ Project 2025</p>
+    </footer>
+
+    <!-- JavaScript Modules -->
+    <script src="js/main.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/sketches.js"></script>
+    <script src="js/spot-it-doodles.js"></script>
+    <script src="js/robots.js"></script>
+    <script src="js/system-diagram.js"></script>
+    <script src="js/navigation.js"></script>
+    <!-- Lightbox Modal -->
+    <div id="lightbox">
+        <span id="lightbox-close">&times;</span>
+        <img id="lightbox-img" src="" alt="Enlarged View">
+    </div>
+
+    <!-- Gallery Script -->
+    <script src="gallery.js"></script>
+
+    <!-- Embedded 3D Viewer Script -->
+    <script>
+        let embeddedScene, embeddedCamera, embeddedRenderer, embeddedControls, embeddedMesh;
+
+        function initEmbeddedViewer() {
+            const canvas = document.getElementById('embedded-stl-viewer');
+            if (!canvas) return;
+
+            const container = canvas.parentElement;
+            const width = canvas.clientWidth;
+            const height = 300;
+
+            // Scene setup
+            embeddedScene = new THREE.Scene();
+            embeddedScene.background = new THREE.Color(0xf5f5f5);
+
+            // Camera
+            embeddedCamera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
+            embeddedCamera.position.set(5, 5, 5);
+
+            // Renderer
+            embeddedRenderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true });
+            embeddedRenderer.setSize(width, height);
+            embeddedRenderer.setPixelRatio(window.devicePixelRatio);
+
+            // Lighting
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+            embeddedScene.add(ambientLight);
+
+            const directionalLight1 = new THREE.DirectionalLight(0xffffff, 0.8);
+            directionalLight1.position.set(5, 10, 7);
+            embeddedScene.add(directionalLight1);
+
+            const directionalLight2 = new THREE.DirectionalLight(0xffadad, 0.3);
+            directionalLight2.position.set(-5, 5, -5);
+            embeddedScene.add(directionalLight2);
+
+            // Grid
+            const gridHelper = new THREE.GridHelper(10, 10, 0xffadad, 0xe0e0e0);
+            gridHelper.material.opacity = 0.3;
+            gridHelper.material.transparent = true;
+            embeddedScene.add(gridHelper);
+
+            // Controls
+            embeddedControls = new THREE.OrbitControls(embeddedCamera, embeddedRenderer.domElement);
+            embeddedControls.enableDamping = true;
+            embeddedControls.dampingFactor = 0.05;
+            embeddedControls.minDistance = 2;
+            embeddedControls.maxDistance = 20;
+
+            const loader = new THREE.STLLoader();
+            loader.load('stl-files/Main Assm.stl', function(geometry) {
+            geometry.computeBoundingBox();
+            const boundingBox = geometry.boundingBox;
+            const center = new THREE.Vector3();
+            boundingBox.getCenter(center);
+            geometry.translate(-center.x, -center.y, -center.z);
+       
+            const size = new THREE.Vector3();
+            boundingBox.getSize(size);
+            const maxDim = Math.max(size.x, size.y, size.z);
+            const scale = 4 / maxDim;
+            geometry.scale(scale, scale, scale);
+            geometry.computeVertexNormals();
+                 
+            const material = new THREE.MeshPhongMaterial({
+                color: 0xffadad,
+                specular: 0x111111,
+                shininess: 200
+            });
+     
+            embeddedMesh = new THREE.Mesh(geometry, material);
+            embeddedScene.add(embeddedMesh);
+            });
+
+
+            // Animation loop
+            function animate() {
+                requestAnimationFrame(animate);
+                embeddedControls.update();
+                embeddedRenderer.render(embeddedScene, embeddedCamera);
+            }
+            animate();
+
+            // Handle resize
+            window.addEventListener('resize', () => {
+                const newWidth = canvas.clientWidth;
+                embeddedCamera.aspect = newWidth / height;
+                embeddedCamera.updateProjectionMatrix();
+                embeddedRenderer.setSize(newWidth, height);
+            });
+        }
+
+        function createEmbeddedRobotGeometry() {
+            const group = new THREE.Group();
+
+            // Body
+            const bodyGeometry = new THREE.BoxGeometry(1.5, 2, 1);
+            const body = new THREE.Mesh(bodyGeometry);
+            body.position.y = 0;
+            group.add(body);
+
+            // Head
+            const headGeometry = new THREE.BoxGeometry(1, 1, 1);
+            const head = new THREE.Mesh(headGeometry);
+            head.position.y = 1.5;
+            group.add(head);
+
+            // Arms
+            const armGeometry = new THREE.BoxGeometry(0.4, 1.5, 0.4);
+            const leftArm = new THREE.Mesh(armGeometry);
+            leftArm.position.set(-1, 0, 0);
+            group.add(leftArm);
+
+            const rightArm = new THREE.Mesh(armGeometry);
+            rightArm.position.set(1, 0, 0);
+            group.add(rightArm);
+
+            // Legs
+            const legGeometry = new THREE.BoxGeometry(0.5, 1.5, 0.5);
+            const leftLeg = new THREE.Mesh(legGeometry);
+            leftLeg.position.set(-0.5, -1.75, 0);
+            group.add(leftLeg);
+
+            const rightLeg = new THREE.Mesh(legGeometry);
+            rightLeg.position.set(0.5, -1.75, 0);
+            group.add(rightLeg);
+
+            // Merge geometries
+            group.updateMatrixWorld(true);
+            const geometries = [];
+
+            group.traverse((child) => {
+                if (child instanceof THREE.Mesh) {
+                    const geo = child.geometry.clone();
+                    geo.applyMatrix4(child.matrixWorld);
+                    geometries.push(geo);
+                }
+            });
+
+            return THREE.BufferGeometryUtils ?
+                THREE.BufferGeometryUtils.mergeBufferGeometries(geometries) :
+                geometries[0];
+        }
+
+        function resetEmbeddedView() {
+            if (embeddedCamera && embeddedControls) {
+                embeddedCamera.position.set(5, 5, 5);
+                embeddedCamera.lookAt(0, 0, 0);
+                embeddedControls.reset();
+            }
+        }
+
+        function toggleEmbeddedWireframe() {
+            if (embeddedMesh) {
+                embeddedMesh.material.wireframe = !embeddedMesh.material.wireframe;
+            }
+        }
+
+        // Initialize when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initEmbeddedViewer);
+        } else {
+            initEmbeddedViewer();
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,366 @@
+/* About Us Page Specific Styles */
+@import url('styles.css');
+
+/* Team Section Container */
+.team-section {
+    padding: 0 5% 4rem;
+    background-color: #F8F8F8;
+    min-height: 80vh;
+}
+
+.team-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 3rem;
+    max-width: 1400px;
+    margin: 1rem auto 3rem;
+    padding: 0 1rem;
+}
+
+/* Team Member Card */
+.member-card {
+    background: transparent;
+    /* Changed from white for flip logic */
+    border-radius: 20px;
+    padding: 0;
+    /* Remove padding here, move inwards if needed */
+    text-align: center;
+    flex: 0 1 350px;
+    min-width: 300px;
+    height: 450px;
+    /* Fixed height required for consistent flip */
+    perspective: 1000px;
+    /* Enable 3D space */
+    position: relative;
+    border: none;
+    /* Border moves to inner face */
+    overflow: visible;
+    /* Allow 3D pop */
+}
+
+/* Inner Container - The thing that flips */
+.member-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform-style: preserve-3d;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+}
+
+/* Hover tilt effect is now on the whole inner card, but flip logic overrides it */
+.member-card:hover .member-card-inner {
+    /* Subtle lift when not flipped */
+    transform: translateY(-10px);
+}
+
+.member-card.flipped .member-card-inner {
+    transform: rotateY(180deg);
+}
+
+/* Front and Back Faces */
+.member-card-front,
+.member-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 20px;
+    background: white;
+    border: 4px solid #E0E0E0;
+    overflow: hidden;
+}
+
+/* Front Face Styling */
+.member-card-front {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 2;
+}
+
+/* Back Face Styling */
+.member-card-back {
+    transform: rotateY(180deg);
+    background: #fff;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.member-detail-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    /* Show full image */
+    background: #f0f0f0;
+}
+
+/* Flip Toggles */
+.flip-toggle {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 100;
+    width: 40px;
+    height: 40px;
+    background: #f8f9fa;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #ddd;
+    box-shadow: 2px 2px 0 #ccc;
+    transition: all 0.2s;
+}
+
+.flip-toggle:hover {
+    transform: scale(1.1);
+    background: #eef;
+    border-color: #aaf;
+}
+
+.flip-toggle-back {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 100;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #ddd;
+    box-shadow: 2px 2px 0 #ccc;
+}
+
+.flip-toggle-back:hover {
+    transform: scale(1.1);
+    background: white;
+}
+
+.member-card:hover {
+    transform: rotate(var(--rotation)) translateY(-10px) !important;
+    /* Tilt on hover */
+    z-index: 10;
+}
+
+/* Animation Classes */
+/* Animation Classes */
+.member-card.reveal-init {
+    opacity: 0;
+    transform: rotate(0deg) translateY(50px);
+    /* Straight start */
+}
+
+.member-card.reveal-active {
+    opacity: 1;
+    transform: rotate(0deg) translateY(0);
+    /* Straight end */
+}
+
+/* 
+   Specific Card Styling (Colors & Rotation) 
+   Matching the vibrant site theme 
+*/
+
+/* Card 1: Light Green (Eleane) */
+.member-card:nth-child(1) .member-card-front,
+.member-card:nth-child(1) .member-card-back {
+    border-color: #95e195;
+}
+
+.member-card:nth-child(1) .member-card-inner {
+    box-shadow: 0 10px 25px rgba(149, 225, 149, 0.15);
+    /* Reduced opacity */
+}
+
+.member-card:nth-child(1) .member-role {
+    color: #95e195;
+}
+
+/* Card 2: Red (Liam) */
+.member-card:nth-child(2) .member-card-front,
+.member-card:nth-child(2) .member-card-back {
+    border-color: #ee3636;
+}
+
+.member-card:nth-child(2) .member-card-inner {
+    box-shadow: 0 10px 25px rgba(238, 54, 54, 0.15);
+    /* Reduced opacity */
+}
+
+.member-card:nth-child(2) .member-role {
+    color: #ee3636;
+}
+
+/* Card 3: Orange (David) */
+.member-card:nth-child(3) .member-card-front,
+.member-card:nth-child(3) .member-card-back {
+    border-color: #f99923;
+}
+
+.member-card:nth-child(3) .member-card-inner {
+    box-shadow: 0 10px 25px rgba(249, 153, 35, 0.15);
+    /* Reduced opacity */
+}
+
+.member-card:nth-child(3) .member-role {
+    color: #f99923;
+}
+
+/* Card 4: Purple (Enzo) */
+.member-card:nth-child(4) .member-card-front,
+.member-card:nth-child(4) .member-card-back {
+    border-color: #9762d0;
+}
+
+.member-card:nth-child(4) .member-card-inner {
+    box-shadow: 0 10px 25px rgba(151, 98, 208, 0.15);
+    /* Reduced opacity */
+}
+
+.member-card:nth-child(4) .member-role {
+    color: #9762d0;
+}
+
+/* Card 5: Blue (Michael) */
+.member-card:nth-child(5) .member-card-front,
+.member-card:nth-child(5) .member-card-back {
+    border-color: #0030de;
+}
+
+.member-card:nth-child(5) .member-card-inner {
+    box-shadow: 0 10px 25px rgba(0, 48, 222, 0.15);
+    /* Reduced opacity */
+}
+
+.member-card:nth-child(5) .member-role {
+    color: #0030de;
+}
+
+
+/* Circular Photo Link - Restored */
+.member-photo-link {
+    display: block;
+    width: 180px;
+    height: 180px;
+    margin: 0 auto 1.5rem;
+    border-radius: 50%;
+    position: relative;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+.member-photo-link:hover {
+    transform: scale(1.05) rotate(3deg);
+}
+
+.member-photo-link::after {
+    content: 'in';
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: #0077b5;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-family: sans-serif;
+    border: 3px solid white;
+    opacity: 0;
+    transform: scale(0);
+    transition: all 0.3s ease;
+}
+
+.member-photo-link:hover::after {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.member-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 5px solid #fff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    background-color: #eee;
+}
+
+/* Text Formatting */
+.member-name {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 1.8rem;
+    color: #2C3E50;
+    margin-bottom: 0.5rem;
+}
+
+.member-role {
+    font-family: 'Cabin Sketch', cursive;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.member-bio {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1.2rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* Decorative Elements */
+.member-card::before {
+    display: none;
+    /* Removing the gradient strip to focus on the border color */
+}
+
+/* Page Header */
+.page-header {
+    text-align: center;
+    padding: 3rem 0 1rem;
+}
+
+.page-title {
+    font-family: 'Permanent Marker', cursive;
+    font-size: clamp(3rem, 6vw, 4.5rem);
+    color: #2C3E50;
+    margin-bottom: 1rem;
+    text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    position: relative;
+    z-index: 10;
+}
+
+.page-title::after {
+    content: '';
+    display: block;
+    width: 120%;
+    height: 15px;
+    background: #ffd6a5;
+    position: absolute;
+    bottom: 5px;
+    left: -10%;
+    z-index: -1;
+    border-radius: 10px;
+    opacity: 0.6;
+    transform: rotate(-1deg);
+}

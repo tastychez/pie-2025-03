@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - SCRIBBLZ Team</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="about.css">
+    <script src="js/navigation.js"></script> <!-- Reusing the nav logic we just fixed -->
+</head>
+
+<body class="is-preload">
+
+    <!-- Random Background Sketches Container (Shared consistency) -->
+    <svg class="sketch-container" id="sketchContainer"></svg>
+
+    <!-- Navigation -->
+    <nav id="nav">
+        <div class="logo">
+            SCRIBBLZ
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="mechanical.html">Mechanical</a></li>
+            <li><a href="electrical.html">Electrical</a></li>
+            <li><a href="software.html">Software</a></li>
+
+            <li><a href="about.html">About Us</a></li>
+        </ul>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="page-header">
+        <h1 class="page-title">Meet The Team</h1>
+        <p class="subtitle" style="max-width: 700px; margin: 1rem auto;">
+            The team behind Scribblz! Feel free to connect with us on LinkedIn!
+        </p>
+        <button id="flipAllBtn" class="cta-button" style="padding: 0.8rem 1.5rem; font-size: 1rem; margin-top: 1rem;">
+            Flip the Cards
+        </button>
+    </header>
+
+    <!-- Team Content -->
+    <section class="team-section">
+        <div class="team-grid">
+
+            <!-- Member 1 -->
+            <article class="member-card flipped">
+                <div class="member-card-inner">
+                    <div class="member-card-front">
+                        <div class="flip-toggle" title="View Full Details">🔄</div>
+                        <a href="https://www.linkedin.com/in/eleane-lin/" target="_blank" class="member-photo-link"
+                            title="Connect on LinkedIn">
+                            <img src="https://media.licdn.com/dms/image/v2/D4E03AQEI8CoaSRAooA/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1709689587718?e=1767830400&v=beta&t=5JHwCviAjhQlaVOZZeYtNz22UHpr2HX-L_wxy6uUoyg"
+                                alt="Team Member 1" class="member-photo">
+                        </a>
+                        <h3 class="member-name">Eleane Lin</h3>
+                        <span class="member-role"> "Path Planner" Project Manager</span>
+                        <p class="member-bio">
+                            Eleane (she/her) is a sophomore studying Electrical and Computer Engineering at Olin College. <br> 
+                            <b>Areas:</b> Oversaw project progression and organized resources. Assisted with PCB design. </p>
+                    </div>
+                    <div class="member-card-back">
+                        <img src="Cartoon_images\Cartoon_Eleane.png" alt="Eleane Full Detail" class="member-detail-img">
+                        <div class="flip-toggle-back" title="Go Back">🔄</div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Member 2 -->
+            <article class="member-card flipped">
+                <div class="member-card-inner">
+                    <div class="member-card-front">
+                        <div class="flip-toggle" title="View Full Details">🔄</div>
+                        <a href="https://www.linkedin.com/in/liamzcarlin/" target="_blank" class="member-photo-link"
+                            title="Connect on LinkedIn">
+                            <img src="https://media.licdn.com/dms/image/v2/D4E03AQH0IuB-AGbdIw/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1718257219926?e=1767830400&v=beta&t=aAaO18hW0hrWUl0VoBpZBryTPQwRjwkHA9q7QC_Bi2M"
+                                alt="Team Member 2" class="member-photo">
+                        </a>
+                        <h3 class="member-name">Liam Carlin</h3>
+                        <span class="member-role">"CAD Wizard" Mechanical Lead</span>
+                        <p class="member-bio">
+                            Liam (he/him) is a sophomore studying Mechanical Engineering at Olin College. <br> 
+                            <b>Tasks:</b> Designed the impeller system, chassis, and docking station. 3D printing
+                            and
+                            rapid prototyping.</p>
+                    </div>
+                    <div class="member-card-back">
+                        <img src="Cartoon_images\Cartoon_Liam.png" alt="Liam Full Detail" class="member-detail-img">
+                        <div class="flip-toggle-back" title="Go Back">🔄</div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Member 3 -->
+            <article class="member-card flipped">
+                <div class="member-card-inner">
+                    <div class="member-card-front">
+                        <div class="flip-toggle" title="View Full Details">🔄</div>
+                        <a href="https://www.linkedin.com/in/davidmbarsoum/" target="_blank" class="member-photo-link"
+                            title="Connect on LinkedIn">
+                            <img src="https://media.licdn.com/dms/image/v2/D4E03AQEGQFHO9zi0Iw/profile-displayphoto-scale_400_400/B4EZn52FunIoAk-/0/1760833330556?e=1767830400&v=beta&t=fiZrhs9avNknqksjnsMfQjV6UCa4LikMSm9HwLeckoU"
+                                alt="Team Member 3" class="member-photo">
+                        </a>
+                        <h3 class="member-name">David Barsoum</h3>
+                        <span class="member-role">"The Visionary" Software Lead</span>
+                        <p class="member-bio">
+                            David (he/him) is a sophomore studying Robotics Engineering at Olin College. <br> 
+                            <b>Tasks:</b> Built robot simulation and physical parts of localization. Assisted with mechanical decisions.</p>
+                    </div>
+                    <div class="member-card-back">
+                        <img src="Cartoon_images\Cartoon_David.png" alt="David Full Detail" class="member-detail-img">
+                        <div class="flip-toggle-back" title="Go Back">🔄</div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Member 4 -->
+            <article class="member-card flipped">
+                <div class="member-card-inner">
+                    <div class="member-card-front">
+                        <div class="flip-toggle" title="View Full Details">🔄</div>
+                        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" class="member-photo-link"
+                            title="Connect on LinkedIn">
+                            <img src="images\ENZO.png" alt="Team Member 4" class="member-photo">
+                        </a>
+                        <h3 class="member-name">Enzo Smajlaj</h3>
+                        <span class="member-role">"Mister Motion" Software Lead</span>
+                        <p class="member-bio"> 
+                            Enzo (he/him) is a sophomore studying Robotics Engineering at Olin College. <br> 
+                            <b>Tasks:</b> Optimized path planning and communication networks. Co-worked on robot localization.</p>
+                    </div>
+                    <div class="member-card-back">
+                        <img src="Cartoon_images\Cartoon_Enzo.png" alt="Enzo Full Detail" class="member-detail-img">
+                        <div class="flip-toggle-back" title="Go Back">🔄</div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Member 5 -->
+            <article class="member-card flipped">
+                <div class="member-card-inner">
+                    <div class="member-card-front">
+                        <div class="flip-toggle" title="View Full Details">🔄</div>
+                        <a href="https://www.linkedin.com/in/michael-ku-jr-512b70194/" target="_blank"
+                            class="member-photo-link" title="Connect on LinkedIn">
+                            <img src="https://media.licdn.com/dms/image/v2/D4E03AQFhVOha9qq4dA/profile-displayphoto-scale_400_400/B4EZmr_rkoGYAk-/0/1759527224276?e=1767830400&v=beta&t=_Ki1BmKrTfCwMd52BPdc7ruvnPS00LIYmygv13aUFpA"
+                                alt="Team Member 5" class="member-photo">
+                        </a>
+                        <h3 class="member-name">Michael Ku</h3>
+                        <span class="member-role">"Power House" Electrical Lead</span>
+                        <p class="member-bio">
+                            Michael (he/him) is a sophomore studying Electrical and Computer Engineering at Olin College. <br> 
+                            <b>Tasks:</b> Designed the custom PCB and power management system. Debugging and
+                            soldering.</p>
+                    </div>
+                    <div class="member-card-back">
+                        <img src="Cartoon_images\Cartoon_Mikey.png" alt="Michael Full Detail" class="member-detail-img">
+                        <div class="flip-toggle-back" title="Go Back">🔄</div>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="copyright">
+        <p>© SCRIBBLZ Project 2025</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/sketches.js"></script>
+    <script src="about.js"></script>
+</body>
+
+</html>
