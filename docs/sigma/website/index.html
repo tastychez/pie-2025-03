@@ -203,7 +203,7 @@
 						            <h3><strong>Data & Energy Flow Diagram</strong></h3>
 								</div>
 						        <figure style="text-align: center; margin-top: 2em;">
-						            <img src="images/flow.png" alt="Reflector Iterations" style="max-width: 100%; border-radius: 8px;" />
+						            <img src="images/flow.png" alt="Data & Energy Flow Diagram" style="max-width: 100%; border-radius: 8px;" />
 						            <figcaption>Data & Energy Flow Diagram for the entire Enigma Machine.</figcaption>
 						        </figure>
 						    </div>
@@ -211,25 +211,25 @@
 						    <div class="spotlight">
 						        <div class="content">
 						            <h3>Sprint 1</h3>
-						            <p>Your text content goes here. Describe the first step of your process.</p>
+						            <p>Initial research, concept development, and basic prototyping of key components (keyboard switches and rotor scaling).</p>
 						        </div>
-						        <span class="image"><img src="images/step1.jpg" alt="" /></span>
+						        <span class="image"><img src="images/step1.jpg" alt="Sprint 1" /></span>
 						    </div>
 						    
 						    <div class="spotlight">
-						        <span class="image"><img src="images/step2.jpg" alt="" /></span>
+						        <span class="image"><img src="images/step2.jpg" alt="Sprint 2" /></span>
 						        <div class="content">
 						            <h3>Sprint 2</h3>
-						            <p>Your text content goes here. Describe the second step of your process.</p>
+						            <p>Refinement of rotor design, initial wiring tests, and keyboard mechanism iterations.</p>
 						        </div>
 						    </div>
 						    
 						    <div class="spotlight">
 						        <div class="content">
 						            <h3>Sprint 3</h3>
-						            <p>Your text content goes here. Describe the third step of your process.</p>
+						            <p>Final assembly, integration of subsystems, electrical testing, and debugging.</p>
 						        </div>
-						        <span class="image"><img src="images/step3.jpg" alt="" /></span>
+						        <span class="image"><img src="images/step3.jpg" alt="Sprint 3" /></span>
 						    </div>
 						    
 						</section>
@@ -240,28 +240,26 @@
 						        <h2>Mechanical</h2>
 						    </header>
 						    
+						    <!-- Rotors -->
 						    <div class="spotlight">
 						        <span class="image">
 						            <figure>
-						                <img src="images/allparts.jpeg" alt="Rotor 1" />
+						                <img src="images/allparts.jpeg" alt="All rotor parts" />
 						                <figcaption>All manufactured parts for the rotors.</figcaption>
 						            </figure>
 						            <figure style="margin-top: 1em;">
-						                <img src="images/cadrotor.png" alt="Rotor 2" />
+						                <img src="images/cadrotor.png" alt="Rotor CAD" />
 						                <figcaption>CAD of the final rotor design.</figcaption>
 						            </figure>
 						            <figure style="margin-top: 1em;">
-						                <img src="images/3r.png" alt="Rotor 3" />
-						                <figcaption>All 3 rotors wrired up, tested, and fully assembled.</figcaption>
+						                <img src="images/3r.png" alt="Three rotors" />
+						                <figcaption>All 3 rotors wired up, tested, and fully assembled.</figcaption>
 						            </figure>
 						            <figure style="margin-top: 1em;">
-						                <img src="images/rotor assembly.jpg" alt="Rotor 4" />
-						                <figcaption>Rotors wrired up with the initial contact piece and refelector in the machine..</figcaption>
+						                <img src="images/rotor assembly.jpg" alt="Rotor assembly in machine" />
+						                <figcaption>Rotors wired up with the initial contact piece and reflector in the machine.</figcaption>
 						            </figure>
 						        </span>
-						    
-						    <div class="spotlight">
-						        <span class="image"><img src="images/step2.jpg" alt="" /></span>
 						        <div class="content">
 						            <h3>Rotors</h3>
 						            <p>Each rotor is a nine-part mechanical assembly that rotates as a single unit to maintain precise alignment of the electrical contact pins. The rotor body acts as the main structural element, concentrically locating all components along the axis. A toleranced bushing between the shaft and rotor body reduces friction while ensuring accurate alignment during rotation.</p>
@@ -277,86 +275,51 @@
 									<p>Internally, a routing piece connects to the ratchet wheel and preserves approximately 2 cm of space for wire scrambling. The copper pin housing supports the fixed copper pins and encloses the wiring, fastening to the routing piece with M4 screws to form a rigid structure.</p>
 									
 									<p>Future iterations will focus on improving stepping consistency and electrical contact reliability, including lower-force spring pins and servo-driven rotor control, while preserving the original encryption behavior.</p>
-
 						        </div>
 						    </div>
 						    
+						    <!-- Keyboard -->
 						    <div class="spotlight">
 						        <span class="image">
 						            <figure>
-						                <img src="images/key_cad.png" alt="Rotor 1" />
-						                <figcaption>CAD of a singular key sitting in the keyboard.</figcaption>
+						                <img src="images/key_cad.png" alt="Key CAD" />
+						                <figcaption>CAD of a single key in the keyboard assembly.</figcaption>
 						            </figure>
 						            <figure style="margin-top: 1em;">
-						                <img src="images/side_k_cad.png" alt="Rotor 2" />
-						                <figcaption>CAD of the side view of keyboard.</figcaption>
+						                <img src="images/side_k_cad.png" alt="Keyboard side view CAD" />
+						                <figcaption>Side view CAD of the keyboard assembly.</figcaption>
 						            </figure>
 						            <figure style="margin-top: 1em;">
-						                <img src="images/final_keys.jpg" alt="Rotor 4" />
-						                <figcaption>Fully tested and manufactured keys.</figcaption>
+						                <img src="images/final_keys.jpg" alt="Final keys" />
+						                <figcaption>Fully manufactured and tested keys.</figcaption>
 						            </figure>
 						        </span>
 						        <div class="content">
-						            <h3><strong>Keyboard</strong></h3>
+						            <h3>Keyboard</h3>
 						            <p>The keyboard design borrows from the original Enigma Machine. It uses spring-loaded metal rods topped with labeled key-caps. In our machine, when a letter is pressed, the key press completes a circuit on the breadboard, which is then sent to the Arduino. We chose to route keypresses to the Arduino for a specific reason: when the Arduino receives a signal for the swapped letter, both the pin corresponding to the keypress and the pin corresponding to the swapped letter will read high. By sending the keyboard press to the Arduino first, it can differentiate between the two, allowing it to send the swapped letter—and not the keypress—to the display.</p>
 
 									<p>For the body of the key, we purchased a 6-foot length of cold-worked steel with a diameter of 3/16 inches and cut it to length using a horizontal bandsaw. We selected springs with a length of 1 inch and an inner diameter of 0.192 inches to fit around the steel rods. The tabs, keycaps, and brackets were 3D printed in PLA.</p>
 									
 									<p>For the switch mechanism, we used thick copper wire soldered to 16-gauge or 22-gauge wire for one side of the switch. The other side was constructed using small split bushings soldered to 16-gauge wire. For the keycaps, we applied vinyl stickers labeled with the corresponding letters.</p>
 								</div>
+						    </div>
+
+						    <!-- Case -->
+						    <div class="spotlight">
+						        <span class="image">
+						            <figure>
+						                <img src="images/casecad.png" alt="Case CAD" />
+						                <figcaption>CAD of the casing for the rotors, reflector, and initial contact wheel.</figcaption>
+						            </figure>
+						        </span>
+						        <div class="content">
+						            <h3>Case</h3>
+						            <p>The case was designed early on in the process. This allowed it to evolve as we designed the internal components. We used parametric CAD in Onshape with variables for length, width, height, and wall thickness to facilitate iterations. Additional features like slots for keyboard integration and the ratchet system were added as needed. Once the design was nearly final, tolerances for laser cutter kerf were applied, and the acrylic pieces were assembled using solvent welding.</p>
+						            <p>In the final build, one wall had minor fit issues due to a slightly misaligned reflector plate. We chose not to disassemble and fix it at that stage since the system was functional. Future iterations would address this, as well as tightening the shaft hole tolerance to account for threading reducing the shaft diameter.</p>
+						        </div>
 						    </div>
 						</section>
 		    
-						<div class="spotlight">
-						        <span class="image">
-						            <figure>
-						                <img src="images/allparts.jpeg" alt="Rotor 1" />
-						                <figcaption>All manufactured parts for the rotors.</figcaption>
-						            </figure>
-						            <figure style="margin-top: 1em;">
-						                <img src="images/cadrotor.png" alt="Rotor 2" />
-						                <figcaption>CAD of the final rotor design.</figcaption>
-						            </figure>
-						            <figure style="margin-top: 1em;">
-						                <img src="images/3r.png" alt="Rotor 3" />
-						                <figcaption>All 3 rotors wrired up, tested, and fully assembled.</figcaption>
-						            </figure>
-						            <figure style="margin-top: 1em;">
-						                <img src="images/rotor assembly.jpg" alt="Rotor 4" />
-						                <figcaption>Rotors wrired up with the initial contact piece and refelector in the machine..</figcaption>
-						            </figure>
-						        </span>
-						    
-						    <div class="spotlight">
-						        <span class="image"><img src="images/step2.jpg" alt="" /></span>
-						        <div class="content">
-						            <h3>Case</h3>
-						            <p> The case was designed early on in the process. This meant it could change as we designed the parts meant to fit in it, so we used parametric CAD in Onshape to give us variables, such as length, width, height, and wall thickness to change as we iterated. We also made other changes as it became apparent that they were needed. We added slots in the case to integrate with the walls of the keyboard. We added a slot for the ratchet system to fit through. Once the rest of the design was close to being final, we added tolerances for the laser cutter kerf and assembled it using a solvent to weld the acrylic pieces together.
-									</p>
-									<p>In the end, one of the walls did not quite fit due to a misaligned reflector plate. In a future iteration, we would fix this. We did not for this iteration, as we would have needed a major disassembly and reassembly to solve it and we had the system working, so we decided to not do this. Additionally, we would reduce the diameter of the hole for the shaft in the right side, as the threading on the shaft reduced its diameter. This did not cause any issues, but we would still fix it for a future iteration.
-</p>
-						        </div>
-						    </div>
-						    
-						    <div class="spotlight">
-						        <span class="image">
-						            <figure>
-						                <img src="images/casecad.png" alt="Rotor 1" />
-						                <figcaption>CAD of the casing for the rotors, reflector, and the initial contact wheel.</figcaption>
-						            </figure>
-		
-						        </span>
-						        <div class="content">
-						            <h3><strong>Keyboard</strong></h3>
-						            <p>The keyboard design borrows from the original Enigma Machine. It uses spring-loaded metal rods topped with labeled key-caps. In our machine, when a letter is pressed, the key press completes a circuit on the breadboard, which is then sent to the Arduino. We chose to route keypresses to the Arduino for a specific reason: when the Arduino receives a signal for the swapped letter, both the pin corresponding to the keypress and the pin corresponding to the swapped letter will read high. By sending the keyboard press to the Arduino first, it can differentiate between the two, allowing it to send the swapped letter—and not the keypress—to the display.</p>
-
-									<p>For the body of the key, we purchased a 6-foot length of cold-worked steel with a diameter of 3/16 inches and cut it to length using a horizontal bandsaw. We selected springs with a length of 1 inch and an inner diameter of 0.192 inches to fit around the steel rods. The tabs, keycaps, and brackets were 3D printed in PLA.</p>
-									
-									<p>For the switch mechanism, we used thick copper wire soldered to 16-gauge or 22-gauge wire for one side of the switch. The other side was constructed using small split bushings soldered to 16-gauge wire. For the keycaps, we applied vinyl stickers labeled with the corresponding letters.</p>
-								</div>
-						    </div>
-						</section>
-
 						<!-- Electrical -->
 						<section id="fourth" class="main special">
 						    <header class="major">
@@ -365,26 +328,26 @@
 						    
 						    <div class="spotlight">
 						        <div class="content">
-						            <h3>Step 1 Title</h3>
-						            <p>Your text content goes here. Describe the first step of your process.</p>
+						            <h3>Wiring Architecture</h3>
+						            <p>Description of the overall electrical flow, plugboard implementation, rotor contacts, reflector pairing, and integration with Arduino for input detection and display output.</p>
 						        </div>
-						        <span class="image"><img src="images/step1.jpg" alt="" /></span>
+						        <span class="image"><img src="images/electrical1.jpg" alt="Electrical wiring diagram or photo" /></span>
 						    </div>
 						    
 						    <div class="spotlight">
-						        <span class="image"><img src="images/step2.jpg" alt="" /></span>
+						        <span class="image"><img src="images/electrical2.jpg" alt="Breadboard or Arduino connections" /></span>
 						        <div class="content">
-						            <h3>Step 2 Title</h3>
-						            <p>Your text content goes here. Describe the second step of your process.</p>
+						            <h3>Arduino Integration</h3>
+						            <p>Details on how the Arduino Mega handles keypress detection, debouncing, and distinguishing between pressed and illuminated letters.</p>
 						        </div>
 						    </div>
 						    
 						    <div class="spotlight">
 						        <div class="content">
-						            <h3>Step 3 Title</h3>
-						            <p>Your text content goes here. Describe the third step of your process.</p>
+						            <h3>Power & Signal Reliability</h3>
+						            <p>Challenges with contact resistance, soldering techniques for reliable connections, and any shielding or grounding considerations.</p>
 						        </div>
-						        <span class="image"><img src="images/step3.jpg" alt="" /></span>
+						        <span class="image"><img src="images/electrical3.jpg" alt="Close-up of contacts or testing" /></span>
 						    </div>
 						    
 						</section>
@@ -397,124 +360,124 @@
 						    
 						    <div class="spotlight">
 						        <div class="content">
-						            <h3>Step 1 Title</h3>
-						            <p>Your text content goes here. Describe the first step of your process.</p>
+						            <h3>Arduino Firmware</h3>
+						            <p>Overview of the Arduino sketch: reading keyboard inputs, detecting plugboard swaps, driving the display, and handling rotor position (manual in this version).</p>
 						        </div>
-						        <span class="image"><img src="images/step1.jpg" alt="" /></span>
+						        <span class="image"><img src="images/code1.jpg" alt="Code snippet or Arduino setup" /></span>
 						    </div>
 						    
 						    <div class="spotlight">
-						        <span class="image"><img src="images/step2.jpg" alt="" /></span>
+						        <span class="image"><img src="images/code2.jpg" alt="Display output example" /></span>
 						        <div class="content">
-						            <h3>Step 2 Title</h3>
-						            <p>Your text content goes here. Describe the second step of your process.</p>
+						            <h3>Display Management</h3>
+						            <p>How the LCD or screen is updated with encrypted/decrypted letters, including any buffering or message history features.</p>
 						        </div>
 						    </div>
 						    
 						    <div class="spotlight">
 						        <div class="content">
-						            <h3>Step 3 Title</h3>
-						            <p>Your text content goes here. Describe the third step of your process.</p>
+						            <h3>Future Software Enhancements</h3>
+						            <p>Potential additions like automatic rotor stepping via encoders or servos, configuration menus, or full software emulation mode.</p>
 						        </div>
-						        <span class="image"><img src="images/step3.jpg" alt="" /></span>
+						        <span class="image"><img src="images/code3.jpg" alt="Future feature mockup" /></span>
 						    </div>
 						    
 						</section>
 
 						<!-- Bill of Materials -->
-<section id="sixth" class="main special">
-    <header class="major">
-        <h2>Bill of Materials</h2>
-    </header>
-    
-    <div class="table-wrapper">
-        <table>
-            <thead>
-                <tr>
-                    <th>Item</th>
-                    <th>Price ($)</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Copper Probes</td>
-                    <td>13</td>
-                </tr>
-                <tr>
-                    <td>Steel Rod</td>
-                    <td>5</td>
-                </tr>
-                <tr>
-                    <td>Springs</td>
-                    <td>22</td>
-                </tr>
-                <tr>
-                    <td>Aluminum Sheet</td>
-                    <td>19</td>
-                </tr>
-                <tr>
-                    <td>LCD Display</td>
-                    <td>34</td>
-                </tr>
-                <tr>
-                    <td>Solder Wick</td>
-                    <td>4</td>
-                </tr>
-                <tr>
-                    <td>Shaft</td>
-                    <td>12</td>
-                </tr>
-                <tr>
-                    <td>Additional Copper Probes</td>
-                    <td>13</td>
-                </tr>
-                <tr>
-                    <td>Acrylic</td>
-                    <td>45</td>
-                </tr>
-                <tr>
-                    <td>400 grams PLA</td>
-                    <td>12</td>
-                </tr>
-                <tr>
-                    <td>Copper Wire</td>
-                    <td>21</td>
-                </tr>
-                <tr>
-                    <td>Aluminum for Nut</td>
-                    <td>5</td>
-                </tr>
-                <tr>
-                    <td>Sticker Paper</td>
-                    <td>1</td>
-                </tr>
-                <tr>
-                    <td>Spacer</td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>Raspberry Pi 3B+</td>
-                    <td>40</td>
-                </tr>
-                <tr>
-                    <td>Screws and Washers</td>
-                    <td>5</td>
-                </tr>
-                <tr>
-                    <td>Arduino Mega</td>
-                    <td>37</td>
-                </tr>
-            </tbody>
-            <tfoot>
-                <tr>
-                    <td><strong>Total</strong></td>
-                    <td><strong>290</strong></td>
-                </tr>
-            </tfoot>
-        </table>
-    </div>
-    
-</section>
+						<section id="sixth" class="main special">
+						    <header class="major">
+						        <h2>Bill of Materials</h2>
+						    </header>
+						    
+						    <div class="table-wrapper">
+						        <table>
+						            <thead>
+						                <tr>
+						                    <th>Item</th>
+						                    <th>Price ($)</th>
+						                </tr>
+						            </thead>
+						            <tbody>
+						                <tr>
+						                    <td>Copper Probes</td>
+						                    <td>13</td>
+						                </tr>
+						                <tr>
+						                    <td>Steel Rod</td>
+						                    <td>5</td>
+						                </tr>
+						                <tr>
+						                    <td>Springs</td>
+						                    <td>22</td>
+						                </tr>
+						                <tr>
+						                    <td>Aluminum Sheet</td>
+						                    <td>19</td>
+						                </tr>
+						                <tr>
+						                    <td>LCD Display</td>
+						                    <td>34</td>
+						                </tr>
+						                <tr>
+						                    <td>Solder Wick</td>
+						                    <td>4</td>
+						                </tr>
+						                <tr>
+						                    <td>Shaft</td>
+						                    <td>12</td>
+						                </tr>
+						                <tr>
+						                    <td>Additional Copper Probes</td>
+						                    <td>13</td>
+						                </tr>
+						                <tr>
+						                    <td>Acrylic</td>
+						                    <td>45</td>
+						                </tr>
+						                <tr>
+						                    <td>400 grams PLA</td>
+						                    <td>12</td>
+						                </tr>
+						                <tr>
+						                    <td>Copper Wire</td>
+						                    <td>21</td>
+						                </tr>
+						                <tr>
+						                    <td>Aluminum for Nut</td>
+						                    <td>5</td>
+						                </tr>
+						                <tr>
+						                    <td>Sticker Paper</td>
+						                    <td>1</td>
+						                </tr>
+						                <tr>
+						                    <td>Spacer</td>
+						                    <td>2</td>
+						                </tr>
+						                <tr>
+						                    <td>Raspberry Pi 3B+</td>
+						                    <td>40</td>
+						                </tr>
+						                <tr>
+						                    <td>Screws and Washers</td>
+						                    <td>5</td>
+						                </tr>
+						                <tr>
+						                    <td>Arduino Mega</td>
+						                    <td>37</td>
+						                </tr>
+						            </tbody>
+						            <tfoot>
+						                <tr>
+						                    <td><strong>Total</strong></td>
+						                    <td><strong>290</strong></td>
+						                </tr>
+						            </tfoot>
+						        </table>
+						    </div>
+						    
+						</section>
 
 						<!-- About Us -->
 						<section id="seventh" class="main special">
@@ -523,9 +486,16 @@
 						    </header>
 
 						    <div class="spotlight">
-						        <span class="image"><img src="images/step1.jpg" alt="" /></span>
+						        <span class="image"><img src="images/team.jpg" alt="Team photo" /></span>
 						        <div class="content">
-						            <p>Your text content goes here. Describe the first step of your process.</p>
+						            <p>We are a team of five Olin College of Engineering students who built the Sigma Machine as part of the Fall 2025 Principles of Integrated Engineering (PIE) course. This project combined mechanical design, electrical systems, and software to recreate a functional modernized Enigma M3.</p>
+						            <ul>
+						                <li><strong>Anna Braun</strong> – [Role/Contribution]</li>
+						                <li><strong>Jo Walkup</strong> – [Role/Contribution]</li>
+						                <li><strong>Kuhu Jayaswal</strong> – [Role/Contribution]</li>
+						                <li><strong>Leo Trepte</strong> – [Role/Contribution]</li>
+						                <li><strong>Tchenzie Guichette</strong> – [Role/Contribution]</li>
+						            </ul>
 						        </div>
 						    </div>
 						    
@@ -546,5 +516,3 @@
 
 	</body>
 </html>
-
-
